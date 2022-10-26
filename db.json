@@ -1,0 +1,57 @@
+{
+  "chocolates": [
+    {
+      "id": 1,
+      "title": "Hazelnut Praline",
+      "price": 5,
+      "image":"https://cdn.shopify.com/s/files/1/0974/7668/products/Hazelnut_Praline_2022_SHOPIFY_large.png?v=1661401784",
+      "description":"NEW! Our perfectly unrefined 70% dark stone ground organic chocolate with an indulgent combo of toasted hazelnuts & praline. Amaze Bars take stone ground chocolate to another dimension by pairing incredible flavor experiences with our minimally processed, bold dark chocolate."
+    },
+    {
+      "id": 2,
+      "title": "95% WICKED DARK WITH ALMONDS",
+      "price": 40,
+      "image":"https://cdn.shopify.com/s/files/1/0974/7668/products/Wicked_Dark_Almond_2022_SHOPIFY_large.png?v=1661400283",
+      "description":"Perfectly unrefined, super intense 95% dark stone ground organic chocolate with crunchy roasted almonds. This barely-sweet bar lets the bright fruity flavors of our cacao shout loud and proud! We think our simple stone ground process makes the best ultra dark chocolate you'll find. Just 2g sugar per serving!"
+    },
+    {
+      "id": 3,
+      "title": "87% SERIOUSLY DARK",
+      "price": 5,
+      "image":"https://cdn.shopify.com/s/files/1/0974/7668/products/Seriously_Dark_2022_SHOPIFY_large.png?v=1661399971",
+      "description":"Perfectly unrefined 87% dark stone ground chocolate. This high-intensity bar delivers a seriously bold dark chocolate experience. We grind our exceptional Direct Trade cacao with hand-carved granite millstones, so you can taste the true flavors of cacao shining through."
+    },
+    {
+      "id": 4,
+      "title": "70% DELICIOUSLY DARK",
+      "price": 6,
+      "image":"https://cdn.shopify.com/s/files/1/0974/7668/products/Deliciously_Dark_2022_SHOPIFY_large.png?v=1661399717",
+      "description":"Perfectly unrefined 70% dark stone ground chocolate. This bar strikes a perfectly bold balance of sweet and bitter. We grind our exceptional Direct Trade cacao with hand-carved granite millstones, so you can taste the true flavors of cacao shining through."
+    },
+    {
+      "id": 5,
+      "title": "COCONUT",
+      "price": 10,
+      "image":"https://cdn.shopify.com/s/files/1/0974/7668/products/Coconut_2022_SHOPIFY_large.png?v=1661400922",
+      "description":"Perfectly unrefined 70% dark stone ground organic chocolate with a tropical twist of organic coconut. Amaze Bars take stone ground chocolate to another dimension by pairing incredible flavor experiences with our minimally processed, bold dark chocolate."
+    },
+    {
+      "id": 6,
+      "title": "CACAO CRUNCH",
+      "price": 8,
+      "image":"https://cdn.shopify.com/s/files/1/0974/7668/products/Cacao_Crunch_2022_SHOPIFY_large.png?v=1661400553",
+      "description":"Perfectly unrefined 80% dark stone ground organic chocolate with a satisfying crunch of puffed quinoa. Amaze Bars take stone ground chocolate to another dimension by pairing incredible flavor experiences with our minimally processed, bold dark chocolate."
+    }
+
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
