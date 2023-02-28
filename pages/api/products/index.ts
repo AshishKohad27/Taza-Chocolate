@@ -16,6 +16,7 @@ type TProduct = {
   flag?: boolean;
   data: Array<ObjectProduct>;
   desc: string;
+  dataLength?: number;
 };
 
 export default async function productRoutes(
@@ -27,37 +28,39 @@ export default async function productRoutes(
   console.log("Method:", req.method);
 
   if (req.method === "GET") {
-    const { data, flag, message, desc }: TProduct = await getProduct();
+    const { data, dataLength, flag, message, desc }: TProduct =
+      await getProduct();
 
     console.log("message:", message);
     if (flag) {
-      return res.status(200).send({ message, desc, data });
+      return res.status(200).send({ message, desc, dataLength, data });
     } else {
-      return res.status(401).send({ message, desc, data });
+      return res.status(401).send({ message, desc, dataLength, data });
     }
   } else if (req.method === "POST") {
     const Body = req.body;
 
-    const { data, flag, message, desc }: TProduct = await addProduct(Body);
+    const { data, dataLength, flag, message, desc }: TProduct =
+      await addProduct(Body);
     console.log("message:", message);
 
     if (flag) {
-      return res.status(200).send({ message, desc, data });
+      return res.status(200).send({ message, desc, dataLength, data });
     } else {
-      return res.status(401).send({ message, desc, data });
+      return res.status(401).send({ message, desc, dataLength, data });
     }
   } else if (req.method === "PATCH") {
     const Body: ObjectProduct = req.body;
 
-    const { data, flag, message, desc }: TProduct = await updateProduct(Body);
+    const { data, dataLength, flag, message, desc }: TProduct =
+      await updateProduct(Body);
     console.log("message:", message);
 
     if (flag) {
-      return res.status(200).send({ message, desc, data });
+      return res.status(200).send({ message, desc, dataLength, data });
     } else {
-      return res.status(401).send({ message, desc, data });
+      return res.status(401).send({ message, desc, dataLength, data });
     }
-  } else if (req.method === "DELETE") {
   }
 }
 
@@ -68,13 +71,15 @@ async function getProduct(): Promise<any> {
     // console.log("data:", data);
     return {
       data,
+      dataLength: data.length || 0,
       flag: true,
       desc: "",
       message: "Product Get Successfully!",
     };
   } catch (e: any) {
     return {
-      data: "",
+      data: [],
+      dataLength: 0,
       flag: true,
       desc: e.message,
       message: "Error Occurs!",
@@ -104,13 +109,15 @@ async function addProduct({
     // console.log("data:", data);
     return {
       data,
+      dataLength: data.length || 0,
       flag: true,
       desc: "",
       message: "Product Add Successfully!",
     };
   } catch (e: any) {
     return {
-      data: "",
+      data: [],
+      dataLength: 0,
       flag: true,
       desc: e.message,
       message: "Error Occurs!",
@@ -142,13 +149,15 @@ async function updateProduct({
     // console.log("data:", data);
     return {
       data,
+      dataLength: data.length || 0,
       flag: true,
       desc: "",
       message: "Product Update Successfully!",
     };
   } catch (e: any) {
     return {
-      data: "",
+      data: [],
+      dataLength: 0,
       flag: true,
       desc: e.message,
       message: "Error Occurs!",
