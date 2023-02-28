@@ -110,4 +110,30 @@ const updateProduct = async ({
   }
 };
 
-export { getProduct, addProduct, updateProduct };
+const deleteProduct = async (productId: string): Promise<any> => {
+  try {
+    await productM.findByIdAndDelete({
+      _id: productId,
+    });
+
+    let data: ObjectProduct[] = await productM.find();
+
+    return {
+      data,
+      dataLength: data.length || 0,
+      message: "Product Delete Successfully",
+      flag: true,
+      desc: "",
+    };
+  } catch (e: any) {
+    return {
+      data: [],
+      dataLength: 0,
+      flag: true,
+      desc: e.message,
+      message: "Error Occurs!",
+    };
+  }
+};
+
+export { getProduct, addProduct, updateProduct, deleteProduct };
