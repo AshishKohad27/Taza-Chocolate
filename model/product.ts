@@ -2,17 +2,20 @@ import { Schema, model, models } from "mongoose";
 
 type productTypescript = {
   title: String;
-  image: String;
   description: String;
-  price: Number;
+  bar: String;
+  caseBar: String;
+  image: String;
+  category: String;
   quantity: Number;
 };
 
 const productSchema = new Schema<productTypescript>({
   title: { type: String, require: true },
-  image: { type: String, require: true },
   description: { type: String, require: true },
-  price: { type: Number, require: true },
+  bar: { type: Number, require: true },
+  caseBar: { type: Number, require: true },
+  image: { type: String, require: true },
   quantity: { type: Number, require: true },
 });
 

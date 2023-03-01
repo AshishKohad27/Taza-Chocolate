@@ -3,9 +3,11 @@ import productM from "../model/product";
 type ObjectProduct = {
   _id?: String;
   title: String;
-  image: String;
   description: String;
-  price: Number;
+  bar: String;
+  caseBar: String;
+  image: String;
+  category: String;
   quantity: Number;
 };
 
@@ -36,7 +38,9 @@ const addProduct = async ({
   title,
   image,
   description,
-  price,
+  bar,
+  caseBar,
+  category,
   quantity,
 }: ObjectProduct): Promise<any> => {
   console.log("description:", description);
@@ -45,7 +49,9 @@ const addProduct = async ({
       title,
       image,
       description,
-      price,
+      bar,
+      caseBar,
+      category,
       quantity,
     });
     await addProduct.save();
@@ -75,7 +81,9 @@ const updateProduct = async ({
   title,
   image,
   description,
-  price,
+  bar,
+  caseBar,
+  category,
   quantity,
 }: ObjectProduct): Promise<any> => {
   try {
@@ -85,7 +93,9 @@ const updateProduct = async ({
         title,
         image,
         description,
-        price,
+        bar,
+        caseBar,
+        category,
         quantity,
       }
     );

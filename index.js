@@ -8,7 +8,7 @@ let description = document.querySelector(".product-description>p>span");
 let regularPriceBar = document.querySelector(
     "#AddToCartForm>div:nth-child(1) #ProductPrice"
 );
-let regularPriceBarCase = document.querySelector(
+let regularPriceBarCase     = document.querySelector(
     "#AddToCartForm>div:nth-child(2) #ProductPrice"
 );
 // let regularPrice = document.getElementById("ProductPrice");
