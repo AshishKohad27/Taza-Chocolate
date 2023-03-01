@@ -1,3 +1,16 @@
-.container{
-    
+.container {
+  width: 1349px;
+  margin: auto;
+  background-color: blue;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: auto;
+  gap: 10px;
+}
+.container > div {
+  background-color: teal;
+  height: 400px;
+  width: 300px;
+  margin: auto;
+  margin-top: 10px;
 }
