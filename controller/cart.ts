@@ -6,29 +6,41 @@ const jwtSecretKey = process.env.JSON_SECRET_KEY;
 type TAddCart = {
     token: string | any;
     productId: string;
-    quantity: number
+    quantity: number;
 };
 
-export const getCart = async ({ token, productId, quantity }: TAddCart): Promise<any> => {
-    console.log('productId:',  productId);
+export const addCart = async ({
+    token,
+    productId,
+    quantity,
+}: TAddCart): Promise<any> => {
+    // console.log('productId:', productId);
     try {
         let verifyToken = await jwt.decode(token, jwtSecretKey);
         if (!verifyToken) {
             // un authorized
+            return {
+                data: [],
+                flag: false,
+                desc: "",
+                message: "UnAuthorized",
+            };
         } else {
             // get data of that particular userId
             const userId = verifyToken._id;
-            // const getCart = await productM.findOne(
-            //     { _id: productId },
-            //     { _id: 0, __v: 0 }
-            // );
-            // console.log('getCart:', getCart)
 
-            // let isProductExistInCart = await cartM.findOne({ userId: })
-
+            let isProductExistInCart = await cartM.find({ userId, productId });
+            if (isProductExistInCart.length !== 0) {
+                return {
+                    data: isProductExistInCart,
+                    flag: true,
+                    desc: "",
+                    message: "Product Already Exist",
+                };
+            }
             const getUpdateProduct = await productM.findByIdAndUpdate(
                 { _id: productId },
-                { "quantity": quantity - 1, __v: 0, }
+                { quantity: quantity - 1, __v: 0 }
             );
 
             const data = new cartM({
@@ -39,16 +51,15 @@ export const getCart = async ({ token, productId, quantity }: TAddCart): Promise
                 image: getUpdateProduct.image,
                 category: getUpdateProduct.category,
                 quantity: 1,
-                productId: productId,
-                userId: "",
+                productId,
+                userId,
             });
             await data.save();
-            console.log("data:", data);
 
             return {
                 data,
                 flag: true,
-                desc: verifyToken,
+                desc: "",
                 message: "Item added in cart successfully",
             };
         }
@@ -62,19 +73,119 @@ export const getCart = async ({ token, productId, quantity }: TAddCart): Promise
     }
 };
 
-export const addCart = async (token: string | any): Promise<any> => {
+export const getCart = async (token: string): Promise<any> => {
     try {
         let verifyToken = await jwt.decode(token, jwtSecretKey);
         if (!verifyToken) {
             // un authorized
+            return {
+                data: [],
+                flag: false,
+                desc: "",
+                message: "UnAuthorized",
+            };
         } else {
             // get data of that particular userId
-            const data = await cartM.find({});
+            const userId = verifyToken._id;
+
+            let isProductExistInCart = await cartM.find({ userId });
+
             return {
-                data,
+                data: isProductExistInCart,
                 flag: true,
-                desc: verifyToken,
-                message: "Details from Token",
+                desc: "",
+                message: "Item added in cart successfully",
+            };
+        }
+    } catch (e: any) {
+        return {
+            data: [],
+            flag: true,
+            desc: e.message,
+            message: "Error Occurs!",
+        };
+    }
+};
+
+export const updateQuantityItem = async (
+    token: string,
+    cartId: string,
+    quantity: number,
+    productId: string
+): Promise<any> => {
+    // console.log('token, productId, quantity:', cartId, quantity)
+    try {
+        let verifyToken = await jwt.decode(token, jwtSecretKey);
+        if (!verifyToken) {
+            // un authorized
+            return {
+                data: [],
+                flag: false,
+                desc: "",
+                message: "UnAuthorized",
+            };
+        } else {
+            // get data of that particular userId
+            const userId = verifyToken._id;
+            // console.log('userId:', userId)
+
+            // we change our productM quantity not done yet
+            // const changingProductQuantity = await productM.findByIdAndUpdate(
+            //     { _id: productId },
+            //     { quantity }
+            // );
+
+            const isProductExistInCart = await cartM.findByIdAndUpdate(
+                { _id: cartId },
+                { quantity }
+            );
+
+            const getAllCartItem = await cartM.find({ userId });
+            return {
+                data: getAllCartItem,
+                flag: true,
+                desc: "",
+                message: "Item added in cart successfully",
+            };
+        }
+    } catch (e: any) {
+        return {
+            data: [],
+            flag: true,
+            desc: e.message,
+            message: "Error Occurs!",
+        };
+    }
+};
+
+export const deleteItem = async (
+    token: string,
+    cartId: string
+): Promise<any> => {
+    try {
+        let verifyToken = await jwt.decode(token, jwtSecretKey);
+        if (!verifyToken) {
+            // un authorized
+            return {
+                data: [],
+                flag: false,
+                desc: "",
+                message: "UnAuthorized",
+            };
+        } else {
+            // get data of that particular userId
+            const userId = verifyToken._id;
+
+            const isProductExistInCart = await cartM.findByIdAndDelete({
+                _id: cartId
+            });
+
+            const getAllCartItem = await cartM.find({ userId });
+            return {
+                data: getAllCartItem,
+                flag: true,
+                desc: "",
+                message: "Item added in cart successfully",
             };
         }
     } catch (e: any) {
