@@ -8,6 +8,8 @@ type productTypescript = {
   image: String;
   category: String;
   quantity: Number;
+  productId: String;
+  userId: String;
 };
 
 const cartSchema = new Schema<productTypescript>({
@@ -18,6 +20,8 @@ const cartSchema = new Schema<productTypescript>({
   image: { type: String, require: true },
   category: { type: String, require: true },
   quantity: { type: Number, require: true },
+  productId: { type: String, require: true },
+  userId: { type: String, require: true },
 });
 
-export default models.cart || model<productTypescript>("cart", cartSchema);
+export default models.cart || model<productTypescript>("cart", cartSchema); 

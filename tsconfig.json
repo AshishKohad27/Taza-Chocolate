@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/db.ts", "pages/products/index.tsx", "constants/product.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/db.ts", "pages/products/index.tsx", "constants/product.ts", "pages/api/cart/index.ts", "middleware/authMiddleWare.js"],
   "exclude": ["node_modules"]
 }
