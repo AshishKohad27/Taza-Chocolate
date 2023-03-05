@@ -10,7 +10,7 @@ type productTypescript = {
   quantity: Number;
 };
 
-const productSchema = new Schema<productTypescript>({
+const cartSchema = new Schema<productTypescript>({
   title: { type: String, require: true },
   description: { type: String, require: true },
   bar: { type: Number, require: true },
@@ -20,5 +20,4 @@ const productSchema = new Schema<productTypescript>({
   quantity: { type: Number, require: true },
 });
 
-export default models.product ||
-  model<productTypescript>("product", productSchema);
+export default models.cart || model<productTypescript>("cart", cartSchema);
