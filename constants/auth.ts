@@ -6,10 +6,18 @@ export interface ObjectAuth {
   password: string;
   role: string;
 }
-export type TAuth = {
+export type TAuthSignup = {
   message: string;
   flag?: boolean;
-  data: Array<ObjectAuth>;
+  data: Array<ObjectAuth> | [];
+  desc: string;
+};
+export type TAuthLogin = {
+  message: string;
+  flag?: boolean;
+  data?: Array<ObjectAuth> | [];
+  token: string;
+  refreshToken: string;
   desc: string;
 };
 

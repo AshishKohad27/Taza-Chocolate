@@ -1,15 +1,15 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { TAuth } from "@/constants/auth";
+import { TAuthSignup } from "@/constants/auth";
 import type { NextApiRequest, NextApiResponse } from "next";
 import authM from "../../../model/auth";
 
 export default async function authRoute(
   req: NextApiRequest,
-  res: NextApiResponse<TAuth>
+  res: NextApiResponse<TAuthSignup>
 ) {
   // console.log(req.method);
   if (req.method === "GET") {
-    const { data, flag, message, desc }: TAuth = await getAuth();
+    const { data, flag, message, desc }: TAuthSignup = await getAuth();
     console.log("message:", message);
     if (flag) {
       return res.status(200).send({ message, desc, data, flag });

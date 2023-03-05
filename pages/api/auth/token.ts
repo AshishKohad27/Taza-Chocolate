@@ -1,5 +1,5 @@
 import { TAuthSignup } from "@/constants/auth";
-import { postSignup } from "@/controller/auth";
+import { postSignup, tokenVerify } from "@/controller/auth";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function Signup(
@@ -7,12 +7,8 @@ export default async function Signup(
   res: NextApiResponse<TAuthSignup>
 ) {
   if (req.method === "POST") {
-    const { email, password, name } = req.body;
-    const { message, flag, data, desc }: TAuthSignup = await postSignup({
-      name,
-      email,
-      password,
-    });
+    const { token } = req.body;
+    const { message, flag, data, desc }: TAuthSignup = await tokenVerify(token);
     if (flag) {
       return res.status(201).send({ message, data, desc });
     } else {
