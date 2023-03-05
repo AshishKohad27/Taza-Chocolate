@@ -25,7 +25,7 @@ export const postSignup = async ({
     let authUser: Array<TObjectAuth> = await authM.find({ email });
     console.log("authUser:", authUser);
 
-    //if present
+//     //if present
     if (authUser.length !== 0) {
       return {
         data: authUser,
