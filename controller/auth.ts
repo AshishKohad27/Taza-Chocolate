@@ -105,7 +105,7 @@ export const tokenVerify = async (token: string): Promise<any> => {
       data: data || [],
       flag: true,
       desc: "",
-      message: "Error Occurs!",
+      message: "Details from Token",
     };
   } catch (e: any) {
     return {
