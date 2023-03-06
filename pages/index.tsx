@@ -1,14 +1,12 @@
-import Head from "next/head";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ImageListItem } from "@mui/material";
+import { bgcolor, Box } from "@mui/system";
 
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello World</h1>
-      <button>hello world</button>
-      <button className="bg-sky-500 hover:bg-sky-700 ...">Save changes</button>
-    </div>
+    <Box sx={{ maxWidth: 1348, margin: "0", p: 0, bgcolor: "teal" }}>
+      <Box sx={{ height: 500, maxWidth: 1348, margin: "auto", bgcolor: "red" }}>
+        1
+      </Box>
+    </Box>
   );
 }
