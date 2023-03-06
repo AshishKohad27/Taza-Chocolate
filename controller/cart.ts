@@ -111,7 +111,7 @@ export const updateQuantityItem = async (
     token: string,
     cartId: string,
     quantity: number,
-    productId: string
+    // productId: string
 ): Promise<any> => {
     // console.log('token, productId, quantity:', cartId, quantity)
     try {
