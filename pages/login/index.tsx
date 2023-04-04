@@ -137,7 +137,7 @@ export default function Login() {
                 color: "#f2923c",
               }}
             >
-              <Link href="/signup">Create An Account</Link>
+              <Link href="/signUp">Create An Account</Link>
             </Text>
           </Box>
           <Box mt="10px">
