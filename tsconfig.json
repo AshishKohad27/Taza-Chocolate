@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/db.ts", "pages/products/index.tsx", "constants/product.ts", "pages/api/cart/index.ts", "middleware/authMiddleWare.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/db.ts", "pages/products/index.tsx", "constants/product.ts", "pages/api/cart/index.ts", "middleware/authMiddleWare.js", "components/Footer/Footer.jsx"],
   "exclude": ["node_modules"]
 }
