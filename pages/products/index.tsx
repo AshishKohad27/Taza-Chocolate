@@ -1,4 +1,3 @@
-import SingleProduct from "@/components/SingleProduct";
 
 import { TReducerStateProduct } from "@/constants/product";
 import { getProduct } from "@/redux/product/product.action";
@@ -24,7 +23,7 @@ export default function Product() {
   console.log("data:", data);
 
   useEffect(() => {
-    dispatch(getProduct());
+    // dispatch(getProduct());
   }, [dispatch]);
 
   if (loading) {

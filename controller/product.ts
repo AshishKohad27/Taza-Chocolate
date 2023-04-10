@@ -11,10 +11,17 @@ type ObjectProduct = {
   quantity: Number;
 };
 
-const getProduct = async (): Promise<any> => {
+const getProduct = async (payload: string): Promise<any> => {
   //async function return promise that what typescript needed
   try {
-    let data: Array<ObjectProduct> = await productM.find();
+    let data: Array<ObjectProduct>;
+    if (payload) {
+      data = await productM.find({ category: payload });
+    } else {
+      data = await productM.find();
+    }
+
+
     // console.log("data:", data);
     return {
       data,

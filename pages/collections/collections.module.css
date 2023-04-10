@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
+.imageDiv {
+  margin: auto;
+  position: relative;
+}
+
+.imageDiv h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffffd9;
+  font-family: "Roboto Slab", serif;
+  font-weight: 500;
+  color: #000000;
+  padding: 20px;
+}
+.para {
+
+  text-align: center;
+}
+.para > h1 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #2d2d2d;
+  font-weight: 500;
+  align-items: center;
+  font-family: 'Times New Roman', Times, serif;
+}

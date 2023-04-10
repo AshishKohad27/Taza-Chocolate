@@ -18,15 +18,14 @@ type ObjectProduct = {
 // dispatch: ({type, payload}:TReducerActionProduct)=>void
 
 export const getProduct =
-  () =>
-  async (dispatch: ({ type, payload }: TReducerActionProduct) => void) => {
-    try {
-      dispatch({ type: types.GET_PRODUCT_LOADING });
-      let res: AxiosResponse = await axios.get(`/api/products`);
-      dispatch({ type: types.GET_PRODUCT_SUCCESS, payload: res.data });
-    } catch (e) {
-      dispatch({ type: types.GET_PRODUCT_ERROR });
-    }
-  };
+  (payload: string) =>async (dispatch: ({ type, payload }: TReducerActionProduct) => void) => {
+      console.log('payload getProduct:', payload)
+      try {
+        dispatch({ type: types.GET_PRODUCT_LOADING });
+        let res: AxiosResponse = await axios.get(`/api/products?category=${payload}`);
+        dispatch({ type: types.GET_PRODUCT_SUCCESS, payload: res.data });
+      } catch (e) {
+        dispatch({ type: types.GET_PRODUCT_ERROR });
+      }
+    };
 
-  

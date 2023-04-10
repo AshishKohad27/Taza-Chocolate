@@ -33,8 +33,10 @@ export default async function productRoutes(
   console.log("Method:", req.method);
 
   if (req.method === "GET") {
+    const payload: any = req.query.category;
+    console.log('payload:', payload)
     const { data, dataLength, flag, message, desc }: TProduct =
-      await getProduct();
+      await getProduct(payload);
 
     if (flag) {
       return res.status(200).send({ message, desc, dataLength, data });
