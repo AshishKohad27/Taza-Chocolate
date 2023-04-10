@@ -99,7 +99,7 @@ export default function CollectionsProducts() {
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage >
-              <BreadcrumbLink fontWeight="600">{router.query.id}</BreadcrumbLink>
+              <BreadcrumbLink fontWeight="600" >{router.query.id}</BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
         </Box>
