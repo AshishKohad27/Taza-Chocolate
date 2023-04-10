@@ -27,7 +27,8 @@ export default function Navbar() {
 
   return (
     <Box>
-      <Flex
+      <Box
+        display="flex"
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
@@ -97,7 +98,7 @@ export default function Navbar() {
             Sign Up
           </Button>
         </Stack>
-      </Flex>
+      </Box>
 
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />

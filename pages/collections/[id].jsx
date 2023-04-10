@@ -1,5 +1,8 @@
 import {
   Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
   Flex,
   Heading,
   Image,
@@ -13,6 +16,8 @@ import style from "./collections.module.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../redux/product/product.action";
+import Footer from "@/components/Footer/Footer";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 
 const collectionArr = [
   {
@@ -74,89 +79,118 @@ export default function CollectionsProducts() {
     (item) => item.query === router.query.id
   );
   return (
-    <Box>
-      {/* bread crumbs */}
-      <Heading as="h1">
-        {" "}
-        <Link href="/collections">Back Collections</Link>
-      </Heading>
+    <>
+      <Box>
+        {/* bread crumbs */}
 
-      {/* Banner */}
-      <Heading as="h1"> {router.query.id}</Heading>
-      {appendData &&
-        appendData.map((item, index) => (
-          <Box key={index}>
-            <Box
-              bg=""
-              maxW="1359px"
-              h="320px"
-              className={style.imageDiv}
-              style={{
-                backgroundImage: `url(${item.image})`,
-              }}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
-              {/* <Image h="320px" m="auto" src={item.image} alt={item.image} /> */}
-              <Heading as="h1" fontSize="60px" className={style.imageHeading}>
-                {item.title}
-              </Heading>
-            </Box>
-            <Box m="auto" mt="30px" bg="" maxW="920px" className={style.para}>
-              <Heading as="h1">{item.para1}</Heading>
-              <Heading as="h1">{item.para2}</Heading>
-            </Box>
-          </Box>
-        ))}
-      {/* Banner */}
+        <Box maxW="1099.99px" m="auto">
+          <Breadcrumb
+            p="0px 30px"
+            // bg="red"
+            spacing="8px"
+            separator={<ChevronRightIcon color="#979797" />}
+          >
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/collections">Home</BreadcrumbLink>
+            </BreadcrumbItem>
 
-      {/* Products Appends */}
-      <SimpleGrid
-        w="1099.98px"
-        m="auto"
-        columns={{ base: 1, sm: 2, md: 3 }}
-        spacing="0px"
-        border="2px solid white"
-      >
-        {data &&
-          data.map((item, index) => (
-            <Box key={index} bg="" h="370.47px" p="25px 0px">
-              <Flex
-                h="200px"
-                mb="15px"
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Buy</BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem isCurrentPage >
+              <BreadcrumbLink fontWeight="600">{router.query.id}</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </Box>
+        {/* Banner */}
+        {appendData &&
+          appendData.map((item, index) => (
+            <Box key={index}>
+              <Box
+                bg=""
+                maxW="1359px"
+                h="320px"
+                className={style.imageDiv}
+                style={{
+                  backgroundImage: `url(${item.image})`,
+                }}
+                display="flex"
                 justifyContent="center"
                 alignItems="center"
               >
-                <Image h="200px" w="200px" src={item.image} alt={item.title} />
-              </Flex>
-              <Flex
-                justifyContent="center"
-                alignItems="center"
-                flexDirection="column"
-              >
-                <Text fontSize="16px" fontWeight="600" mb="7px" color="#2D2D2D">
+                {/* <Image h="320px" m="auto" src={item.image} alt={item.image} /> */}
+                <Heading as="h1" fontSize="60px" className={style.imageHeading}>
                   {item.title}
-                </Text>
-                <Text fontSize="16px" mb="7px" color="#2D2D2D">
-                  ₹{item.bar}
-                </Text>
-                <button
-                  style={{
-                    padding: "7px 18px",
-                    background: "#0D0D0D",
-                    color: "#FFFFFF",
-                    fontSize: "16px",
-                    borderRadius: "5px",
-                  }}
-                >
-                  BUY
-                </button>
-              </Flex>
+                </Heading>
+              </Box>
+              <Box m="auto" mt="30px" bg="" maxW="920px" className={style.para}>
+                <Heading as="h1">{item.para1}</Heading>
+                <Heading as="h1">{item.para2}</Heading>
+              </Box>
             </Box>
           ))}
-      </SimpleGrid>
-      {/* Products Appends */}
-    </Box>
+        {/* Banner */}
+
+        {/* Products Appends */}
+        <SimpleGrid
+          w="1099.98px"
+          m="auto"
+          columns={{ base: 1, sm: 2, md: 3 }}
+          spacing="0px"
+          border="2px solid white"
+        >
+          {data &&
+            data.map((item, index) => (
+              <Box key={index} bg="" h="370.47px" p="25px 0px">
+                <Flex
+                  h="200px"
+                  mb="15px"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Image
+                    h="200px"
+                    w="200px"
+                    src={item.image}
+                    alt={item.title}
+                  />
+                </Flex>
+                <Flex
+                  justifyContent="center"
+                  alignItems="center"
+                  flexDirection="column"
+                >
+                  <Text
+                    fontSize="16px"
+                    fontWeight="600"
+                    mb="7px"
+                    color="#2D2D2D"
+                  >
+                    {item.title}
+                  </Text>
+                  <Text fontSize="16px" mb="15px" color="#2D2D2D">
+                    ₹{item.bar}
+                  </Text>
+                  <button
+                    style={{
+                      padding: "7px 18px",
+                      background: "#0D0D0D",
+                      color: "#FFFFFF",
+                      fontSize: "16px",
+                      borderRadius: "5px",
+                      fontWeight: "800",
+                    }}
+                  >
+                    BUY
+                  </button>
+                </Flex>
+              </Box>
+            ))}
+        </SimpleGrid>
+        {/* Products Appends */}
+      </Box>
+      <Footer />
+    </>
   );
 }
