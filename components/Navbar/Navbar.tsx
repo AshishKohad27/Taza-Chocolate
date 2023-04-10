@@ -4,7 +4,6 @@ import {
   Text,
   IconButton,
   Button,
-  Box,
   Collapse,
   Icon,
   Link,
@@ -68,10 +67,9 @@ export default function Navbar() {
         </Flex>
 
         <Box
+          display="flex"
           flex={{ base: 1, md: 0 }}
-          justify={"flex-end"}
-          direction={"row"}
-          spacing={6}
+          justifyContent="flex-end"
         >
           <Button
             as={"a"}
@@ -113,7 +111,7 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Box direction={"row"} spacing={4}>
+    <Box>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
@@ -166,7 +164,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       rounded={"md"}
       _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
     >
-      <Box direction={"row"} align={"center"}>
+      <Box display="flex" alignItems="center">
         <Box>
           <Text
             transition={"all .3s ease"}
@@ -211,7 +209,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box h="134px" bg="red" spacing={4} onClick={children && onToggle}>
+    <Box h="134px" bg="red" onClick={children && onToggle}>
       <Box
         display="flex"
         py={2}
@@ -242,12 +240,13 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
         <Box
+          display="flex"
           mt={2}
           pl={4}
           borderLeft={1}
           borderStyle={"solid"}
           borderColor={useColorModeValue("gray.200", "gray.700")}
-          align={"start"}
+          alignItems={"start"}
         >
           {children &&
             children.map((child) => (
