@@ -37,7 +37,7 @@ export default function Navbar() {
         borderBottom={1}
         borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
-        align={"center"}
+        align="center"
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
