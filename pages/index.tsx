@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 
 import Link from "next/link";
-import Navbar from "@/components/Navbar/Navbar";
+// import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 
 
@@ -50,7 +50,7 @@ export default function Home() {
     //   </Grid>
     // </Box>
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <h1>Home Page</h1> */}
       <Footer />
     </>

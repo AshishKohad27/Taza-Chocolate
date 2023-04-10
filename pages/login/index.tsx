@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import style from "./login.module.css";
 import Link from "next/link";
 import Footer from "@/components/Footer/Footer";
-import Navbar from "@/components/Navbar/Navbar";
+// import Navbar from "@/components/Navbar/Navbar";
 
 type SignUpFormT = {
   email: string;
@@ -52,7 +52,7 @@ export default function Login() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Box
         h="157px"
         m="auto"
