@@ -27,38 +27,41 @@ export default function Product() {
     dispatch(getProduct());
   }, [dispatch]);
 
-  // if (loading) {
-  //   return <h1>Loading...</h1>;
-  // } else if (error) {
-  //   return <h1>Error...</h1>;
-  // }
+  if (loading) {
+    return <h1>Loading...</h1>;
+  } else if (error) {
+    return <h1>Error...</h1>;
+  }
   return (
-    <SimpleGrid
-      w="1130px"
-      m="auto"
-      columns={{ sm: 2, md: 3 }}
-      border={"1px solid white"}
-    >
-      {data &&
-        data.map((item, index) => (
-          <Flex
-            m="auto"
-            justifyContent={"center"}
-            alignItems="center "
-            flexDirection="column"
-            key={index}
-            bg="tomato"
-            width="376px"
-            height="372px"
-            p="28px 0px"
-            border={"1px solid black"}
-          >
-            {/* <Image w="200px" h="200px" src={item.image} alt={item.title} /> */}
-            <Text fontSize="16px">{item.title}</Text>
-            <Text fontSize="16px">{item.bar}</Text>
-            <Button>Buy</Button>
-          </Flex>
-        ))}
-    </SimpleGrid>
+    <Box>
+      
+    </Box>
+    // <SimpleGrid
+    //   w="1130px"
+    //   m="auto"
+    //   columns={{ sm: 2, md: 3 }}
+    //   border={"1px solid white"}
+    // >
+    //   {data &&
+    //     data.map((item, index) => (
+    //       <Flex
+    //         m="auto"
+    //         justifyContent={"center"}
+    //         alignItems="center "
+    //         flexDirection="column"
+    //         key={index}
+    //         bg="tomato"
+    //         width="376px"
+    //         height="372px"
+    //         p="28px 0px"
+    //         border={"1px solid black"}
+    //       >
+    //         {/* <Image w="200px" h="200px" src={item.image} alt={item.title} /> */}
+    //         <Text fontSize="16px">{item.title}</Text>
+    //         <Text fontSize="16px">{item.bar}</Text>
+    //         <Button>Buy</Button>
+    //       </Flex>
+    //     ))}
+    // </SimpleGrid>
   );
 }

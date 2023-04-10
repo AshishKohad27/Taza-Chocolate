@@ -9,13 +9,12 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-import { useState, useEffect, FormEvent, ChangeEvent } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState, FormEvent, ChangeEvent } from "react";
+import { useDispatch } from "react-redux";
 import style from "./login.module.css";
 import Link from "next/link";
-// import { Navigate } from "react-router-dom";
-// import { postLogin } from "../Redux/user/user.action";
-// import { CLEAR_MESSAGE } from "../Redux/user/user.type";
+import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/Navbar/Navbar";
 
 type SignUpFormT = {
   email: string;
@@ -29,20 +28,6 @@ const initState = {
 export default function Login() {
   const [form, setForm] = useState<SignUpFormT>(initState);
   const dispatch = useDispatch();
-  //   const { loading, error, isAuth, message } = useSelector(
-  //     (store) => store.user
-  //   );
-  //   // console.log('message:', message)
-  //   // console.log('isAuth:', isAuth);
-
-  //   useEffect(() => {
-  //     if (message === "Wrong Credentials") {
-  //       form.email = "";
-  //       form.password = "";
-  //       alert(message);
-  //       dispatch({ type: CLEAR_MESSAGE });
-  //     }
-  //   }, [loading, error, isAuth, dispatch, form, message]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
@@ -58,19 +43,16 @@ export default function Login() {
     if (!form.email || !form.password) {
       alert("Please Fill All Details");
     } else {
-      //   dispatch({ type: CLEAR_MESSAGE }); // CLEAR ERROR MESSAGE AND MESSAGE IN FROM REDUX
-      //   dispatch(postLogin(form));
+   
     }
-    // console.log("email:", form.email, "password:", form.password)
+  
   };
 
   const { email, password } = form;
-  //   if (isAuth && message === "Login Successfully!") {
-  //     alert(message);
-  //     return <Navigate to="/" />;
-  //   } else
+
   return (
     <>
+      <Navbar />
       <Box
         h="157px"
         m="auto"
@@ -85,7 +67,7 @@ export default function Login() {
           LOGIN
         </Heading>
       </Box>
-      <Stack w="429px" m="auto" align={"center"} justify={"center"}>
+      <Stack w="429px" m="auto" align="center" justify="center">
         <FormControl className={style.inputLabel}>
           <FormLabel fontWeight="700" color="#f2923c">
             EMAIL
@@ -115,8 +97,8 @@ export default function Login() {
           <Button
             w="429px"
             borderRadius="0px"
-            bg={"#2ebbcd"}
-            color={"black"}
+            bg="#2ebbcd"
+            color="black"
             _hover={{
               bg: "#f2923c",
             }}
@@ -162,6 +144,7 @@ export default function Login() {
           </Text>
         </Box>
       </Stack>
+      <Footer />
     </>
   );
 }

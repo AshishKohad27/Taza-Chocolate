@@ -12,6 +12,8 @@ import { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./signUp.module.css";
 import Link from "next/link";
+import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/Navbar/Navbar";
 // import { Navigate } from "react-router-dom";
 // import { postLogin } from "../Redux/user/user.action";
 // import { CLEAR_MESSAGE } from "../Redux/user/user.type";
@@ -74,6 +76,7 @@ export default function SignUp() {
   //   } else
   return (
     <>
+      <Navbar />
       <Box
         h="157px"
         m="auto"
@@ -88,7 +91,7 @@ export default function SignUp() {
           CREATE ACCOUNT
         </Heading>
       </Box>
-      <Stack w="429px" m="auto" align={"center"} justify={"center"}>
+      <Stack w="429px" m="auto" align="center" justify="center">
         <FormControl className={style.inputLabel}>
           <FormLabel fontWeight="700" color="#f2923c">
             FIRST NAME
@@ -142,8 +145,8 @@ export default function SignUp() {
           <Button
             w="429px"
             borderRadius="0px"
-            bg={"#2ebbcd"}
-            color={"black"}
+            bg="#2ebbcd"
+            color="black"
             _hover={{
               bg: "#f2923c",
             }}
@@ -155,7 +158,7 @@ export default function SignUp() {
           </Button>
         </Stack>
       </Stack>
-      <Stack w="429px" m="auto" textAlign={"center"}>
+      <Stack w="429px" m="auto" textAlign="center">
         <Box mt="10px">
           <Text
             as="h1"
@@ -177,6 +180,7 @@ export default function SignUp() {
           </Text>
         </Box>
       </Stack>
+      <Footer />
     </>
   );
 }

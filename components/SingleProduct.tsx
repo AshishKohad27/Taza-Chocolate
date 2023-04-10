@@ -94,7 +94,7 @@ export default function SingleProduct({ item }: any): any {
     //     {item.bar}
     //   </Typography> */}
 
-    //   {/* <Butto variant="contained">Contained</Butto> */}
+    //   {/* <Button variant="contained">Contained</Button> */}
     // </SimpleGrid>
 
     // Passing `columns={[2, null, 3]}` and `columns={{sm: 2, md: 3}}`
