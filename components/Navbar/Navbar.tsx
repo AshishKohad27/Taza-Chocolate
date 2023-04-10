@@ -6,13 +6,13 @@ import {
   Button,
   Collapse,
   Icon,
-  Link,
   Popover,
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Link,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -66,11 +66,7 @@ export default function Navbar() {
           </Flex>
         </Flex>
 
-        <Box
-          display="flex"
-          flex={{ base: 1, md: 0 }}
-          justifyContent="flex-end"
-        >
+        <Box display="flex" flex={{ base: 1, md: 0 }} justifyContent="flex-end">
           <Button
             as={"a"}
             fontSize={"sm"}
@@ -116,9 +112,8 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <Link
+              <Box
                 p={2}
-                href={navItem.href ?? "#"}
                 fontSize={"sm"}
                 fontWeight={500}
                 color={linkColor}
@@ -127,8 +122,8 @@ const DesktopNav = () => {
                   color: linkHoverColor,
                 }}
               >
-                {navItem.label}
-              </Link>
+                <Link href={navItem.href ?? "#"}> {navItem.label}</Link>
+              </Box>
             </PopoverTrigger>
 
             {navItem.children && (
