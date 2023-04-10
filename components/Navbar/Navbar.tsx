@@ -4,7 +4,7 @@ import {
   Text,
   IconButton,
   Button,
-  Stack,
+  Box,
   Collapse,
   Icon,
   Link,
@@ -67,7 +67,7 @@ export default function Navbar() {
           </Flex>
         </Flex>
 
-        <Stack
+        <Box
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
           direction={"row"}
@@ -97,7 +97,7 @@ export default function Navbar() {
           >
             Sign Up
           </Button>
-        </Stack>
+        </Box>
       </Box>
 
       <Collapse in={isOpen} animateOpacity>
@@ -113,7 +113,7 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4}>
+    <Box direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
@@ -142,17 +142,17 @@ const DesktopNav = () => {
                 rounded={"xl"}
                 minW={"sm"}
               >
-                <Stack>
+                <Box>
                   {navItem.children.map((child) => (
                     <DesktopSubNav key={child.label} {...child} />
                   ))}
-                </Stack>
+                </Box>
               </PopoverContent>
             )}
           </Popover>
         </Box>
       ))}
-    </Stack>
+    </Box>
   );
 };
 
@@ -166,7 +166,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       rounded={"md"}
       _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
     >
-      <Stack direction={"row"} align={"center"}>
+      <Box direction={"row"} align={"center"}>
         <Box>
           <Text
             transition={"all .3s ease"}
@@ -188,14 +188,14 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
         >
           <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
-      </Stack>
+      </Box>
     </Link>
   );
 };
 
 const MobileNav = () => {
   return (
-    <Stack
+    <Box
       bg={useColorModeValue("white", "gray.800")}
       p={4}
       display={{ md: "none" }}
@@ -203,7 +203,7 @@ const MobileNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
-    </Stack>
+    </Box>
   );
 };
 
@@ -211,8 +211,9 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Stack h="134px" bg="red" spacing={4} onClick={children && onToggle}>
-      <Flex
+    <Box h="134px" bg="red" spacing={4} onClick={children && onToggle}>
+      <Box
+        display="flex"
         py={2}
         as={Link}
         href={href ?? "#"}
@@ -237,10 +238,10 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
             h={6}
           />
         )}
-      </Flex>
+      </Box>
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
-        <Stack
+        <Box
           mt={2}
           pl={4}
           borderLeft={1}
@@ -254,9 +255,9 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
                 {child.label}
               </Link>
             ))}
-        </Stack>
+        </Box>
       </Collapse>
-    </Stack>
+    </Box>
   );
 };
 
