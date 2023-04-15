@@ -4,6 +4,7 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Heading,
+  Image,
   SimpleGrid,
 } from "@chakra-ui/react";
 import Link from "next/link";
@@ -94,7 +95,7 @@ export default function Collections() {
               //   backgroundImage: `url${"item.image"}`,
               // }}
             >
-              <img
+              <Image
                 src="https://cdn.shopify.com/s/files/1/0974/7668/t/16/assets/page_banner_6_image.jpg?v=107305128139824397671661403560"
                 alt=""
               />
