@@ -18,6 +18,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../redux/product/product.action";
 import Footer from "@/components/Footer/Footer";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import ProductFooter from "@/components/Product/ProductFooter";
+import ProductFooter2 from "@/components/Product/ProductFooter2";
 
 const collectionArr = [
   {
@@ -91,11 +93,11 @@ export default function CollectionsProducts() {
             separator={<ChevronRightIcon color="#979797" />}
           >
             <BreadcrumbItem>
-              <BreadcrumbLink href="/collections">Home</BreadcrumbLink>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">Buy</BreadcrumbLink>
+              <BreadcrumbLink href="/collections">Buy</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage >
@@ -134,7 +136,8 @@ export default function CollectionsProducts() {
 
         {/* Products Appends */}
         <SimpleGrid
-          w="1099.98px"
+          maxW="1099.98px"
+          bg=""
           m="auto"
           columns={{ base: 1, sm: 2, md: 3 }}
           spacing="0px"
@@ -142,7 +145,7 @@ export default function CollectionsProducts() {
         >
           {data &&
             data.map((item, index) => (
-              <Box key={index} bg="" h="370.47px" p="25px 0px">
+              <Box key={index} bg="" h="370.47px" p="25px 0px" m="auto">
                 <Flex
                   h="200px"
                   mb="15px"
@@ -190,6 +193,8 @@ export default function CollectionsProducts() {
         </SimpleGrid>
         {/* Products Appends */}
       </Box>
+      <ProductFooter/>
+      <ProductFooter2/>
       <Footer />
     </>
   );
