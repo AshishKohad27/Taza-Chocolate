@@ -49,7 +49,12 @@ const FooterObject = {
 
 export default function Footer() {
   return (
-    <Box maxW="1349px" h="520px" m="auto" className={style.footer}>
+    <Box
+      maxW="1349px"
+      h={{ base: "auto", md: "520px" }}
+      m="auto"
+      className={style.footer}
+    >
       <Box
         className={style.footer}
         maxW="1130px"
@@ -156,12 +161,11 @@ export default function Footer() {
           </Box>
 
           <Box className={style.footerSignUpTitle}>
-            <Heading as="h1" mb="8px" fontSize="16px" color="white" >
+            <Heading as="h1" mb="8px" fontSize="16px" color="white">
               JOIN OUR MAILING LIST{" "}
             </Heading>
 
-            <Flex
-              gap="5px">
+            <Flex gap="5px">
               <Input
                 h="32px"
                 placeholder="Name"

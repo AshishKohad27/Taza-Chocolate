@@ -4,7 +4,6 @@ import style from "./ProductFooter.module.css";
 export default function ProductFooter() {
   return (
     <Flex
-
       justifyContent="center"
       alignItems="center"
       maxW="1349px"
@@ -23,7 +22,13 @@ export default function ProductFooter() {
         textAlign="center"
       >
         <Box className={style.float}>Free Shipping!</Box>
-        <Text w="938px" as="p" fontSize="18px" fontWeight="600"  m="auto">
+        <Text
+          maxW="938px"
+          as="p"
+          fontSize={{ base: "14px", md: "18px" }}
+          fontWeight="600"
+          m="auto"
+        >
           Get FREE SHIPPING on orders $49+! (Total order price must be over $49
           AFTER any discounts are applied.) Contiguous US states only.
         </Text>

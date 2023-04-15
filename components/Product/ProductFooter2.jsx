@@ -15,15 +15,31 @@ export default function ProductFooter2() {
       }}
       mb="10px"
     >
-      <Flex justifyContent="center" alignItems="center" flexDirection="column" m="auto" w="674px" h="300px" className={style.container2}>
-        <Flex  justifyContent="center" alignItems="center" m="auto" maxW="614px" h="185px">
+      <Flex
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        m="auto"
+        w="674px"
+        h="300px"
+        className={style.container2}
+      >
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          m="auto"
+          maxW="614px"
+          h="185px"
+        >
           <Box className={style.float2}>Fair for all</Box>
-          <Text as="p">
+          <Text as="p" fontSize={{ base: "24px",md:"30px" }}>
             WE BELIEVE BOTH FARMER AND CHOCOLATE MAKER SHOULD SHARE THE REWARD
             OF MAKING A GREAT PRODUCT
           </Text>
         </Flex>
-        <Link className={style.learnMore} href="#">Learn More</Link>
+        <Link className={style.learnMore} href="#">
+          Learn More
+        </Link>
       </Flex>
     </Flex>
   );
