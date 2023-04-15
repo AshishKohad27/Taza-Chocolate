@@ -77,14 +77,14 @@
 
 .inside_container {
   background-color: aliceblue;
-  width: 200px;
+  width: 80%;
   height: 100px;
   text-align: center;
   color: #000;
   position: absolute;
   z-index: 1;
   top: 100px;
-  left: calc(50% - 100px);
+  left: calc(10% - 5px);
   transition: all 0.5s;
 }
 
