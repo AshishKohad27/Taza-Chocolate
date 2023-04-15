@@ -28,6 +28,7 @@ export default function ProductFooter() {
           fontSize={{ base: "14px", md: "18px" }}
           fontWeight="600"
           m="auto"
+          mt="25px"
         >
           Get FREE SHIPPING on orders $49+! (Total order price must be over $49
           AFTER any discounts are applied.) Contiguous US states only.

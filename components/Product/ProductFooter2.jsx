@@ -32,7 +32,7 @@ export default function ProductFooter2() {
           h="185px"
         >
           <Box className={style.float2}>Fair for all</Box>
-          <Text as="p" fontSize={{ base: "24px",md:"30px" }}>
+          <Text as="p" fontSize={{ base: "22px",md:"30px" }}>
             WE BELIEVE BOTH FARMER AND CHOCOLATE MAKER SHOULD SHARE THE REWARD
             OF MAKING A GREAT PRODUCT
           </Text>
