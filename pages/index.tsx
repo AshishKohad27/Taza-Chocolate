@@ -1,15 +1,12 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 
+import { Inter } from "next/font/google";
 import Link from "next/link";
 // import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import ProductFooter from "@/components/Product/ProductFooter";
 import ProductFooter2 from "@/components/Product/ProductFooter2";
 import style from "./index.module.css";
-import { SimpleGrid } from "@chakra-ui/react";
+import { Box, SimpleGrid ,Image} from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,32 +42,31 @@ export default function Home() {
       >
         {collectionsArr &&
           collectionsArr.map((item, index) => (
-            <div
+            <Box
               className={style.box}
               key={index}
               // style={{
               //   backgroundImage: `url${"item.image"}`,
               // }}
             >
-              <img
-              
+              <Image
                 // src="https://cdn.shopify.com/s/files/1/0974/7668/t/16/assets/page_banner_6_image.jpg?v=107305128139824397671661403560"
                 src={`${item.image}`}
                 alt=""
               />
-              <div className={style.inside_container}>
+              <Box className={style.inside_container}>
                 <h1>Shops</h1>
                 <h1>{item.title}</h1>
-              </div>
-              <div className={style.content}>
-                <div className={style.hover_container}>
+              </Box>
+              <Box className={style.content}>
+                <Box className={style.hover_container}>
                   <h1>{item.title}</h1>
                   <button>
                     <Link href={`${item.path}`}>SHOP NOW</Link>
                   </button>
-                </div>
-              </div>
-            </div>
+                </Box>
+              </Box>
+            </Box>
           ))}
       </SimpleGrid>
       <ProductFooter />
