@@ -6,6 +6,8 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 // import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import ProductFooter from "@/components/Product/ProductFooter";
+import ProductFooter2 from "@/components/Product/ProductFooter2";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -52,6 +54,8 @@ export default function Home() {
     <>
       {/* <Navbar /> */}
       {/* <h1>Home Page</h1> */}
+      <ProductFooter/>
+      <ProductFooter2/>
       <Footer />
     </>
   );
