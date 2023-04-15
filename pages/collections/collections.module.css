@@ -38,47 +38,89 @@
   font-family: "Roboto Slab", serif;
 }
 
-/* Hover */
-.contaier {
-  transition: 0.4s ease-in-out;
-  background-color: blueviolet;
+/* First Hover */
+.box {
   height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.box>img {
+  width: 100%;
+  height: 100%;
+}
+
+/* from where we want to hover we just have to set top or bottom according that */
+.content {
+  background: rgba(214, 118, 28, 0.8);
+  position: absolute;
+  top: -300px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: all 0.5s;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-image: url("https://cdn.shopify.com/s/files/1/0974/7668/t/16/assets/page_banner_6_image.jpg?v=107305128139824397671661403560"); */
+  flex-direction: column;
+
 }
+
+.box:hover .content {
+  top: 0px;
+}
+
+/* Inside Content */
 
 .inside_container {
   background-color: aliceblue;
   width: 200px;
   height: 100px;
   text-align: center;
+  color: #000;
+  position: absolute;
+  z-index: 1;
+  top: 100px;
+  left: calc(50% - 100px);
+  transition: all 0.5s;
 }
-.inside_container > h1:nth-child(1) {
+
+.inside_container>h1:nth-child(1) {
   margin-top: 10px;
   font-size: 27px;
   /* margin-bottom: -20px; */
   font-family: "Great Vibes", cursive;
 }
-.inside_container > h1:nth-child(2) {
+
+.inside_container>h1:nth-child(2) {
   font-size: 28px;
   margin-bottom: 14px;
   font-family: "Roboto Slab", serif;
+}
+
+.box:hover .inside_container {
+  transition: all 0.5s;
+  display: none;
 }
 
 .hover_container {
   width: 100%;
   background-color: #ffffff;
   text-align: center;
+  color: #000;
 }
-.hover_container > h1 {
+
+.hover_container>h1 {
   font-size: 30px;
   font-weight: 400;
   margin-bottom: 4px;
   font-family: "Roboto Slab", serif;
 }
-.hover_container > button {
+
+.hover_container>button {
   font-family: "Roboto Slab", serif;
   font-size: 16px;
   background-color: transparent;
@@ -88,31 +130,15 @@
   margin-bottom: 10px;
   transition: 0.5s ease-in-out;
 }
-.hover_container > button:hover {
+
+.hover_container>button:hover {
   background-color: black;
   cursor: pointer;
   color: white;
   transition: 0.5s ease-in-out;
 }
 
-.hover_container {
-  display: none;
-}
+/* Inside Content */
+/* First Hover */
 
-/* Hover */
-.contaier:hover {
-  transition: 0.5s ease-in-out;
-  background-image: url("");
-  background-color: orange;
-  cursor: pointer;
-}
 
-.contaier:hover > .hover_container {
-  /* background-color: orange; */
-  display: block;
-}
-.contaier:hover > .inside_container {
-  /* background-color: orange; */
-  display: none;
-}
-/* Hover */

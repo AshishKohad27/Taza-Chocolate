@@ -1,4 +1,11 @@
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Heading, SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Heading,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import style from "./collections.module.css";
 import ProductFooter from "@/components/Product/ProductFooter";
@@ -49,57 +56,65 @@ const collectionsArr = [
 export default function Collections() {
   return (
     <Box>
+      {/* bread crumbs */}
 
-        {/* bread crumbs */}
+      <Box maxW="1099.99px" m="auto">
+        <Breadcrumb
+          p="0px 30px"
+          // bg="red"
+          spacing="8px"
+          separator={<ChevronRightIcon color="#979797" />}
+        >
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
 
-        <Box maxW="1099.99px" m="auto">
-          <Breadcrumb
-            p="0px 30px"
-            // bg="red"
-            spacing="8px"
-            separator={<ChevronRightIcon color="#979797" />}
-          >
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="/collections">Buy</BreadcrumbLink>
-            </BreadcrumbItem>
-
-          </Breadcrumb>
-        </Box>
-        {/* Banner */}
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink href="/collections">Buy</BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+      </Box>
+      {/* Banner */}
 
       <Box bg="#2EBBCD" maxW="" h="157px" m="auto" className={style.BuyHeading}>
         <h1>BUY & SUBSCRIBE</h1>
       </Box>
-      <SimpleGrid mt="10px" mb="10px" columns={{ base: 1, sm: 2, md: 3 }} spacing="10px">
+      <SimpleGrid
+        mt="10px"
+        mb="10px"
+        columns={{ base: 1, sm: 2, md: 3 }}
+        spacing="10px"
+      >
         {collectionsArr &&
           collectionsArr.map((item, index) => (
             <div
-              className={style.contaier}
+              className={style.box}
               key={index}
-              style={{
-                backgroundImage: `url${"item.image"}`,
-              }}
+              // style={{
+              //   backgroundImage: `url${"item.image"}`,
+              // }}
             >
+              <img
+                src="https://cdn.shopify.com/s/files/1/0974/7668/t/16/assets/page_banner_6_image.jpg?v=107305128139824397671661403560"
+                alt=""
+              />
               <div className={style.inside_container}>
                 <h1>Shops</h1>
                 <h1>{item.title}</h1>
               </div>
-
-              <div className={style.hover_container}>
-                <h1>{item.title}</h1>
-                <button>
-                  <Link href={`${item.path}`}>SHOP NOW</Link>
-                </button>
+              <div className={style.content}>
+                <div className={style.hover_container}>
+                  <h1>{item.title}</h1>
+                  <button>
+                    <Link href={`${item.path}`}>SHOP NOW</Link>
+                  </button>
+                </div>
               </div>
             </div>
           ))}
       </SimpleGrid>
-      <ProductFooter/>
-      <Footer/>
+      <ProductFooter />
+      <Footer />
     </Box>
   );
 }
