@@ -14,41 +14,45 @@ import { FaFacebookF } from "react-icons/fa";
 import { TiSocialInstagram } from "react-icons/ti";
 import { TfiPinterest } from "react-icons/tfi";
 import { BsTwitter } from "react-icons/bs";
+import Link from "next/link";
 
 const FooterObject = {
   Buy: [
-    { title: "Gifts", link: "" },
-    { title: "Dark Bark", link: "" },
-    { title: "Chocolate Bars", link: "" },
-    { title: "Chocolate Discs", link: "" },
-    { title: "Chocolate Covered", link: "" },
-    { title: "Bulk and Barking", link: "" },
-    { title: "80% Cacao & Up", link: "" },
+    { title: "Chocolate Bars", link: "/collections/Chocolate_Bars" },
+    { title: "Chocolate Discs", link: "/collections/Chocolate_Discs" },
+    {
+      title: "Chocolate Covered",
+      link: "/collections/Chocolate_Covered_Treats",
+    },
+    { title: "Gifts", link: "/collections/Gifts" },
+    { title: "Dark Bark", link: "/collections/Dark_Bark" },
+    { title: "Bulk and Barking", link: "#" },
+    { title: "80% Cacao & Up", link: "#" },
   ],
   Learn: [
-    { title: "About Taza", link: "" },
-    { title: "Our Process", link: "" },
-    { title: "Taza Direct Trade", link: "" },
-    { title: "Recipes", link: "" },
-    { title: "Stone Ground Blog", link: "" },
-    { title: "Wholesales", link: "" },
+    { title: "About Taza", link: "#" },
+    { title: "Our Process", link: "#" },
+    { title: "Taza Direct Trade", link: "#" },
+    { title: "Recipes", link: "#" },
+    { title: "Stone Ground Blog", link: "#" },
+    { title: "Wholesales", link: "#" },
   ],
   Visit: [
-    { title: "Our Factory Store", link: "" },
-    { title: "Tours & Events", link: "" },
-    { title: "Virtual Experience", link: "" },
+    { title: "Our Factory Store", link: "#" },
+    { title: "Tours & Events", link: "#" },
+    { title: "Virtual Experience", link: "#" },
   ],
   More: [
-    { title: "Contact", link: "" },
-    { title: "FAQs", link: "" },
-    { title: "Shipping Info", link: "" },
-    { title: "Return Policy", link: "" },
-    { title: "Careers", link: "" },
-    { title: "Find Us in Stores", link: "" },
-    { title: "Press", link: "" },
-    { title: "Privacy Policy", link: "" },
-    { title: "Terms of Use", link: "" },
-    { title: "Terms of Sales", link: "" },
+    { title: "Contact", link: "#" },
+    { title: "FAQs", link: "#" },
+    { title: "Shipping Info", link: "#" },
+    { title: "Return Policy", link: "#" },
+    { title: "Careers", link: "#" },
+    { title: "Find Us in Stores", link: "#" },
+    { title: "Press", link: "#" },
+    { title: "Privacy Policy", link: "#" },
+    { title: "Terms of Use", link: "#" },
+    { title: "Terms of Sales", link: "#" },
   ],
 };
 
@@ -78,7 +82,7 @@ export default function Footer() {
                 className={style.title}
               >
                 <Heading as="h1" mb="10px">
-                  BUY
+                  <Link href="/collections">BUY</Link>
                 </Heading>
                 <Stack alignItems={{ base: "center", md: "start" }}>
                   {FooterObject &&
@@ -92,7 +96,7 @@ export default function Footer() {
                           color: "#fff",
                         }}
                       >
-                        {item.title}
+                        <Link href={`${item.link}`}>{item.title}</Link>
                       </Text>
                     ))}
                 </Stack>

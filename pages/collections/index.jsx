@@ -48,7 +48,7 @@ const collectionsArr = [
     id: 6,
     title: "GIFTS",
     image: "/Images/Products/Gifts_banner.webp",
-    path: "Gifts",
+    path: "/collections/Gifts",
   },
 
   {

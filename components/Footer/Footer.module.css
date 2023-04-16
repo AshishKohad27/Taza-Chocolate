@@ -8,27 +8,31 @@
   font-weight: 800;
   font-size: 16px;
   color: #fff;
+  cursor: pointer;
 }
 .title > h1:hover {
   color: #2ebbcd;
 }
-.footerSignUpTitle>h1 {
+.title > div > p {
+  cursor: pointer;
+}
+.footerSignUpTitle > h1 {
   font-family: "Roboto Slab", serif;
 }
 
-.footerleftBottom{
+.footerleftBottom {
   color: #fff;
 }
-.footerleftBottom>div>h2{
+.footerleftBottom > div > h2 {
   margin-top: 5px;
   font-family: "Roboto Slab", serif;
   font-size: 14px;
 }
-.footerleftBottom>div>p{
-  font-family: 'Times New Roman', Times, serif;
+.footerleftBottom > div > p {
+  font-family: "Times New Roman", Times, serif;
   font-size: 13px;
   margin-bottom: 10px;
 }
-.footerleftBottom>div:nth-child(2)>p{
+.footerleftBottom > div:nth-child(2) > p {
   font-size: 12px;
 }
