@@ -91,7 +91,7 @@ export default function SignUp() {
           CREATE ACCOUNT
         </Heading>
       </Box>
-      <Stack w="429px" m="auto" align="center" justify="center">
+      <Box w="429px" m="auto" alignItems="center" justifyContent="center">
         <FormControl className={style.inputLabel}>
           <FormLabel fontWeight="700" color="#f2923c">
             FIRST NAME
@@ -157,9 +157,9 @@ export default function SignUp() {
             CREATE
           </Button>
         </Stack>
-      </Stack>
+      </Box>
 
-      <Stack w="429px" m="auto" textAlign="center">
+      <Box w="429px" m="auto" textAlign="center">
         <Box mt="10px">
           <Text
             as="h1"
@@ -180,7 +180,7 @@ export default function SignUp() {
             <Link href="/">Return to Store</Link>
           </Text>
         </Box>
-      </Stack>
+      </Box>
       <Footer />
     </>
   );
