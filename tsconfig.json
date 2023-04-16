@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/db.ts", "pages/products/index.tsx", "constants/product.ts", "pages/api/cart/index.ts", "middleware/authMiddleWare.js", "components/Footer/Footer.jsx", "pages/collections/[id].jsx", "components/Product/ProductFooter2.jsx", "components/Product/ProductFooter.jsx", "pages/collections/index.jsx", "pages/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/db.ts", "pages/products/index.tsx", "constants/product.ts", "pages/api/cart/index.ts", "middleware/authMiddleWare.js", "components/Footer/Footer.jsx", "pages/collections/[id].jsx", "components/Product/ProductFooter2.jsx", "components/Product/ProductFooter.jsx", "pages/collections/index.jsx", "pages/index.jsx", "components/BreadCrums/BreadCrums.jsx"],
   "exclude": ["node_modules"]
 }

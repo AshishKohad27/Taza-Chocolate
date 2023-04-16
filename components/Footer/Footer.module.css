@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;800&display=swap");
 
 .footer {
-  background-image: url("../../public/Images/Footer/footer-background.webp");
+  background-image: url("/Images/Footer/footer-background.webp");
 }
 .title > h1 {
   font-family: "Roboto Slab", serif;
@@ -14,4 +14,21 @@
 }
 .footerSignUpTitle>h1 {
   font-family: "Roboto Slab", serif;
+}
+
+.footerleftBottom{
+  color: #fff;
+}
+.footerleftBottom>div>h2{
+  margin-top: 5px;
+  font-family: "Roboto Slab", serif;
+  font-size: 14px;
+}
+.footerleftBottom>div>p{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.footerleftBottom>div:nth-child(2)>p{
+  font-size: 12px;
 }

@@ -6,7 +6,7 @@ export default function ProductFooter() {
     <Flex
       justifyContent="center"
       alignItems="center"
-      maxW="1349px"
+      maxW="100vw"
       h="272px"
       m="auto"
       className={style.container}

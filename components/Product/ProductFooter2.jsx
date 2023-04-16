@@ -7,7 +7,7 @@ export default function ProductFooter2() {
     <Flex
       m="auto"
       h="600px"
-      maxW="1349px"
+      maxW="100vw"
       justifyContent="center"
       alignItems="center"
       style={{

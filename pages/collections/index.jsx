@@ -3,6 +3,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  Flex,
   Image,
   SimpleGrid,
 } from "@chakra-ui/react";
@@ -49,14 +50,9 @@ const collectionsArr = [
     image: "/Images/Products/Gifts_banner.webp",
     path: "Gifts",
   },
+
   {
     id: 7,
-    title: "CHOCOLATE COVERED TREATS",
-    image: "/Images/Products/Chocolate_Covered_Treats_banner.webp",
-    path: "#",
-  },
-  {
-    id: 8,
     title: "DARK BARK",
     image: "/Images/Products/Dark_Bark_banner.webp",
     path: "#",
@@ -67,6 +63,12 @@ const collectionsArr = [
     image: "/Images/Products/Bulk_Baking_Chocolate_banner.webp",
     path: "#",
   },
+  {
+    id: 9,
+    title: "EVERYTHINGS",
+    image: "/Images/Products/Everythings_banner.webp",
+    path: "#",
+  },
 ];
 
 export default function Collections() {
@@ -74,22 +76,37 @@ export default function Collections() {
     <Box>
       {/* bread crumbs */}
 
-      <Box maxW="1099.99px" m="auto">
-        <Breadcrumb
-          p="0px 30px"
-          // bg="red"
-          spacing="8px"
-          separator={<ChevronRightIcon color="#979797" />}
-        >
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
+      <Box
+        m="auto"
+        bg=""
+        h="50px"
+        borderBottom="1px solid grey"
+        borderTop="1px solid grey"
+      >
+        <Flex maxW="1099.99px" m="auto" pt="12px" boxSize="box-Border">
+          <Breadcrumb
+            p="0px 30px"
+            fontFamily="sans-serif"
+            // bg="red"
+            spacing="8px"
+            separator={<ChevronRightIcon color="#979797" />}
+            fontSize="16px"
+            color="gray.500"
+          >
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">HOME</BreadcrumbLink>
+            </BreadcrumbItem>
 
-          <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLink href="/collections">Buy</BreadcrumbLink>
-          </BreadcrumbItem>
-        </Breadcrumb>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink href="/collections" fontWeight="600">
+                BUY
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </Flex>
       </Box>
+      {/* bread crumbs */}
+
       {/* Banner */}
 
       <Box bg="#2EBBCD" maxW="" h="157px" m="auto" className={style.BuyHeading}>

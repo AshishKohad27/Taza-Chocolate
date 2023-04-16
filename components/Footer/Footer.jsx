@@ -5,10 +5,15 @@ import {
   Heading,
   Input,
   SimpleGrid,
+  Stack,
   Text,
+  Image,
 } from "@chakra-ui/react";
 import style from "./Footer.module.css";
-import { footerObject } from "@/constants/footer";
+import { FaFacebookF } from "react-icons/fa";
+import { TiSocialInstagram } from "react-icons/ti";
+import { TfiPinterest } from "react-icons/tfi";
+import { BsTwitter } from "react-icons/bs";
 
 const FooterObject = {
   Buy: [
@@ -49,45 +54,37 @@ const FooterObject = {
 
 export default function Footer() {
   return (
-    <Box
-      maxW="1349px"
-      h={{ base: "auto", md: "520px" }}
-      m="auto"
-      className={style.footer}
-    >
-      <Box
-        className={style.footer}
-        maxW="1130px"
-        m="auto"
-        bg=""
-        h="520px"
-        py="60px"
-      >
+    <Box maxW="100vw" h="auto" m="auto" className={style.footer}>
+      <Box className={style.footer} maxW="1130px" m="auto" h="auto" py="60px">
         {/* upper footer */}
         <SimpleGrid
-          bg=""
+          borderBottom="2px solid white"
           maxW="1130px"
-          h="224px"
+          h={{ base: "auto", md: "300px" }}
           columns={{ base: 1, sm: 1, md: 2 }}
-          spacing={5}
+          // spacing={5}
         >
-          <Box bg="" height="">
+          <Box>
             <SimpleGrid
-              bg=""
               maxW="1130px"
-              h="224px"
-              columns={{ base: 2, sm: 2, md: 4 }}
+              m="auto"
+              columns={{ base: 1, sm: 2, md: 4 }}
               spacing={5}
             >
-              <Box bg="" className={style.title}>
+              <Flex
+                justifyContent="start"
+                direction="column"
+                alignItems={{ base: "center", md: "start" }}
+                className={style.title}
+              >
                 <Heading as="h1" mb="10px">
                   BUY
                 </Heading>
-                <Box>
+                <Stack alignItems={{ base: "center", md: "start" }}>
                   {FooterObject &&
                     FooterObject.Buy.map((item, index) => (
                       <Text
-                        mb="3px"
+                        mb="-3px"
                         fontSize="12px"
                         color="#acacac"
                         key={index}
@@ -98,15 +95,23 @@ export default function Footer() {
                         {item.title}
                       </Text>
                     ))}
-                </Box>
-              </Box>
-              <Box bg="" className={style.title}>
-                <Heading as="h1">LEARN</Heading>
-                <Box>
+                </Stack>
+              </Flex>
+
+              <Flex
+                justifyContent="start"
+                direction="column"
+                alignItems={{ base: "center", md: "start" }}
+                className={style.title}
+              >
+                <Heading as="h1" mb="10px">
+                  LEARN
+                </Heading>
+                <Stack alignItems={{ base: "center", md: "start" }}>
                   {FooterObject &&
                     FooterObject.Learn.map((item, index) => (
                       <Text
-                        mb="3px"
+                        mb="-3px"
                         fontSize="12px"
                         color="#acacac"
                         key={index}
@@ -117,15 +122,23 @@ export default function Footer() {
                         {item.title}
                       </Text>
                     ))}
-                </Box>
-              </Box>
-              <Box bg="" className={style.title}>
-                <Heading as="h1">VISIT</Heading>
-                <Box>
+                </Stack>
+              </Flex>
+
+              <Flex
+                justifyContent="start"
+                direction="column"
+                alignItems={{ base: "center", md: "start" }}
+                className={style.title}
+              >
+                <Heading as="h1" mb="10px">
+                  VISIT
+                </Heading>
+                <Stack alignItems={{ base: "center", md: "start" }}>
                   {FooterObject &&
                     FooterObject.Visit.map((item, index) => (
                       <Text
-                        mb="3px"
+                        mt="3px"
                         fontSize="12px"
                         color="#acacac"
                         key={index}
@@ -136,15 +149,23 @@ export default function Footer() {
                         {item.title}
                       </Text>
                     ))}
-                </Box>
-              </Box>
-              <Box bg="" className={style.title}>
-                <Heading as="h1">MORE</Heading>
-                <Box>
+                </Stack>
+              </Flex>
+
+              <Flex
+                justifyContent="start"
+                direction="column"
+                alignItems={{ base: "center", md: "start" }}
+                className={style.title}
+              >
+                <Heading as="h1" mb="10px">
+                  MORE
+                </Heading>
+                <Stack alignItems={{ base: "center", md: "start" }}>
                   {FooterObject &&
                     FooterObject.More.map((item, index) => (
                       <Text
-                        mb="3px"
+                        mb="-3px"
                         fontSize="12px"
                         color="#acacac"
                         key={index}
@@ -155,8 +176,8 @@ export default function Footer() {
                         {item.title}
                       </Text>
                     ))}
-                </Box>
-              </Box>
+                </Stack>
+              </Flex>
             </SimpleGrid>
           </Box>
 
@@ -198,20 +219,72 @@ export default function Footer() {
                 </Button>
               </Box>
             </Flex>
+            <Flex mt="10px" gap="10px">
+              <Box h="18px" w="18px">
+                <FaFacebookF color="#fff" />
+              </Box>
+              <Box h="18px" w="18px">
+                <TiSocialInstagram color="#fff" />
+              </Box>
+              <Box h="18px" w="18px">
+                <TfiPinterest color="#fff" />
+              </Box>
+              <Box h="18px" w="18px">
+                <BsTwitter color="#fff" />
+              </Box>
+            </Flex>
           </Box>
         </SimpleGrid>
         {/* upper footer */}
 
         {/* lower footer */}
         <SimpleGrid
-          bg="red.300"
           maxW="1130px"
           h="224px"
-          columns={{ base: 1, m: 1, md: 2 }}
-          spacing={5}
+          m="auto"
+          columns={{ base: 1, md: 2 }}
         >
-          <Box bg="tomato" height="80px"></Box>
-          <Box bg="tomato" height="80px"></Box>
+          <Flex
+            // m="auto"
+            mt="50px"
+            w="100%"
+            height="80px"
+          >
+            <Box>
+              <Image
+                w="77px"
+                h="77px"
+                src="/Images/Footer/taza-white-footer.webp"
+                alt=""
+              />
+            </Box>
+            <Box
+              mt="-6px"
+              ml="20px"
+              w="233px"
+              h="93px"
+              className={style.footerleftBottom}
+            >
+              <Box>
+                <Heading as="h2">TAZA CHOCOLATE</Heading>
+                <Text>561 Windsor Street, Somerville MA 02143</Text>
+              </Box>
+              <Box>
+                <Text>
+                  © 2023 Taza Chocolate. All rights reserved. Web design by
+                  Jackrabbit
+                </Text>
+              </Box>
+            </Box>
+          </Flex>
+          <Flex justifyContent="flex-end" height="80px" mt="50px">
+            <Image
+              maxW="387px"
+              h="110px"
+              src="/Images/Footer/badge-bar-monochrome-2021_400x.png"
+              alt=""
+            />
+          </Flex>
         </SimpleGrid>
         {/* lower footer */}
       </Box>

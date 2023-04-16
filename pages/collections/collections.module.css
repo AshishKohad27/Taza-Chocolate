@@ -76,9 +76,9 @@
 /* Inside Content */
 
 .inside_container {
-  background-color: aliceblue;
+  background-color: rgba(225,225,225,0.8);
   width: 80%;
-  height: 100px;
+  height: auto;
   text-align: center;
   color: #000;
   position: absolute;
@@ -91,6 +91,7 @@
 .inside_container>h1:nth-child(1) {
   margin-top: 10px;
   font-size: 27px;
+  font-weight: 500;
   /* margin-bottom: -20px; */
   font-family: "Great Vibes", cursive;
 }
@@ -98,6 +99,7 @@
 .inside_container>h1:nth-child(2) {
   font-size: 28px;
   margin-bottom: 14px;
+  font-weight: 600;
   font-family: "Roboto Slab", serif;
 }
 
@@ -108,14 +110,14 @@
 
 .hover_container {
   width: 100%;
-  background-color: #ffffff;
+  background-color: rgba(225,225,225,0.6);
   text-align: center;
   color: #000;
 }
 
 .hover_container>h1 {
   font-size: 30px;
-  font-weight: 400;
+  font-weight: 700;
   margin-bottom: 4px;
   font-family: "Roboto Slab", serif;
 }
@@ -126,7 +128,7 @@
   background-color: transparent;
   border: 1px solid black;
   padding: 8px 14px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 10px;
   transition: 0.5s ease-in-out;
 }

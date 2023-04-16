@@ -1,15 +1,12 @@
 import {
   Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
+  Button,
   Flex,
   Heading,
   Image,
   Link,
   SimpleGrid,
   Text,
-  background,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import style from "./collections.module.css";
@@ -18,11 +15,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../redux/product/product.action";
 import Footer from "@/components/Footer/Footer";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import ProductArr from "@/components/Product/ProductArr";
 import ProductFooter from "@/components/Product/ProductFooter";
 import ProductFooter2 from "@/components/Product/ProductFooter2";
+import BreadCrumbs from "@/components/BreadCrums/BreadCrums";
 
 const collectionArr = [
   {
+    id: "1",
     query: "Gifts",
     title: "GIFTS",
     image: "/Images/Products/Gifts_banner.webp",
@@ -32,6 +32,7 @@ const collectionArr = [
       "If you are looking to send 10 or more gifts to separate addresses, as tokens of appreciation or to connect with your remote team, please reach out to the Taza Corporate Gifts Team at corporategifts@tazachocolate.com or call 617-623-0804 x2.  If fewer than 10 gifts are needed, your best bet is to order here on our website.",
   },
   {
+    id: 2,
     query: "Chocolate_Bars",
     title: "CHOCOLATE BARS",
     image: "/Images/Products/Bars_banner.webp",
@@ -41,6 +42,7 @@ const collectionArr = [
       "Never run out of your favorites! Subscribe & Save 10%. Change, skip or cancel anytime.",
   },
   {
+    id: 3,
     query: "Chocolate_Discs",
     title: "CHOCOLATE DISCS",
     image: "/Images/Products/Discs_banner.webp",
@@ -50,6 +52,7 @@ const collectionArr = [
       "Never run out of your favorites! Subscribe & Save 10%. Change, skip or cancel anytime.",
   },
   {
+    id: 4,
     query: "Chocolate_Snacks",
     title: "CHOCOLATE SNACKS",
     image: "/Images/Products/Snacks_banner.webp",
@@ -58,6 +61,17 @@ const collectionArr = [
     para2: "",
   },
   {
+    id: 5,
+    query: "Smooth_Crunchy_Bars",
+    title: "SMOOTH & CRUNCHY BARS",
+    image: "/Images/Products/Smooth_Crunchy_BARS_banner.webp",
+    para1:
+      "Our NEW Smooth & Crunchy bars pair silky smooth 70% dark chocolate with lots of irresistibly crunchy mix-ins!",
+    para2: "",
+  },
+  {
+    id: 6,
+    query: "Smooth_Crunchy_Bars",
     title: "SMOOTH & CRUNCHY BARS",
     image: "/Images/Products/Smooth_Crunchy_BARS_banner.webp",
     para1:
@@ -84,34 +98,54 @@ export default function CollectionsProducts() {
     <>
       <Box>
         {/* bread crumbs */}
+        <BreadCrumbs
+          query={router.query.id}
+          details={{
+            flag: false,
+          }}
+        />
+        {/* <Box
+          m="auto"
+          bg=""
+          h="50px"
+          borderBottom="1px solid grey"
+          borderTop="1px solid grey"
+        >
+          <Flex maxW="1099.99px" m="auto" pt="12px" boxSize="box-Border">
+            <Breadcrumb
+              p="0px 30px"
+              fontFamily="sans-serif"
+              // bg="red"
+              spacing="8px"
+              separator={<ChevronRightIcon color="#979797" />}
+              fontSize="16px"
+              color="gray.500"
+            >
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">HOME</BreadcrumbLink>
+              </BreadcrumbItem>
 
-        <Box maxW="1099.99px" m="auto">
-          <Breadcrumb
-            p="0px 30px"
-            // bg="red"
-            spacing="8px"
-            separator={<ChevronRightIcon color="#979797" />}
-          >
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/collections">BUY</BreadcrumbLink>
+              </BreadcrumbItem>
 
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/collections">Buy</BreadcrumbLink>
-            </BreadcrumbItem>
+              <BreadcrumbItem isCurrentPage>
+                <BreadcrumbLink fontWeight="600">
+                  {router.query.id}
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </Breadcrumb>
+          </Flex>
+        </Box> */}
 
-            <BreadcrumbItem isCurrentPage >
-              <BreadcrumbLink fontWeight="600" >{router.query.id}</BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-        </Box>
+        {/* bread crumbs */}
+
         {/* Banner */}
         {appendData &&
           appendData.map((item, index) => (
             <Box key={index}>
               <Box
-                bg=""
-                maxW="1359px"
+                w="100vw"
                 h="320px"
                 className={style.imageDiv}
                 style={{
@@ -122,7 +156,11 @@ export default function CollectionsProducts() {
                 alignItems="center"
               >
                 {/* <Image h="320px" m="auto" src={item.image} alt={item.image} /> */}
-                <Heading as="h1" fontSize="60px" className={style.imageHeading}>
+                <Heading
+                  as="h1"
+                  fontSize={{ base: "38px", md: "60px" }}
+                  className={style.imageHeading}
+                >
                   {item.title}
                 </Heading>
               </Box>
@@ -144,57 +182,12 @@ export default function CollectionsProducts() {
           border="2px solid white"
         >
           {data &&
-            data.map((item, index) => (
-              <Box key={index} bg="" h="370.47px" p="25px 0px" m="auto">
-                <Flex
-                  h="200px"
-                  mb="15px"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <Image
-                    h="200px"
-                    w="200px"
-                    src={item.image}
-                    alt={item.title}
-                  />
-                </Flex>
-                <Flex
-                  justifyContent="center"
-                  alignItems="center"
-                  flexDirection="column"
-                >
-                  <Text
-                    fontSize="16px"
-                    fontWeight="600"
-                    mb="7px"
-                    color="#2D2D2D"
-                  >
-                    {item.title}
-                  </Text>
-                  <Text fontSize="16px" mb="15px" color="#2D2D2D">
-                    ₹{item.bar}
-                  </Text>
-                  <button
-                    style={{
-                      padding: "7px 18px",
-                      background: "#0D0D0D",
-                      color: "#FFFFFF",
-                      fontSize: "16px",
-                      borderRadius: "5px",
-                      fontWeight: "800",
-                    }}
-                  >
-                    BUY
-                  </button>
-                </Flex>
-              </Box>
-            ))}
+            data.map((item, index) => <ProductArr item={item} key={index} />)}
         </SimpleGrid>
         {/* Products Appends */}
       </Box>
-      <ProductFooter/>
-      <ProductFooter2/>
+      <ProductFooter />
+      <ProductFooter2 />
       <Footer />
     </>
   );
