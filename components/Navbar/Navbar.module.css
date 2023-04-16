@@ -16,7 +16,7 @@
 .left {
   width: 42vw;
   height: 137px;
-  background-color: blue;
+  /* background-color: blue; */
   position: relative;
 }
 .leftContent {
@@ -114,7 +114,7 @@ width: 200px;
 .right {
   width: 42vw;
   height: 137px;
-  background-color: palevioletred;
+  /* background-color: palevioletred; */
 }
 
 @media screen and (min-width: 120px) and (max-width: 770px) {
