@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "./signUp.module.css";
 import Link from "next/link";
 import Footer from "@/components/Footer/Footer";
-// import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 // import { Navigate } from "react-router-dom";
 // import { postLogin } from "../Redux/user/user.action";
 // import { CLEAR_MESSAGE } from "../Redux/user/user.type";
@@ -76,7 +76,7 @@ export default function SignUp() {
   //   } else
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Box
         h="157px"
         m="auto"

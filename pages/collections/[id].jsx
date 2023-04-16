@@ -19,6 +19,7 @@ import ProductArr from "@/components/Product/ProductArr";
 import ProductFooter from "@/components/Product/ProductFooter";
 import ProductFooter2 from "@/components/Product/ProductFooter2";
 import BreadCrumbs from "@/components/BreadCrums/BreadCrums";
+import Navbar from "@/components/Navbar/Navbar";
 
 const collectionArr = [
   {
@@ -96,6 +97,7 @@ export default function CollectionsProducts() {
   );
   return (
     <>
+    <Navbar/>
       <Box>
         {/* bread crumbs */}
         <BreadCrumbs

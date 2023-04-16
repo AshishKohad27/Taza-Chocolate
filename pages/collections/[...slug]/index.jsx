@@ -15,6 +15,7 @@ import Link from "next/link";
 import ProductFooter from "../../../components/Product/ProductFooter";
 import Footer from "../../../components/Footer/Footer";
 import Nutrition from "../../../components/Product/NutritionCard";
+import Navbar from "../../../components/Navbar/Navbar";
 
 const SinglePageArr = [
   { id: 1, image: "/Images/SinglePage/USDA_organic_color.png" },
@@ -45,6 +46,7 @@ export default function SinglePage() {
 
   return (
     <Box>
+      <Navbar />
       {/* BreadCrums */}
       <BreadCrumbs
         query={router.asPath.split("/")[3]}
@@ -105,7 +107,6 @@ export default function SinglePage() {
         maxW="1160px"
         h="342px"
         m="auto"
-      
         columns={{ base: 1, md: 2 }}
         mt="10px"
       >
@@ -116,8 +117,10 @@ export default function SinglePage() {
           <Text fontSize="16px" mb="15px"></Text>
           <Nutrition />
         </Flex>
-        <Stack h="100%" m="auto"  maxW="565px">
-          <Heading as="h1" fontSize="16px" mb="8px">CERTIFICATIONS</Heading>
+        <Stack h="100%" m="auto" maxW="565px">
+          <Heading as="h1" fontSize="16px" mb="8px">
+            CERTIFICATIONS
+          </Heading>
           <Text fontSize="16px" mb="15px">
             This product is certified USDA Organic, Direct Trade Certified,
             Non-GMO, Certified Gluten Free, and Kosher Pareve. It is also dairy

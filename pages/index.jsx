@@ -15,6 +15,7 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
+import Navbar from "@/components/Navbar/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,6 +43,7 @@ const collectionsArr = [
 export default function Home() {
   return (
     <>
+    <Navbar/>
       <Box m="auto" className={style.home_shop}>
         <Image
           m="auto"

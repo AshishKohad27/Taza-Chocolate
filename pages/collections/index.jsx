@@ -12,6 +12,7 @@ import ProductFooter from "@/components/Product/ProductFooter";
 import Footer from "@/components/Footer/Footer";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import Link from "next/link";
+import Navbar from "@/components/Navbar/Navbar";
 
 const collectionsArr = [
   {
@@ -74,6 +75,7 @@ const collectionsArr = [
 export default function Collections() {
   return (
     <Box>
+      <Navbar/>
       {/* bread crumbs */}
 
       <Box
