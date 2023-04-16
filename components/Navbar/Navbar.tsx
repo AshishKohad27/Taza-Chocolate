@@ -122,22 +122,7 @@ function MediaButton() {
     <>
       <GiHamburgerMenu onClick={onOpen} />
 
-      <Drawer placement={"left"} onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay />
-        <DrawerContent>
-
-          <DrawerCloseButton />
-
-          <DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
-          <DrawerBody>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-
-          </DrawerBody>
-
-        </DrawerContent>
-      </Drawer>
+      
     </>
   );
 }
