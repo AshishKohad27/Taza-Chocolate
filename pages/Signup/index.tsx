@@ -76,7 +76,6 @@ export default function SignUp() {
   //   } else
   return (
     <>
-     
       <Box
         h="157px"
         m="auto"
@@ -87,9 +86,7 @@ export default function SignUp() {
         borderBottom="8px solid #fff"
         className={style.header}
       >
-        <Heading as="h1" fontSize="60px">
-          CREATE ACCOUNT
-        </Heading>
+        <h1 style={{ fontSize: "16px" }}>CREATE ACCOUNT</h1>
       </Box>
       <Box w="429px" m="auto" alignItems="center" justifyContent="center">
         <FormControl className={style.inputLabel}>
@@ -104,6 +101,7 @@ export default function SignUp() {
             onChange={handleChange}
           />
         </FormControl>
+        
         <FormControl className={style.inputLabel}>
           <FormLabel fontWeight="700" color="#f2923c">
             LAST NAME
