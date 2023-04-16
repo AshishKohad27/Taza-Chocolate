@@ -76,7 +76,7 @@ export default function SignUp() {
   //   } else
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Box
         h="157px"
         m="auto"
@@ -158,6 +158,7 @@ export default function SignUp() {
           </Button>
         </Stack>
       </Stack>
+
       <Stack w="429px" m="auto" textAlign="center">
         <Box mt="10px">
           <Text
