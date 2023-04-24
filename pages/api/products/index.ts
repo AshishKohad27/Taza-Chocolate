@@ -31,7 +31,6 @@ export default async function productRoutes(
 ) {
   await connectDB();
   console.log("Method:", req.method);
-
   if (req.method === "GET") {
     const payload: any = req.query.category;
     console.log('payload:', payload)

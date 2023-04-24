@@ -1,14 +1,16 @@
 import { Schema, model, models } from "mongoose";
 
 type authTypescript = {
-  name?: String;
+  first_name: String;
+  last_name: String;
   email: String;
   password: String;
   role: String;
 };
 
 const authSchema = new Schema<authTypescript>({
-  name: { type: String },
+  first_name: { type: String, required: true, },
+  last_name: { type: String, required: true, },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: {

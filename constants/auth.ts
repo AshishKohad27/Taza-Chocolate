@@ -1,7 +1,8 @@
 // Backend
 export interface ObjectAuth {
   _id?: string;
-  name?: string;
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
   role: string;
@@ -22,7 +23,8 @@ export type TAuthLogin = {
 };
 
 export type TObjectAuth = {
-  name?: string;
+  first_name?: string;
+  last_name?: string;
   email: string;
   password: string;
 };

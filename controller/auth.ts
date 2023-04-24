@@ -3,13 +3,20 @@ import authM from "../model/auth";
 import argon2 from "argon2";
 const jwt = require("jsonwebtoken");
 const jwtSecretKey = process.env.JSON_SECRET_KEY;
+const jwtSecretRefreshKey = process.env.JSON_SECRET_REFRESH_KEY;
 
 export const postSignup = async ({
-  name,
+  first_name,
+  last_name,
   email,
   password,
 }: TObjectAuth): Promise<any> => {
   const hashPassword: string = await argon2.hash(password);
+  console.log(first_name,
+    last_name,
+    email,
+    password,)
+
   try {
     let authUser: Array<TObjectAuth> = await authM.find({ email });
     console.log("authUser:", authUser);
@@ -23,9 +30,9 @@ export const postSignup = async ({
       };
     }
     //if user not present
-    let CreateAuth = new authM({ name, email, password: hashPassword });
+    let CreateAuth = new authM({ first_name, last_name, email, password: hashPassword });
     await CreateAuth.save();
-
+    console.log("CreateAuth:", CreateAuth)
     return {
       data: CreateAuth,
       flag: true,
@@ -56,28 +63,27 @@ export const postLogin = async ({
           {
             _id: authUser[0]._id,
             email: authUser[0].email,
-            name: authUser[0].name,
+            first_name: authUser[0].first_name,
+            last_name: authUser[0].last_name,
             role: authUser[0].role,
           },
           jwtSecretKey,
           { expiresIn: "4 days" }
         );
-        // const refreshToken = jwt.sign(
-        //   {
-        //     _id: authUser[0]._id,
-        //     email: authUser[0].email,
-        //     name: authUser[0].name,
-        //   },
-        //   jwtSecretKey,
-        //   { expiredAt: "4 days" }
-        // );
-        let refreshToken = "refresh";
+        const refreshToken = jwt.sign(
+          {
+            _id: authUser[0]._id,
+          },
+          jwtSecretRefreshKey,
+          { expiresIn: "7 days" }
+        );
+        // let refreshToken = "refresh";
         return {
           token,
           refreshToken,
           flag: true,
           desc: "",
-          message: "Token",
+          message: "Login Successfully!",
         };
       } else {
         return {

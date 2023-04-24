@@ -7,9 +7,9 @@ export default async function Signup(
   res: NextApiResponse<TAuthSignup>
 ) {
   if (req.method === "POST") {
-    const { email, password, name } = req.body;
+    const { email, password, first_name, last_name } = req.body;
     const { message, flag, data, desc }: TAuthSignup = await postSignup({
-      name,
+      first_name, last_name,
       email,
       password,
     });
