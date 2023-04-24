@@ -53,10 +53,9 @@ export const postLogin = async ({
   email,
   password,
 }: TObjectAuth): Promise<any> => {
-  console.log(" email, password :", email, password);
   try {
     let authUser = await authM.find({ email });
-    console.log("authUser:", authUser);
+
     if (authUser.length !== 0) {
       if (await argon2.verify(authUser[0].password, password)) {
         const token = jwt.sign(
@@ -79,7 +78,7 @@ export const postLogin = async ({
         );
         // let refreshToken = "refresh";
         return {
-          token,
+          access_token: token,
           refreshToken,
           flag: true,
           desc: "",

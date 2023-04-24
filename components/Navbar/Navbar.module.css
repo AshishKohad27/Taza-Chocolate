@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 
 .container {
-  width: 100vw;
+  max-width: 1349px;
   margin: auto;
   /* background-color: red; */
   height: 134px;
@@ -23,7 +23,7 @@
   /* padding-left: 15px; */
   height: 137px;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   gap: 10px;
   /* background-color: brown; */
 }
@@ -52,7 +52,7 @@
   /* background-color: peachpuff; */
   margin: auto;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   position: absolute;
   top: 134px;
   z-index: 10;
@@ -98,11 +98,13 @@
 width: 200px;
  
   height: 150px;
+
   /* background-color: yellow; */
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-top: 020px;
 }
 .mid > img {
   width: 185px;
@@ -110,6 +112,7 @@ width: 200px;
   position: absolute;
   top: 20px;
   z-index: 100;
+
 }
 .right {
   width: 42vw;

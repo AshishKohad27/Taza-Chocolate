@@ -1,6 +1,7 @@
 import Link from "next/link";
 import style from "./Navbar.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useEffect } from "react";
 import {
   Button,
   Drawer,
@@ -11,6 +12,10 @@ import {
   DrawerOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { Dispatch } from "redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetailsFromToken } from "@/redux/auth/auth.action";
 
 const NavBarLinks = {
   Buy: [
@@ -37,11 +42,26 @@ const NavBarLinks = {
 };
 
 export default function Navbar() {
+  const dispatch: Dispatch<any> = useDispatch();
+  const { isAuth, tokenDetails } = useSelector((store: any) => store.auth);
+
+  console.log("tokenDetails:", tokenDetails);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const SendToken = {
+        access_token: localStorage.getItem("access_token"),
+      };
+      console.log("SendToken:", SendToken);
+      dispatch(getDetailsFromToken(SendToken));
+    }
+  }, [isAuth, dispatch]);
+
   return (
     <div>
       <div className={style.container}>
         <div className={style.mediaLeft}>
-          <MediaButton />
+          <MediaButton  />
         </div>
         <div className={style.left}>
           <div className={style.leftContent}>
@@ -93,16 +113,12 @@ export default function Navbar() {
               </div>
             </div>
 
-            <div className={style.visit_Container}>
+            {/* <div className={style.visit_Container}>
               <h1 className={style.visit_h1}>
                 <Link href="/login">Login</Link>
               </h1>
-            </div>
-            <div className={style.visit_Container}>
-              <h1 className={style.visit_h1}>
-                <Link href="/signUp">Signup</Link>
-              </h1>
-            </div>
+            </div> */}
+           
           </div>
         </div>
         <div className={style.mid}>
@@ -110,7 +126,9 @@ export default function Navbar() {
             <img src="/Images/Navbar/logo.png" alt="" />
           </Link>
         </div>
-        <div className={style.right}></div>
+        <div className={style.right}>
+          
+        </div>
       </div>
     </div>
   );
@@ -118,11 +136,11 @@ export default function Navbar() {
 
 function MediaButton() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  
   return (
     <>
-      <GiHamburgerMenu onClick={onOpen} />
+      <GiHamburgerMenu onClick={onOpen}  />
 
-      
     </>
   );
 }

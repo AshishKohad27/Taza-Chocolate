@@ -7,8 +7,9 @@ export default async function Signup(
   res: NextApiResponse<TAuthSignup>
 ) {
   if (req.method === "POST") {
-    const { token } = req.body;
-    const { message, flag, data, desc }: TAuthSignup = await tokenVerify(token);
+    const { access_token } = req.body;
+    console.log("access_token Payload:", access_token)
+    const { message, flag, data, desc }: TAuthSignup = await tokenVerify(access_token);
     if (flag) {
       return res.status(201).send({ message, data, desc });
     } else {

@@ -8,15 +8,15 @@ export default async function loginRoute(
 ) {
   if (req.method === "POST") {
     const { email, password } = req.body;
-    const { message, flag, token, desc, refreshToken }: TAuthLogin =
+    const { message, flag, access_token, desc, refreshToken }: TAuthLogin =
       await postLogin({
         email,
         password,
       });
     if (flag) {
-      return res.status(200).send({ message, desc, token, refreshToken });
+      return res.status(200).send({ message, desc, access_token, refreshToken });
     } else {
-      return res.status(401).send({ message, desc, token, refreshToken });
+      return res.status(401).send({ message, desc, access_token, refreshToken });
     }
   }
 }

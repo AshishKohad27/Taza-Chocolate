@@ -13,6 +13,7 @@ import {
     SIGNUP_SUCCESS,
 } from "./auth.types";
 import { TReducerActionAuth, TReducerStateAuth } from "@/constants/redux/auth";
+import { Console } from "console";
 
 let access_token;
 if (typeof window !== 'undefined') {
@@ -49,6 +50,7 @@ export const userReducer = (state = initState, { type, payload }: TReducerAction
             };
         }
         case LOGIN_SUCCESS: {
+            console.log("access_token:", payload);
             localStorage.setItem("access_token", payload.access_token);
             delete axios.defaults.headers.common["authorization_access"];
             axios.defaults.headers.common["authorization_access"] =
@@ -107,10 +109,11 @@ export const userReducer = (state = initState, { type, payload }: TReducerAction
             };
         }
 
+        // Get details from token
         case GET_DETAILS_FROM_TOKEN: {
             return {
                 ...state,
-                tokenDetails: payload,
+                tokenDetails: payload.data,
                 loading: false,
                 error: false,
             };

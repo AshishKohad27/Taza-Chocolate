@@ -17,7 +17,7 @@ export type TAuthLogin = {
   message: string;
   flag?: boolean;
   data?: Array<ObjectAuth> | [];
-  token: string;
+  access_token: string;
   refreshToken: string;
   desc: string;
 };

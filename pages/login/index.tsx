@@ -18,7 +18,7 @@ import { CLEAR_MESSAGE } from "@/redux/auth/auth.types";
 import { useRouter } from "next/router";
 import { Dispatch } from "redux";
 import { postLogin } from "@/redux/auth/auth.action";
-// import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 
 type SignUpFormT = {
   email: string;
@@ -56,7 +56,10 @@ export default function Login() {
     }
   };
 
+  console.log("loading:", loading);
+
   const { email, password } = form;
+
   if (message === "Login Successfully!") {
     alert(message);
     dispatch({ type: CLEAR_MESSAGE }); // CLEAR ERROR MESSAGE AND MESSAGE IN FROM REDUX
@@ -64,7 +67,7 @@ export default function Login() {
   } else
     return (
       <>
-        {/* <Navbar /> */}
+        <Navbar />
         <Box
           h="157px"
           m="auto"
@@ -79,7 +82,7 @@ export default function Login() {
             LOGIN
           </Heading>
         </Box>
-        <Stack w="429px" m="auto" align="center" justify="center">
+        <Stack maxW="429px" m="auto" align="center" justify="center">
           <FormControl className={style.inputLabel}>
             <FormLabel fontWeight="700" color="#f2923c">
               EMAIL
@@ -105,9 +108,9 @@ export default function Login() {
             />
           </FormControl>
 
-          <Stack w="429px" mt="10px">
+          <Stack maxW="429px" mt="10px">
             <Button
-              w="429px"
+              w={{ base: "200px", sm: "300px", md: "429px" }}
               borderRadius="0px"
               bg="#2ebbcd"
               color="black"
@@ -118,11 +121,11 @@ export default function Login() {
               fontSize="18px"
               onClick={handleSubmit}
             >
-              SIGN IN
+              {loading ? "Loading..." : "SIGN IN"}
             </Button>
           </Stack>
         </Stack>
-        <Stack w="429px" bg="" m="auto" textAlign={"center"}>
+        <Stack maxW="429px" bg="" m="auto" textAlign="center">
           <Flex justifyContent="space-between">
             <Box mt="10px">
               <Text

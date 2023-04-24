@@ -146,7 +146,7 @@ export default function SignUp() {
             />
           </FormControl>
 
-          <Stack w="429px">
+          <Stack w="429px" mt="20px">
             <Button
               w="429px"
               borderRadius="0px"
@@ -159,7 +159,7 @@ export default function SignUp() {
               fontSize="18px"
               onClick={handleSubmit}
             >
-              CREATE
+                  {loading ? "Loading..." : "CREATE"}
             </Button>
           </Stack>
         </Box>
