@@ -27,7 +27,7 @@ export const postSign =
                 let res = await axios.post(`/api/auth/signup`, payload);
                 console.log("res:", res.data);
                 dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
-            } catch (e) {
+            } catch (e:any) {
                 dispatch({ type: SIGNUP_ERROR });
             }
         };
@@ -43,7 +43,7 @@ export const postLogin =
                 console.log("res:", res.data);
                 dispatch({ type: LOGIN_SUCCESS, payload: res.data });
             } catch (e: any) {
-                console.log("e:", e.response.data.messages);
+                console.log("e:", e);
                 dispatch({ type: LOGIN_ERROR });
             }
         };
