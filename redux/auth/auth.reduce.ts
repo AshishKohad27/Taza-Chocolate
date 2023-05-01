@@ -50,7 +50,7 @@ export const userReducer = (state = initState, { type, payload }: TReducerAction
             };
         }
         case LOGIN_SUCCESS: {
-            console.log("access_token:", payload);
+            // console.log("access_token:", payload);
             localStorage.setItem("access_token", payload.access_token);
             delete axios.defaults.headers.common["authorization_access"];
             axios.defaults.headers.common["authorization_access"] =

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import productM from "../../../model/product";
-import { deleteProduct } from "../../../controller/product";
+import { deleteProduct, getProductById } from "../../../controller/product";
 
 type ObjectProduct = {
     _id?: string;
@@ -28,6 +28,17 @@ export default async function productRoutes(
 
         const { data, message, desc, flag, dataLength }: TProduct =
             await deleteProduct(productId);
+        if (flag) {
+            return res.status(201).send({ message, desc, dataLength, data });
+        } else {
+            return res.status(401).send({ message, desc, dataLength, data });
+        }
+    }
+    else if (req.method === "GET") {
+        const productId: any = req.query.id;
+        // console.log("productId in backend:", productId)
+        const { data, message, desc, flag, dataLength }: TProduct =
+            await getProductById(productId);
         if (flag) {
             return res.status(201).send({ message, desc, dataLength, data });
         } else {

@@ -43,16 +43,18 @@ const NavBarLinks = {
 
 export default function Navbar() {
   const dispatch: Dispatch<any> = useDispatch();
-  const { isAuth, tokenDetails } = useSelector((store: any) => store.auth);
+  const { isAuth, tokenDetails } = useSelector(
+    (store: any) => store.auth
+  );
 
-  console.log("tokenDetails:", tokenDetails);
+  // console.log("tokenDetails:", tokenDetails);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const SendToken = {
         access_token: localStorage.getItem("access_token"),
       };
-      console.log("SendToken:", SendToken);
+      // console.log("SendToken:", SendToken);
       dispatch(getDetailsFromToken(SendToken));
     }
   }, [isAuth, dispatch]);
@@ -61,7 +63,7 @@ export default function Navbar() {
     <div>
       <div className={style.container}>
         <div className={style.mediaLeft}>
-          <MediaButton  />
+          <MediaButton />
         </div>
         <div className={style.left}>
           <div className={style.leftContent}>
@@ -113,12 +115,11 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* <div className={style.visit_Container}>
+            <div className={style.visit_Container}>
               <h1 className={style.visit_h1}>
-                <Link href="/login">Login</Link>
+                <Link href="/cart">CART</Link>
               </h1>
-            </div> */}
-           
+            </div>
           </div>
         </div>
         <div className={style.mid}>
@@ -127,7 +128,10 @@ export default function Navbar() {
           </Link>
         </div>
         <div className={style.right}>
-          
+          <h1>
+            {tokenDetails.email}
+            {/* {tokenDetails.last_name} */}
+          </h1>
         </div>
       </div>
     </div>
@@ -136,11 +140,10 @@ export default function Navbar() {
 
 function MediaButton() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  
+
   return (
     <>
-      <GiHamburgerMenu onClick={onOpen}  />
-
+      <GiHamburgerMenu onClick={onOpen} />
     </>
   );
 }

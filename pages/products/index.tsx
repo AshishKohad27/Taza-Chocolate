@@ -19,8 +19,8 @@ export default function Product() {
   const { loading, error, data }: TReducerStateProduct = useSelector(
     (store: any) => store.product
   );
-  console.log("loading:", loading);
-  console.log("data:", data);
+  // console.log("loading:", loading);
+  // console.log("data:", data);
 
   useEffect(() => {
     // dispatch(getProduct());

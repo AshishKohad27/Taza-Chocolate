@@ -2,6 +2,7 @@ export type TReducerStateProduct = {
   loading: boolean;
   error: boolean;
   data: ObjectProduct[] | [];
+  singleItem: ObjectProduct[] | [];
   message: string;
   errorMessage: String;
 };

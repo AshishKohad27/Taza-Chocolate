@@ -8,6 +8,7 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import BreadCrumbs from "../../../components/BreadCrums/BreadCrums";
@@ -16,6 +17,10 @@ import ProductFooter from "../../../components/Product/ProductFooter";
 import Footer from "../../../components/Footer/Footer";
 import Nutrition from "../../../components/Product/NutritionCard";
 import Navbar from "../../../components/Navbar/Navbar";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductById } from "../../../redux/product/product.action";
+import { addItemInCart } from "../../../redux/cart/cart.action";
 
 const SinglePageArr = [
   { id: 1, image: "/Images/SinglePage/USDA_organic_color.png" },
@@ -26,23 +31,58 @@ const SinglePageArr = [
   { id: 6, image: "/Images/SinglePage/UPareve.png" },
 ];
 
-const product = {
-  bar: 413.1,
-  caseBar: 3717.9,
-  category: "Chocolate_Bars",
-  description:
-    "Perfectly unrefined 70% dark stone ground chocolate. This bar strikes a perfectly bold balance of sweet and bitter. We grind our exceptional Direct Trade cacao with hand-carved granite millstones, so you can taste the true flavors of cacao shining through.",
-  image:
-    "https://cdn.shopify.com/s/files/1/0974/7668/products/Deliciously_Dark_2022_SHOPIFY_large.png?v=1661399717",
-  quantity: 99,
-  title: "70% Deliciously Dark",
-  __v: 0,
-  _id: "63fe161b6868750f8d637200",
-};
-
 export default function SinglePage() {
+  const [qty, setQty] = useState(1);
+  const dispatch = useDispatch();
   const router = useRouter();
-  console.log("_id:", router.asPath.split("/")[4]);
+  const { singleItem, loading, error } = useSelector((store) => store.product);
+  const { message } = useSelector((store) => store.cart);
+  const toast = useToast();
+  // console.log("singleItem:", singleItem);
+  // console.log("message:", message);
+  // console.log("id:", router.asPath.split("/")[4]);
+
+  useEffect(() => {
+    if (message === "Item added in cart successfully") {
+      toast({
+        title: message,
+        status: "success",
+        position: "top",
+        duration: 2000,
+        isClosable: true,
+      });
+    } else if (message === "Product Already Exist") {
+      toast({
+        title: message,
+        status: "success",
+        position: "top",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  }, [message]);
+
+  useEffect(() => {
+    dispatch(getProductById(router.asPath.split("/")[4]));
+  }, [router.asPath.split("/")[4]]);
+
+  const handelAddToCart = () => {
+    console.log("qty:", qty);
+    const payload = {
+      productId: singleItem._id,
+      quantity: qty,
+    };
+    dispatch(addItemInCart(payload));
+    if (message === "Product Already Exist") {
+      toast({
+        title: message,
+        status: "success",
+        position: "top",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  };
 
   return (
     <Box>
@@ -67,7 +107,13 @@ export default function SinglePage() {
         columns={{ base: 1, md: 2 }}
       >
         <Flex justifyContent="center" alignItems="center" maxW="535px">
-          <Image w="400px" h="400px" m="auto" src={`${product.image}`} alt="" />
+          <Image
+            w="400px"
+            h="400px"
+            m="auto"
+            src={`${singleItem && singleItem.image}`}
+            alt=""
+          />
         </Flex>
         <Flex
           justifyContent="center"
@@ -78,24 +124,24 @@ export default function SinglePage() {
           h="auto"
         >
           <Heading as="h1" mb="14px" fontSize="28px">
-            {product.title && product.title.toUpperCase()}
+            {singleItem.title && singleItem.title.toUpperCase()}
           </Heading>
           <Text fontSize="16px" mb="30px">
-            {product.description}
+            {singleItem.description}
           </Text>
           <Flex justifyContent="space-evenly" w="400px" m="auto" mb="40px">
             <Box>
               <Heading as="h1">BAR</Heading>
             </Box>
             <Box>
-              <Select>
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
+              <Select value={qty} onChange={(e) => setQty(e.target.value)}>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
               </Select>
             </Box>
           </Flex>
-          <Button w="100%" bg="#2EBBCD">
+          <Button w="100%" bg="#2EBBCD" onClick={handelAddToCart}>
             ADD TO CART
           </Button>
         </Flex>

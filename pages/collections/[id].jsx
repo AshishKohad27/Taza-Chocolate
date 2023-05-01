@@ -85,7 +85,7 @@ export default function CollectionsProducts() {
   const dispatch = useDispatch();
 
   const { data } = useSelector((store) => store.product);
-  console.log("data:", data);
+  // console.log("data:", data);
 
   useEffect(() => {
     let payload = router.query.id;

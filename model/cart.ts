@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mongoose";
+import mongoose, { Schema, model, models } from "mongoose";
 
 type productTypescript = {
   title: String;
@@ -21,7 +21,10 @@ const cartSchema = new Schema<productTypescript>({
   category: { type: String, require: true },
   quantity: { type: Number, require: true },
   productId: { type: String, require: true },
-  userId: { type: String, require: true },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "auth"
+  },
 });
 
 export default models.cart || model<productTypescript>("cart", cartSchema); 

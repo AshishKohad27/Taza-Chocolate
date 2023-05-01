@@ -30,6 +30,7 @@ export const addCart = async ({
             const userId = verifyToken._id;
 
             let isProductExistInCart = await cartM.find({ userId, productId });
+            // console.log("isProductExistInCart:", isProductExistInCart)
             if (isProductExistInCart.length !== 0) {
                 return {
                     data: isProductExistInCart,
@@ -50,7 +51,7 @@ export const addCart = async ({
                 caseBar: getUpdateProduct.caseBar,
                 image: getUpdateProduct.image,
                 category: getUpdateProduct.category,
-                quantity: 1,
+                quantity,
                 productId,
                 userId,
             });
@@ -88,13 +89,13 @@ export const getCart = async (token: string): Promise<any> => {
             // get data of that particular userId
             const userId = verifyToken._id;
 
-            let isProductExistInCart = await cartM.find({ userId });
+            let isProductExistInCart = await cartM.find({ userId })
 
             return {
                 data: isProductExistInCart,
                 flag: true,
                 desc: "",
-                message: "Item added in cart successfully",
+                message: "Getting Cart Item Successfully",
             };
         }
     } catch (e: any) {
@@ -113,7 +114,7 @@ export const updateQuantityItem = async (
     quantity: number,
     // productId: string
 ): Promise<any> => {
-    // console.log('token, productId, quantity:', cartId, quantity)
+    // console.log('token, productId, quantity:', cartId, quantity, token)
     try {
         let verifyToken = await jwt.decode(token, jwtSecretKey);
         if (!verifyToken) {

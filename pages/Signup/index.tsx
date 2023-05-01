@@ -65,7 +65,7 @@ export default function SignUp() {
 
   const handleSubmit = (event: FormEvent<HTMLButtonElement>): any => {
     event.preventDefault();
-    console.log("form:", form);
+    // console.log("form:", form);
     if (!form.email || !form.password) {
       alert("Please Fill All Details");
     } else {

@@ -8,7 +8,7 @@ export default async function Signup(
 ) {
   if (req.method === "POST") {
     const { access_token } = req.body;
-    console.log("access_token Payload:", access_token)
+    // console.log("access_token Payload:", access_token)
     const { message, flag, data, desc }: TAuthSignup = await tokenVerify(access_token);
     if (flag) {
       return res.status(201).send({ message, data, desc });

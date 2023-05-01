@@ -4,13 +4,14 @@
   max-width: 1349px;
   margin: auto;
   /* background-color: red; */
-  height: 134px;
+  height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid gray;
 }
 
 .left {
@@ -95,7 +96,7 @@
   color: #fff;
 }
 .mid {
-width: 200px;
+width: 250px;
  
   height: 150px;
 
@@ -104,7 +105,7 @@ width: 200px;
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 020px;
+  margin-top: 20px;
 }
 .mid > img {
   width: 185px;

@@ -17,7 +17,7 @@ export default async function Cart(
     res: NextApiResponse,
 ) {
     if (req.method === "POST") {
-        const token: string | any = req.headers['authorization']
+        const token: string | any = req.headers['authorization_access']
         const { productId, quantity }: any = req.body;
         //quantity from add button will come here
 
@@ -29,10 +29,8 @@ export default async function Cart(
         }
     }
     else if (req.method === "GET") {
-        const token: string | any = req.headers['authorization']
-        const { productId }: any = req.body;
-        //quantity from add button will come here
-
+        const token: string | any = req.headers['authorization_access']
+       
         const { message, data, flag, desc }: TResponseCart = await getCart(token);
         if (flag) {
             return res.status(200).send({ message, desc, data });

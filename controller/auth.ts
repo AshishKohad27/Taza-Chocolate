@@ -12,14 +12,11 @@ export const postSignup = async ({
   password,
 }: TObjectAuth): Promise<any> => {
   const hashPassword: string = await argon2.hash(password);
-  console.log(first_name,
-    last_name,
-    email,
-    password,)
+  // console.log(first_name,last_name,email,password,)
 
   try {
     let authUser: Array<TObjectAuth> = await authM.find({ email });
-    console.log("authUser:", authUser);
+    // console.log("authUser:", authUser);
     //if present
     if (authUser.length !== 0) {
       return {
@@ -32,7 +29,7 @@ export const postSignup = async ({
     //if user not present
     let CreateAuth = new authM({ first_name, last_name, email, password: hashPassword });
     await CreateAuth.save();
-    console.log("CreateAuth:", CreateAuth)
+    // console.log("CreateAuth:", CreateAuth)
     return {
       data: CreateAuth,
       flag: true,

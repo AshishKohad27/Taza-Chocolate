@@ -50,7 +50,7 @@ const addProduct = async ({
   category,
   quantity,
 }: ObjectProduct): Promise<any> => {
-  console.log("description:", description);
+  // console.log("description:", description);
   try {
     let addProduct = new productM({
       title,
@@ -153,4 +153,26 @@ const deleteProduct = async (productId: string): Promise<any> => {
   }
 };
 
-export { getProduct, addProduct, updateProduct, deleteProduct };
+const getProductById = async (productId: string): Promise<any> => {
+  try {
+    let data: ObjectProduct | null = await productM.findOne({ _id: productId, });
+    return {
+      data,
+      dataLength: 1 || 0,
+      message: "Get Single Item Successfully",
+      flag: true,
+      desc: "",
+    };
+
+  } catch (e: any) {
+    return {
+      data: [],
+      dataLength: 0,
+      flag: true,
+      desc: e.message,
+      message: "Error Occurs in get product by ID!",
+    };
+  }
+};
+
+export { getProduct, addProduct, updateProduct, deleteProduct, getProductById };

@@ -30,10 +30,10 @@ export default async function productRoutes(
   res: NextApiResponse<TProduct>
 ) {
   await connectDB();
-  console.log("Method:", req.method);
+  // console.log("Method:", req.method);
   if (req.method === "GET") {
     const payload: any = req.query.category;
-    console.log('payload:', payload)
+    // console.log('payload:', payload)
     const { data, dataLength, flag, message, desc }: TProduct =
       await getProduct(payload);
 

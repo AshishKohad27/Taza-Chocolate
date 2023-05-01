@@ -18,9 +18,10 @@ export default async function Cart(
 ) {
 
     if (req.method === "PATCH") {
-        const token: string | any = req.headers['authorization']
+        const token: string | any = req.headers['authorization_access']
         const cartId: any = req.query.id;
         const { quantity }: any = req.body;
+        // console.log("quantity:", quantity)
         //quantity from add button will come here
 
         const { message, data, flag, desc }: TResponseCart = await updateQuantityItem(token, cartId, quantity);
@@ -31,7 +32,7 @@ export default async function Cart(
         }
     }
     else if (req.method === "DELETE") {
-        const token: string | any = req.headers['authorization']
+        const token: string | any = req.headers['authorization_access']
         const cartId: any = req.query.id;
         // console.log('productId:', productId)
         //quantity from add button will come here

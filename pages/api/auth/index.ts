@@ -9,10 +9,10 @@ export default async function authRoute(
   res: NextApiResponse<TAuthSignup>
 ) {
   await connectDB();
-  console.log(req.method);
+  // console.log(req.method);
   if (req.method === "GET") {
     const { data, flag, message, desc }: TAuthSignup = await getAuth();
-    console.log("message:", message);
+    // console.log("message:", message);
     if (flag) {
       return res.status(200).send({ message, desc, data, flag });
     } else {
@@ -25,7 +25,7 @@ export default async function authRoute(
 async function getAuth(): Promise<any> {
   try {
     let data = await authM.find();
-    console.log(data[0].first_name)
+    // console.log(data[0].first_name)
     return {
       data,
       flag: true,

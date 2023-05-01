@@ -47,7 +47,7 @@ export default function Login() {
 
   const handleSubmit = (event: FormEvent<HTMLButtonElement>): any => {
     event.preventDefault();
-    console.log("form:", form);
+    // console.log("form:", form);
     if (!form.email || !form.password) {
       alert("Please Fill All Details");
     } else {
@@ -56,7 +56,7 @@ export default function Login() {
     }
   };
 
-  console.log("loading:", loading);
+  // console.log("loading:", loading);
 
   const { email, password } = form;
 
