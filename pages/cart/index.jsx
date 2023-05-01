@@ -49,7 +49,7 @@ export default function Cart() {
           <Box maxW="1269px" className={styles.heading}>
             <Box maxW="100px">
               <Heading as="h1">
-                <Link href="#">Home</Link>
+                <Link href="/">Home</Link>
               </Heading>
               <Text>
                 <BsChevronRight />
