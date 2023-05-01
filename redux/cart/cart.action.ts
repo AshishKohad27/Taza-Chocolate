@@ -7,6 +7,7 @@ import {
     DELETE_CART_SUCCESS,
     GET_CART_SUCCESS,
     PATCH_CART_SUCCESS,
+    SIMILAR_ITEM_IN_CART_SUCCESS,
 } from "./cart.types";
 
 
@@ -16,7 +17,7 @@ export const getCartItem =
         try {
             dispatch({ type: CART_LOADING });
             let res: AxiosResponse = await axios.get(`/api/cart`);
-            // console.log("res:", res.data);
+            console.log("res in cart item get:", res.data);
             dispatch({ type: GET_CART_SUCCESS, payload: res.data });
         } catch (e: any) {
             dispatch({ type: CART_ERROR });
@@ -74,3 +75,16 @@ export const updateItemInCart =
                 dispatch({ type: CART_ERROR });
             }
         };
+
+//similar product
+export const similarProduct =
+    () => async (dispatch: ({ type, payload }: TReducerActionCart) => void) => {
+        try {
+            dispatch({ type: CART_LOADING });
+            let res: AxiosResponse = await axios.get(`/api/cart/similarProducts`);
+            console.log("res in similar product:", res.data.data);
+            dispatch({ type: SIMILAR_ITEM_IN_CART_SUCCESS, payload: res.data });
+        } catch (e: any) {
+            dispatch({ type: CART_ERROR });
+        }
+    };

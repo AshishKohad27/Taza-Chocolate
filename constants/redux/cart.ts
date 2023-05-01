@@ -19,6 +19,7 @@ export type TReducerStateCart = {
     error: boolean;
     errorMessage: string;
     message: string;
+    relatedProducts: ObjectProduct[] | [];
 }
 
 

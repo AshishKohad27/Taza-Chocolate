@@ -198,3 +198,58 @@ export const deleteItem = async (
         };
     }
 };
+
+
+export const similarProductInCart = async (token: string): Promise<any> => {
+    try {
+        let verifyToken = await jwt.decode(token, jwtSecretKey);
+        if (!verifyToken) {
+            // un authorized
+            return {
+                data: [],
+                flag: false,
+                desc: "",
+                message: "UnAuthorized",
+            };
+        } else {
+            // get data of that particular userId
+            const userId = verifyToken._id;
+
+            let isProductExistInCart = await cartM.find({ userId });
+            let categoryObject: any = {};
+
+            for (let i = 0; i < isProductExistInCart.length; i++) {
+                if (categoryObject[isProductExistInCart[i].category] === undefined) {
+                    categoryObject[isProductExistInCart[i].category] = 1;
+                } else {
+                    categoryObject[isProductExistInCart[i].category]++;
+                }
+            }
+
+            let keywords: string[] = Object.keys(categoryObject);
+
+            const query = {
+                $or: keywords.map(keyword => ({
+                    category: keyword
+                }))
+            };
+
+            let relatedProducts = await cartM.find(query).limit(5);
+
+
+            return {
+                data: relatedProducts,
+                flag: true,
+                desc: "",
+                message: "Similar Product in Cart Item",
+            };
+        }
+    } catch (e: any) {
+        return {
+            data: [],
+            flag: true,
+            desc: e.message,
+            message: "Error Occurs!",
+        };
+    }
+};

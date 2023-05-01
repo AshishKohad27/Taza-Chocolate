@@ -1,5 +1,5 @@
 import { TReducerActionCart, TReducerStateCart } from "@/constants/redux/cart";
-import { ADD_ITEM_TO_CART_SUCCESS, CART_ERROR, CART_LOADING, DELETE_CART_SUCCESS, GET_CART_SUCCESS, PATCH_CART_SUCCESS } from "./cart.types";
+import { ADD_ITEM_TO_CART_SUCCESS, CART_ERROR, CART_LOADING, DELETE_CART_SUCCESS, GET_CART_SUCCESS, PATCH_CART_SUCCESS, SIMILAR_ITEM_IN_CART_SUCCESS } from "./cart.types";
 
 
 
@@ -9,6 +9,7 @@ const initialState: TReducerStateCart = {
     error: false,
     errorMessage: "",
     message: "",
+    relatedProducts: [],
 }
 
 
@@ -58,6 +59,20 @@ export const cartReducer = (state: TReducerStateCart = initialState, { type, pay
                 error: false
             }
         }
+
+
+        // Similar Item in Cart
+        case SIMILAR_ITEM_IN_CART_SUCCESS: {
+            console.log("SIMILAR_ITEM_IN_CART_SUCCESS:", payload.data)
+            return {
+                ...state,
+                relatedProducts: payload.data,
+                message: payload.message,
+                loading: false,
+                error: false
+            }
+        }
+
 
         // Loading
         case CART_LOADING: {

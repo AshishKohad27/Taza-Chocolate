@@ -19,8 +19,12 @@ import Nutrition from "../../../components/Product/NutritionCard";
 import Navbar from "../../../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductById } from "../../../redux/product/product.action";
+import {
+  getProduct,
+  getProductById,
+} from "../../../redux/product/product.action";
 import { addItemInCart } from "../../../redux/cart/cart.action";
+import { ProductArr } from "../../../components/Product/ProductArr";
 
 const SinglePageArr = [
   { id: 1, image: "/Images/SinglePage/USDA_organic_color.png" },
@@ -35,12 +39,19 @@ export default function SinglePage() {
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const router = useRouter();
-  const { singleItem, loading, error } = useSelector((store) => store.product);
+  const { singleItem, loading, error, data } = useSelector(
+    (store) => store.product
+  );
   const { message } = useSelector((store) => store.cart);
   const toast = useToast();
   // console.log("singleItem:", singleItem);
-  // console.log("message:", message);
-  // console.log("id:", router.asPath.split("/")[4]);
+  console.log("data:", data);
+  console.log("id:", router.asPath.split("/")[2]);
+
+  useEffect(() => {
+    let payload = router.asPath.split("/")[2];
+    dispatch(getProduct(payload));
+  }, [dispatch, router.asPath.split("/")[2]]);
 
   useEffect(() => {
     if (message === "Item added in cart successfully") {
@@ -192,6 +203,7 @@ export default function SinglePage() {
       {/* Details and Certificate */}
 
       {/* You May Like This */}
+
       <Box maxW="1130px" m="auto" mt="30px" mb="40px">
         <Flex
           maxW="1130px"
@@ -202,52 +214,71 @@ export default function SinglePage() {
           <Heading as="h1">You May Like This</Heading>
         </Flex>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }}>
-          <Box maxW="366px" h="370px" p="28px 0px" bg="blue.300">
-            <Box w="200px" h="200px" m="auto" mb="15px">
-              <Image
-                w="100%"
-                h="200px"
-                src="https://cdn.shopify.com/s/files/1/0974/7668/products/Taza_TripleNutCrunch-1080-med_large.jpg?v=1678472248"
-                alt=""
-              />
-            </Box>
-            <Flex
-              justifyContent="center"
-              alignItems="center"
-              direction="column"
-            >
-              <Heading fontSize="16px" as="h1" mb="7px" bg="yellow.200">
-                1
-              </Heading>
-              <Text mb="14px" fontSize="16px">
-                $ 5.00
-              </Text>
-
-              <Link
-                href="#"
-                // href={`/collections/${item.category && item.category}/${
-                //   item.title &&
-                //   item.title.split(" ", 2).join("_").split("%").join("_")
-                // }/${item._id}`}
-              >
-                <Button
-                  bg="black"
-                  style={{
-                    padding: "7px 18px",
-                    color: "#FFFFFF",
-                    fontSize: "16px",
-                    borderRadius: "5px",
-                    fontWeight: "800",
-                  }}
-                  _hover={{
-                    bg: "orange",
-                  }}
-                >
-                  BUY
-                </Button>
-              </Link>
-            </Flex>
-          </Box>
+          {data &&
+            data.map((item, index) => (
+              <>
+                {index < 3 ? (
+                  <Box h="370.47px" p="25px 0px" m="auto">
+                    <Flex
+                      h="200px"
+                      mb="15px"
+                      justifyContent="center"
+                      alignItems="center"
+                    >
+                      <Image
+                        h="200px"
+                        w="200px"
+                        src={item.image}
+                        alt={item.title}
+                      />
+                    </Flex>
+                    <Flex
+                      justifyContent="center"
+                      alignItems="center"
+                      flexDirection="column"
+                    >
+                      <Text
+                        fontSize="16px"
+                        fontWeight="600"
+                        mb="7px"
+                        color="#2D2D2D"
+                      >
+                        {item.title}
+                      </Text>
+                      <Text fontSize="16px" mb="15px" color="#2D2D2D">
+                        ₹{item.bar}
+                      </Text>
+                      <Link
+                        href={`/collections/${item.category && item.category}/${
+                          item.title &&
+                          item.title
+                            .split(" ", 2)
+                            .join("_")
+                            .split("%")
+                            .join("_")
+                        }/${item._id}`}
+                      >
+                        <Button
+                          bg="black"
+                          style={{
+                            padding: "7px 18px",
+                            color: "#FFFFFF",
+                            fontSize: "16px",
+                            borderRadius: "5px",
+                            fontWeight: "800",
+                          }}
+                          _hover={{
+                            bg: "orange",
+                          }}
+                        >
+                          BUY
+                        </Button>
+                      </Link>
+                    </Flex>
+                  </Box>
+                ) : null}
+              </>
+            ))}
         </SimpleGrid>
       </Box>
       {/* You May Like This */}
