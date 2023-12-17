@@ -1,0 +1,23 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: none;
+}
+
+@mixin tc_typography($ff, $fs, $fw, $lh, $fc) {
+    font-style: normal;
+    font-family: $ff;
+    font-size: $fs;
+    font-weight: $fw;
+    line-height: $lh;
+    color: $fc;
+}
+
+// Site Container
+.site-container {
+    max-width: 1440px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}

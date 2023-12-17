@@ -1,24 +1,27 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/db.ts", "pages/products/index.tsx", "constants/product.ts", "pages/api/cart/index.ts", "middleware/authMiddleWare.js", "components/Footer/Footer.jsx", "pages/collections/[id].jsx", "components/Product/ProductFooter2.jsx", "components/Product/ProductFooter.jsx", "pages/collections/index.jsx", "pages/index.jsx", "components/BreadCrums/BreadCrums.jsx", "components/Navbar/Navbar.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
