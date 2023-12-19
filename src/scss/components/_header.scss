@@ -1,0 +1,257 @@
+@use "../global/base";
+@use "../global/color";
+
+.tc-header-outer {
+    width: 100%;
+}
+
+.tc-header-inner {
+    width: 100%;
+    height: 100%;
+    height: 134px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+
+// Left Section
+.tch-left {
+    width: 41.3%;
+    max-width: 452px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    // Left Grid
+    .tch-left-grid {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        list-style: none;
+        padding: 0px;
+        gap: 26px;
+    }
+
+    // Desktop View
+    .tch--desk-view {
+        display: flex;
+    }
+
+    // Mobile View
+    .tch--mob-view {
+        display: none;
+    }
+
+    .tchl-griditem {
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        // position: relative;
+    }
+
+    .tchl-griditem-a {
+        text-decoration: none;
+        @include base.tc_typography('Museo Slab 900', 18px, 400, normal, color.$tc-color--black);
+        transition: color 0.5s;
+        cursor: pointer;
+    }
+
+    // griditem Triangle 
+    .tchl-gi-tribox {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+
+    .tchl-gi-tri {
+        width: 0px;
+        height: 0px;
+        border-bottom: 10px solid color.$tc-color--lightblue;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+    }
+
+    // Sub Item in header
+    .tchl-gi-subbox {
+        width: 100vw;
+        background-color: color.$tc-color--lightblue;
+        position: absolute;
+        top: 134px;
+        left: 0px;
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+
+    // Sub Item in header grid
+    .tchlgi-grid {
+        width: 100%;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .tchlgi-griditem {
+        height: auto;
+        padding: 30px 0px;
+    }
+
+    .tchlgi-griditem-a {
+        padding: 30px 0px;
+        @include base.tc_typography('ProximaNovaSemiBold', 14px, 600, normal, color.$tc-color--lightblack);
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: color 0.5s;
+
+        &:hover {
+            color: color.$tc-color--white;
+        }
+    }
+
+    .tchl-griditem:hover {
+        .tchl-griditem-a {
+            color: color.$tc-color--lightblue;
+        }
+
+        // griditem Triangle 
+        .tchl-gi-tribox {
+            opacity: 1;
+        }
+
+        // Sub Item in header
+        .tchl-gi-subbox {
+            opacity: 1;
+            z-index: 10;
+        }
+    }
+}
+
+// Left : Mobile View
+.tchlgi-mob {
+    width: 100%;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px 0px;
+
+    .tabs-menu {
+        border-bottom: 1px solid color.$tc-color--white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 0px;
+        list-style: none;
+    }
+
+    .tabs-listitem {
+        background-color: transparent;
+        transition: background-color 0.5s;
+    }
+
+    .tabs-listitem-a {
+        @include base.tc_typography('NexaBlack', 16px, 800, normal, color.$tc-color--white);
+        padding: 10px 10px 5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: color 0.5s;
+        cursor: pointer;
+
+        &:hover {
+            color: color.$tc-color--lightblue
+        }
+
+    }
+
+    .tabs-listitem:hover {
+        background-color: color.$tc-color--white;
+
+        .tabs-listitem-a {
+            color: color.$tc-color--lightblue
+        }
+    }
+
+    .tabs-listitem--active {
+        background-color: color.$tc-color--white;
+
+        .tabs-listitem-a {
+            color: color.$tc-color--lightblue
+        }
+    }
+
+    .tabs-listitem {
+        padding: 10px 10px 5px;
+    }
+
+    .tab-content {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .tab-content-list {
+        width: 100%;
+        list-style: none;
+        padding: 0px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tab-content-listitem {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .tab-content-listitem-a {
+        width: 100%;
+        padding: 5px 0px;
+        text-decoration: none;
+        text-transform: uppercase;
+        @include base.tc_typography('ProximaNovaSemiBold', 16px, 600, normal, color.$tc-color--white);
+        transition: background-color 0.5s;
+
+        &:hover {
+            background-color: teal;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    // Left Section
+    .tch-left {
+
+        // Desktop View
+        .tch--desk-view {
+            display: none;
+        }
+
+        // Mobile View
+        .tch--mob-view {
+            display: flex;
+        }
+    }
+}
+
+// Middle Section
+.tch-mid {
+    background-color: teal;
+    width: calc(100% - (2 * 41.3%));
+}
+
+// Right Section
+.tch-right {
+    background-color: indigo;
+    width: 41.3%;
+    max-width: 452px;
+}

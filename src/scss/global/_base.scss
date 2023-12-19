@@ -4,6 +4,27 @@
     box-sizing: none;
 }
 
+// Font Family Museo Slab 900
+@font-face {
+    font-family: 'Museo Slab 900';
+    src: url('../fonts/Museo_Slab_900.woff2') format('woff2'),
+        url('../fonts/Museo_Slab_900.woff') format('woff');
+}
+
+// Font Family Proxima Nova Semi Bold
+@font-face {
+    font-family: 'ProximaNovaSemiBold';
+    src: url('../fonts/Proxima-Nova-Sbold.woff2') format('woff2'),
+        url('../fonts/Proxima-Nova-Sbold.woff') format('woff');
+}
+
+// Font Family Proxima Nova Semi Bold
+@font-face {
+    font-family: 'NexaBlack';
+    src: url('../fonts/Nexa-Black-Regular.woff2') format('woff2'),
+        url('../fonts/Nexa-Black-Regular.woff') format('woff');
+}
+
 @mixin tc_typography($ff, $fs, $fw, $lh, $fc) {
     font-style: normal;
     font-family: $ff;
@@ -15,9 +36,9 @@
 
 // Site Container
 .site-container {
-    max-width: 1440px;
-    padding-left: 20px;
-    padding-right: 20px;
+    max-width: calc(1160px);
+    padding-left: 30px;
+    padding-right: 30px;
     margin-left: auto;
     margin-right: auto;
 }
