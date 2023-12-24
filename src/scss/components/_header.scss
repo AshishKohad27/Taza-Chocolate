@@ -1,5 +1,6 @@
 @use "../global/base";
 @use "../global/color";
+@use "../global/typography";
 
 .tc-header-outer {
     width: 100%;
@@ -13,7 +14,6 @@
     justify-content: space-between;
     gap: 30px;
 }
-
 
 // Left Section
 .tch-left {
@@ -45,6 +45,7 @@
     }
 
     .tchl-griditem {
+        cursor: pointer;
         height: 40px;
         display: flex;
         justify-content: space-between;
@@ -54,12 +55,16 @@
 
     .tchl-griditem-a {
         text-decoration: none;
-        @include base.tc_typography('Museo Slab 900', 18px, 400, normal, color.$tc-color--black);
+        @include typography.tc_typography("Museo Slab 900",
+            18px,
+            400,
+            normal,
+            color.$tc-color--black );
         transition: color 0.5s;
         cursor: pointer;
     }
 
-    // griditem Triangle 
+    // griditem Triangle
     .tchl-gi-tribox {
         width: 100%;
         display: flex;
@@ -85,7 +90,9 @@
         top: 134px;
         left: 0px;
         opacity: 0;
-        transition: opacity 0.5s;
+        transition: opacity 0.5s, z-index 0.5s;
+        pointer-events: none;
+        z-index: -10;
     }
 
     // Sub Item in header grid
@@ -106,7 +113,11 @@
 
     .tchlgi-griditem-a {
         padding: 30px 0px;
-        @include base.tc_typography('ProximaNovaSemiBold', 14px, 600, normal, color.$tc-color--lightblack);
+        @include typography.tc_typography("ProximaNovaSemiBold",
+            14px,
+            600,
+            normal,
+            color.$tc-color--lightblack );
         text-transform: uppercase;
         text-decoration: none;
         transition: color 0.5s;
@@ -121,13 +132,14 @@
             color: color.$tc-color--lightblue;
         }
 
-        // griditem Triangle 
+        // griditem Triangle
         .tchl-gi-tribox {
             opacity: 1;
         }
 
         // Sub Item in header
         .tchl-gi-subbox {
+            pointer-events: auto;
             opacity: 1;
             z-index: 10;
         }
@@ -135,6 +147,72 @@
 }
 
 // Left : Mobile View
+.tch--mob-view {
+    .tchl-griditem--mob {
+        cursor: pointer;
+    }
+
+    .tchl-griditem-a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .tchl-ham {
+        width: 16px;
+        height: 11px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .tchl-ham-bar {
+            opacity: 1;
+            width: 100%;
+            height: 2px;
+            background-color: color.$tc-color--lightblue;
+            transition: all 0.5s ease-in-out;
+        }
+    }
+
+    .tchl-ham--active {
+        .tchl-ham-bar:first-child {
+            transform: translate(0px, 4px)rotate(45deg);
+
+        }
+
+        .tchl-ham-bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .tchl-ham-bar:last-child {
+            transform: translate(0px, -5px)rotate(-45deg);
+        }
+
+    }
+
+    .tchl-gi-subbox {
+        pointer-events: auto;
+    }
+}
+
+.isSubMenuOpen {
+    .tchl-griditem-a {
+        color: color.$tc-color--lightblue;
+    }
+
+    // griditem Triangle
+    .tchl-gi-tribox {
+        opacity: 1;
+    }
+
+    // Sub Item in header
+    .tchl-gi-subbox {
+        opacity: 1;
+        z-index: 10;
+    }
+}
+
 .tchlgi-mob {
     width: 100%;
     max-width: 280px;
@@ -158,7 +236,11 @@
     }
 
     .tabs-listitem-a {
-        @include base.tc_typography('NexaBlack', 16px, 800, normal, color.$tc-color--white);
+        @include typography.tc_typography("NexaBlack",
+            16px,
+            800,
+            normal,
+            color.$tc-color--white );
         padding: 10px 10px 5px;
         text-transform: uppercase;
         text-decoration: none;
@@ -166,16 +248,15 @@
         cursor: pointer;
 
         &:hover {
-            color: color.$tc-color--lightblue
+            color: color.$tc-color--lightblue;
         }
-
     }
 
     .tabs-listitem:hover {
         background-color: color.$tc-color--white;
 
         .tabs-listitem-a {
-            color: color.$tc-color--lightblue
+            color: color.$tc-color--lightblue;
         }
     }
 
@@ -183,7 +264,7 @@
         background-color: color.$tc-color--white;
 
         .tabs-listitem-a {
-            color: color.$tc-color--lightblue
+            color: color.$tc-color--lightblue;
         }
     }
 
@@ -194,6 +275,17 @@
     .tab-content {
         margin-top: 20px;
         width: 100%;
+        transition: display 0.5s;
+    }
+
+    .tab-content--show {
+        display: block;
+        transition: display 0.5s;
+    }
+
+    .tab-content--hide {
+        display: none;
+        transition: display 0.5s;
     }
 
     .tab-content-list {
@@ -217,7 +309,11 @@
         padding: 5px 0px;
         text-decoration: none;
         text-transform: uppercase;
-        @include base.tc_typography('ProximaNovaSemiBold', 16px, 600, normal, color.$tc-color--white);
+        @include typography.tc_typography("ProximaNovaSemiBold",
+            16px,
+            600,
+            normal,
+            color.$tc-color--white );
         transition: background-color 0.5s;
 
         &:hover {

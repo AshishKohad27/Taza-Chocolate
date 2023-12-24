@@ -1,0 +1,28 @@
+@use "../global/typography";
+
+// Placeholder 
+@mixin input-placeholder-css($ff, $fs, $fw, $lh, $fc) {
+    &::placeholder {
+        @include typography.tc_typography($ff, $fs, $fw, $lh, $fc);
+    }
+
+    ::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        @include typography.tc_typography($ff, $fs, $fw, $lh, $fc);
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        @include typography.tc_typography($ff, $fs, $fw, $lh, $fc);
+    }
+
+    :-ms-input-placeholder {
+        /* IE 10+ */
+        @include typography.tc_typography($ff, $fs, $fw, $lh, $fc);
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        @include typography.tc_typography($ff, $fs, $fw, $lh, $fc);
+    }
+}

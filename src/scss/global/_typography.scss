@@ -1,6 +1,15 @@
-
 // Site Paragraph Style
 .site--paragraph {}
 
 // Site Title Style
 .site--title {}
+
+// Typography Mixin
+@mixin tc_typography($ff, $fs, $fw, $lh, $fc) {
+    font-style: normal;
+    font-family: $ff;
+    font-size: $fs;
+    font-weight: $fw;
+    line-height: $lh;
+    color: $fc;
+}

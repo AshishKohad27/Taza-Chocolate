@@ -1,10 +1,18 @@
+"use client";
 import Header from "@/components/header";
-// Add this line at the top of the file
-// @ts-ignore
-// @ts-nocheck
-// use client
+import Login from "@/pages/login";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [btn, setBtn] = useState(0);
+  useEffect(() => {
+    console.log("btn:", btn);
+  }, [btn]);
 
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <Login />
+    </>
+  );
 }

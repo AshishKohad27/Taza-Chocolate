@@ -1,8 +1,38 @@
 * {
     margin: 0px;
     padding: 0px;
-    box-sizing: none;
+    box-sizing: initial;
 }
+
+body,
+html {
+    overflow: auto;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+dl,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
 
 // Font Family Museo Slab 900
 @font-face {
@@ -18,20 +48,11 @@
         url('../fonts/Proxima-Nova-Sbold.woff') format('woff');
 }
 
-// Font Family Proxima Nova Semi Bold
+// Font Family NexaBlack
 @font-face {
     font-family: 'NexaBlack';
     src: url('../fonts/Nexa-Black-Regular.woff2') format('woff2'),
         url('../fonts/Nexa-Black-Regular.woff') format('woff');
-}
-
-@mixin tc_typography($ff, $fs, $fw, $lh, $fc) {
-    font-style: normal;
-    font-family: $ff;
-    font-size: $fs;
-    font-weight: $fw;
-    line-height: $lh;
-    color: $fc;
 }
 
 // Site Container
