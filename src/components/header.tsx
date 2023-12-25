@@ -91,12 +91,12 @@ export default function Header() {
     console.log("tabPosition:", tabPosition);
     console.log("openHam:", openHam);
   }, [tabPosition, openHam]);
+
+  
   return (
     <header className="tc-header-outer">
       <div className="site-container">
         <div className="tc-header-inner">
-          {/* Desktop View */}
-          {/* <div className="tch--desk-grid"> */}
           {/* Left Section */}
           <div className="tch-left">
             {/* Left Grid : Desktop View*/}
@@ -222,7 +222,17 @@ export default function Header() {
             </ul>
           </div>
           {/* Middle Section */}
-          <div className="tch-mid">2</div>
+          <div className="tch-mid">
+            <div className="tch-mid-logo-box">
+              <a href="" className="tch-mid-logo-a">
+                <img
+                  className="tch-mid-logo"
+                  src="../images/logo.avif"
+                  alt=""
+                />
+              </a>
+            </div>
+          </div>
           {/* Right Section */}
           <div className="tch-right">3</div>
         </div>
