@@ -1,0 +1,93 @@
+@use "../../global/base";
+@use "../../global/color";
+@use "../../global/typography";
+
+.dashbord-outer {
+    margin-top: 50px;
+}
+
+// .dashbord-inner {}
+
+// Grid
+.dash-grid {
+
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    .dash-griditem {
+        width: 150px;
+        height: 150px;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: color.$tc-color--black;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        transition: background-color 0.5s;
+
+        &:hover {
+            background-color: color.$tc-color--red;
+        }
+    }
+
+    .dash-griditem-a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        @include typography.tc_typography("Museo Slab 900",
+            35px,
+            400,
+            normal,
+            color.$tc-color--white );
+    }
+}
+
+// Admin Header
+.admin-header {
+    background-color: red;
+
+    .auth-btn-box {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .auth-btn {
+        display: inline-block;
+        background-color: yellow;
+        padding: 10px 30px;
+        @include typography.tc_typography("Museo Slab 900",
+            18px,
+            400,
+            normal,
+            color.$tc-color--white );
+
+    }
+}
+
+// Table
+
+.table-container {
+    .admin-table {
+        margin-top: 20px;
+        width: 100%;
+        border-collapse: separate;
+        border: 1px solid color.$tc-color--black;
+    }
+
+    thead,
+    tbody {
+        text-align: center;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        border: 1px solid color.$tc-color--black;
+    }
+
+}

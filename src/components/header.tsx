@@ -88,8 +88,8 @@ export default function Header() {
   const [tabPosition, setTabPosition] = useState("tab-1");
   const [openHam, setOpenHam] = useState(true);
   useEffect(() => {
-    console.log("tabPosition:", tabPosition);
-    console.log("openHam:", openHam);
+    // console.log("tabPosition:", tabPosition);
+    // console.log("openHam:", openHam);
   }, [tabPosition, openHam]);
 
   

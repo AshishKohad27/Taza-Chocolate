@@ -24,8 +24,11 @@
       "@config/*": ["./src/config*"],
       "@constant/*": ["./src/constant*"],
       "@controller/*": ["./src/controller*"],
+      "@model/*": ["./src/model*"],
+      "@scss/*": ["./src/scss*"],
+      "@admin/*": ["./src/admin*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/admin/components/users-form/admin-form-create.tsx"],
   "exclude": ["node_modules"]
 }

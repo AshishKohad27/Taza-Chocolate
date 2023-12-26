@@ -1,4 +1,4 @@
-type authorizationRegT = {
+export type authorizationRegT = {
     first_name: string;
     last_name: string;
     email: string;
@@ -6,12 +6,12 @@ type authorizationRegT = {
     conform_password?: string;
 }
 
-type authorizationLoginT = {
+export type authorizationLoginT = {
     email: string;
     password: string;
 }
 
-type passwordStatusT = {
+export type passwordStatusT = {
     upperCase: boolean,
     lowerCase: boolean,
     number: boolean,

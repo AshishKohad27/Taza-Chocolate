@@ -1,3 +1,4 @@
+import { authorizationRegT, passwordStatusT } from "@/constant/client/auth";
 import { useEffect, useState, useRef } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -49,24 +50,24 @@ export default function Login() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    if (name === "password") {
-      const isPasswordStrong = verifyPasswordRequirements(value);
-      setPasswordStatus(isPasswordStrong.passwordRequirements);
-      setMeetsStrengthCriteria(isPasswordStrong.hasRequiredStrength);
+    // if (name === "password") {
+    //   const isPasswordStrong = verifyPasswordRequirements(value);
+    //   setPasswordStatus(isPasswordStrong.passwordRequirements);
+    //   setMeetsStrengthCriteria(isPasswordStrong.hasRequiredStrength);
+    //   setFormData({ ...formData, [name]: value });
+    // } else {
       setFormData({ ...formData, [name]: value });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    // }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!meetsStrengthCriteria) {
-      passwordInputRef.current?.focus();
-    //   console.log("value is:", passwordInputRef.current?.value());
-    } else {
+    // if (!meetsStrengthCriteria) {
+    //   passwordInputRef.current?.focus();
+    // } else {
+      console.log("")
       console.log("Form submitted successfully!");
-    }
+    // }
   };
 
   const { first_name, last_name, email, password } = formData;

@@ -1,6 +1,6 @@
 "use client";
 import Header from "@/components/header";
-import Login from "@/pages/login";
+import Login from "@/pages/signup";
 import { useEffect, useState } from "react";
 
 export default function Home() {
