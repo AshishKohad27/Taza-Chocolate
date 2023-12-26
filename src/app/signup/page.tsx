@@ -1,3 +1,4 @@
+"use client";
 import { authorizationRegT, passwordStatusT } from "@/constant/client/auth";
 import { useEffect, useState, useRef } from "react";
 import { FaRegEye } from "react-icons/fa";
@@ -56,7 +57,7 @@ export default function Login() {
     //   setMeetsStrengthCriteria(isPasswordStrong.hasRequiredStrength);
     //   setFormData({ ...formData, [name]: value });
     // } else {
-      setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: value });
     // }
   };
 
@@ -65,8 +66,8 @@ export default function Login() {
     // if (!meetsStrengthCriteria) {
     //   passwordInputRef.current?.focus();
     // } else {
-      console.log("")
-      console.log("Form submitted successfully!");
+    console.log("");
+    console.log("Form submitted successfully!");
     // }
   };
 

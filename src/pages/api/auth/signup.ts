@@ -18,6 +18,11 @@ export default async function Signup(req: NextApiRequest, res: NextApiResponse) 
         } else {
             return res.status(statusCode).send({ message, desc, data, flag });
         }
+
+    }
+    if (req.method === "GET") {
+        res.send("I am running Signup get");
+        return;
     }
     res.end();
 }

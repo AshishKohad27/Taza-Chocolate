@@ -1,4 +1,5 @@
-export default function Admin_Form_Create() {
+"use client";
+export default function Admin_Form_Delete() {
   return (
     <>
       <button
@@ -7,7 +8,7 @@ export default function Admin_Form_Create() {
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        Create User
+        Delete User
       </button>
 
       <div
@@ -21,7 +22,7 @@ export default function Admin_Form_Create() {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                Create User
+                Modal title
               </h5>
               <button
                 type="button"

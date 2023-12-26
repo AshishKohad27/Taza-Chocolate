@@ -1,15 +1,16 @@
-export default function Admin_Form_Delete() {
+"use client";
+export default function Admin_Form_Edit() {
   return (
     <>
+      .
       <button
         type="button"
         className="btn btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        Delete User
+        Edit User
       </button>
-
       <div
         className="modal fade"
         id="exampleModal"

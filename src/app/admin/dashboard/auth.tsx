@@ -1,10 +1,8 @@
+"use client";
 import "@/scss/admin-styles.scss";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.js";
-
-import Admin_Form_Create from "../components/users-form/admin-form-create";
-import Admin_Form_Edit from "../components/users-form/admin-form-edit";
-import Admin_Form_Delete from "../components/users-form/admin-form-delete";
+import Admin_Form_Create from "../../../components/admin/users-form/admin-form-create";
+import Admin_Form_Edit from "../../../components/admin/users-form/admin-form-edit";
+import Admin_Form_Delete from "../../../components/admin/users-form/admin-form-delete";
 
 export default function Auth_Dashboard() {
   return (
@@ -40,12 +38,8 @@ export default function Auth_Dashboard() {
                   <td>Ashish Kohad</td>
                   <td>ashishkohad@gmail.com</td>
                   <td>Admin</td>
-                  <td>
-                    {/* <Admin_Form_Edit /> */}
-                  </td>
-                  <td>
-                    {/* <Admin_Form_Delete /> */}
-                  </td>
+                  <td>{/* <Admin_Form_Edit /> */}</td>
+                  <td>{/* <Admin_Form_Delete /> */}</td>
                 </tr>
               </tbody>
             </table>

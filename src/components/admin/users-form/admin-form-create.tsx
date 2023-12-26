@@ -1,15 +1,23 @@
-export default function Admin_Form_Edit() {
+"use client";
+import { useEffect } from "react";
+
+export default function Admin_Form_Create() {
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      // Code that uses document
+    }
+  }, []);
   return (
     <>
-      .
       <button
         type="button"
         className="btn btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        Edit User
+        Create User
       </button>
+
       <div
         className="modal fade"
         id="exampleModal"
@@ -21,7 +29,7 @@ export default function Admin_Form_Edit() {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                Modal title
+                Create User
               </h5>
               <button
                 type="button"

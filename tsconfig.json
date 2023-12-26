@@ -29,6 +29,6 @@
       "@admin/*": ["./src/admin*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/admin/components/users-form/admin-form-create.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/admin/users-form/admin-form-create.tsx"],
   "exclude": ["node_modules"]
 }
