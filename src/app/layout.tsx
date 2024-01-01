@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/scss/admin-styles.scss";
 import "@/scss/client-styles.scss";
+import Header from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>{children}</body>
+      <body suppressHydrationWarning={true}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

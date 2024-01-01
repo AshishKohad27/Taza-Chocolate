@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from "react";
 
 let headerList = [
@@ -92,7 +93,6 @@ export default function Header() {
     // console.log("openHam:", openHam);
   }, [tabPosition, openHam]);
 
-  
   return (
     <header className="tc-header-outer">
       <div className="site-container">

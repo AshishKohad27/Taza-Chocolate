@@ -1,4 +1,5 @@
 import FairForAll from "@/components/client/Fair-for-all";
+import Banner from "@/components/client/banner";
 import Breadcrumbs from "@/components/client/breadcrums";
 import FreeShipping from "@/components/client/free-shipping";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
@@ -9,18 +10,7 @@ export default function Products() {
         {/* BreadCrums */}
         <Breadcrumbs First="Home" Second="Buy" Third="Bars" />
         {/* Product Banner */}
-        <div
-          className="pro-banner-outer"
-          style={{
-            backgroundImage: `url(${"/images/page_banner_6_image.webp"})`,
-          }}
-        >
-          <div className="pro-banner-inner">
-            <article className="pro-banner-article">
-              <h1>BARS</h1>
-            </article>
-          </div>
-        </div>
+        <Banner bannerImage={"/images/page_banner_6_image.webp"} />
         {/* Product Description */}
         <div className="pro-desc-outer">
           <div className="site-container">

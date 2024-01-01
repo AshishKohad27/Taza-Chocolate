@@ -4,12 +4,14 @@
 // Pages
 @use "./client/pages/login";
 @use "./client/pages/products";
+@use "./client/pages/home";
 
 // Components
 @use "./client/components/header";
 @use "./client/components/breadcrums";
 @use "./client/components/product-grid";
 @use "./client/components/common-comp";
+@use "./client/components/category-grid";
 
 // Common
 @use "./global/common";

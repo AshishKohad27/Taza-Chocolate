@@ -1,6 +1,6 @@
 export default function FreeShipping() {
   return (
-    <div className="fs-outer">
+    <div className="fs-outer site-mb">
       <div className="site-container">
         <div className="fs-inner grid--center">
           {/* Free Shipping Title */}
