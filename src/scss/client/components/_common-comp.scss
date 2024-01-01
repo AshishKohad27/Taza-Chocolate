@@ -85,12 +85,9 @@
     .ffa-desc {
         margin-bottom: 10px;
 
-        p {
-            @include typography.tc_typography("Museo Slab 500",
-                32px,
-                700,
-                normal,
-                color.$tc-color--black );
+        h2 {
+            text-align: center;
+            @include typography.tc_typography-with-fsfc(32px, color.$tc-bgColor--black);
         }
     }
 
@@ -118,13 +115,10 @@
 
     .ph-title {
         h1 {
+            margin-bottom: 0px;
             padding: 20px;
             box-sizing: border-box;
-            @include typography.tc_typography("Museo Slab 500",
-                60px,
-                800,
-                normal,
-                color.$tc-color--lightblack );
+            font-size: 60px;
             text-transform: uppercase;
             letter-spacing: 4px;
 

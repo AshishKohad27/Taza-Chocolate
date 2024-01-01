@@ -87,11 +87,7 @@
 
         h6 {
             margin-bottom: 7px;
-            @include typography.tc_typography("Museo Slab 500",
-                16px,
-                800,
-                normal,
-                color.$tc-color--black);
+            @include typography.tc_typography-with-fsfc(16px, color.$tc-color--black);
         }
 
         p {

@@ -1,3 +1,5 @@
+@use "./typography";
+
 * {
     margin: 0px;
     padding: 0px;
@@ -37,6 +39,8 @@ img {
     max-width: 100%;
     display: block;
 }
+
+
 
 
 // Font Family Museo Slab 900
@@ -86,6 +90,24 @@ img {
     font-family: 'NexaRustScriptR';
     src: url('../fonts/NexaRustScriptR.woff2') format('woff2'),
         url('../fonts/NexaRustScriptR.woff') format('woff');
+}
+
+body,
+input,
+textarea,
+select {
+    @include typography.tc_typography-without-ff("ProximaNova", 400, 1.4);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    display: block;
+    @include typography.tc_typography-without-ff("Museo Slab 500", 800, 1.1);
+    margin-bottom: 10px;
 }
 
 // Site Container

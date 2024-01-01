@@ -22,11 +22,8 @@
         background-color: color.$tc-color--white;
 
         h1 {
-            @include typography.tc_typography("Museo Slab 500",
-                60px,
-                800,
-                normal,
-                color.$tc-color--black );
+            @include typography.tc_typography-with-fsfc(60px, color.$tc-color--black);
+            margin-bottom: 0px;
         }
     }
 }

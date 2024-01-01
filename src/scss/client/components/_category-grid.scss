@@ -65,12 +65,7 @@
         }
 
         h2 {
-            @include typography.tc_typography("Museo Slab 500",
-                28px,
-                800,
-                normal,
-                color.$tc-color--black );
-            margin-bottom: 10px;
+            @include typography.tc_typography-with-fsfc(28px, color.$tc-color--black);
         }
 
         .cat-article-box-a {
@@ -114,7 +109,7 @@
     }
 }
 
-@media (max-width:991px) {
+@media (max-width: 991px) {
     .cat-grid {
         .cat-griditem {
             width: calc(50.5% - 10px);
@@ -122,15 +117,15 @@
     }
 }
 
-@media (min-width:2000px) {
+@media (min-width: 2000px) {
     .cat-grid {
         .cat-griditem {
-            width: calc(100%/3 - 10px);
+            width: calc(100% / 3 - 10px);
         }
     }
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
     .cat-grid {
         .cat-griditem {
             width: 100%;

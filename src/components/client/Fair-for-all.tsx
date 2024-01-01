@@ -9,11 +9,11 @@ export default function FairForAll() {
           </div>
           {/* Fair for all Desc */}
           <div className="footer-desc ffa-desc">
-            <p>
+            <h2>
               Get FREE SHIPPING on orders $49+! (Total order price must be over
               $49 AFTER any discounts or rewards points are applied.) Contiguous
               US states only.
-            </p>
+            </h2>
           </div>
           {/* Fair for all Learn More */}
           <div className="footer-title ffa-learnmore">

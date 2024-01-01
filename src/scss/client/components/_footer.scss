@@ -1,0 +1,20 @@
+@use "../../global/base";
+@use "../../global/color";
+@use "../../global/typography";
+
+
+// @include typography.tc_typography("Museo Slab 500",
+// 28px,
+// 800,
+// normal,
+// color.$tc-color--black );
+
+.site-footer-outer {
+    background-color: red;
+    margin-bottom: 100px;
+
+    .site-footer-inner {
+        background-color: teal;
+    }
+
+}

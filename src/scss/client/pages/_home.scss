@@ -31,11 +31,7 @@
         margin: auto;
 
         h3 {
-            @include typography.tc_typography("Museo Slab 500",
-                28px,
-                800,
-                normal,
-                color.$tc-color--black );
+            @include typography.tc_typography-with-fsfc(28px, color.$tc-color--black );
             margin-bottom: 14px;
         }
 
