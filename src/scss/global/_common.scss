@@ -1,0 +1,30 @@
+@use "../global/base";
+@use "../global/color";
+@use "../global/typography";
+
+.site-paragraph {
+    p {
+        @include typography.tc_typography("ProximaNova",
+            16px,
+            400,
+            normal,
+            color.$tc-color--black );
+    }
+}
+
+.site-pagination-article {
+    button {
+        @include typography.tc_typography("ProximaNova",
+            16px,
+            400,
+            normal,
+            color.$tc-color--black );
+    }
+}
+
+.grid--center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

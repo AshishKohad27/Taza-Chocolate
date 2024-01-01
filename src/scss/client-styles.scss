@@ -2,7 +2,14 @@
 @use "./global/base";
 
 // Pages
-@use "./client/pages/login.scss";
+@use "./client/pages/login";
+@use "./client/pages/products";
 
 // Components
 @use "./client/components/header";
+@use "./client/components/breadcrums";
+@use "./client/components/product-grid";
+@use "./client/components/common-comp";
+
+// Common
+@use "./global/common";

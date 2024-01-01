@@ -1,0 +1,165 @@
+@use "../../global/base";
+@use "../../global/color";
+@use "../../global/typography";
+
+.site-grid {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    .site-griditem {
+        width: calc(100% / 3);
+        padding: 28px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        box-sizing: border-box;
+        border-bottom: 1px solid color.$tc-color--lightgray;
+        position: relative;
+    }
+
+    .site-griditem:nth-child(3n + 1) {
+
+        border-right: 1px solid color.$tc-color--lightgray;
+    }
+
+    .site-griditem:nth-child(3n + 3) {
+        border-left: 1px solid color.$tc-color--lightgray;
+    }
+
+    // New Products
+    .new-product {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 60px;
+        height: 60px;
+        background-image: url('/images/new-corner.avif');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    // Sold Out
+    .site-griditem-sold {
+        position: relative;
+    }
+
+    .site-griditem-sold::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 10;
+        background-color: color.$tc-color--red;
+        opacity: 0.3;
+    }
+
+    .sold-out {
+        position: absolute;
+        top: calc(50% - 50px);
+        left: calc(50% - 50px);
+        z-index: 15;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: color.$tc-color--white;
+        border: 5px solid color.$tc-color--black;
+        box-sizing: border-box;
+        background-image: url('/images/sold-out.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .site-griditem-a {
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+
+        h6 {
+            margin-bottom: 7px;
+            @include typography.tc_typography("Museo Slab 500",
+                16px,
+                800,
+                normal,
+                color.$tc-color--black);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+    }
+
+    .site-griditem-imgbox {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+
+    .site-griditem-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .site-griditem-btn {
+        width: 100%;
+
+        .pro-buy {
+            text-transform: uppercase;
+            background-color: color.$tc-color--black;
+            transition: background-color 0.5s;
+            padding: 7px 18px;
+            border-radius: 4px;
+            @include typography.tc_typography("NexaBlack",
+                16px,
+                800,
+                normal,
+                color.$tc-color--white);
+
+            &:hover {
+                background-color: color.$tc-color--orange;
+            }
+        }
+    }
+
+}
+
+@media (max-width:991px) {
+    .site-grid {
+        .site-griditem {
+            width: calc(100% / 2);
+        }
+
+
+        .site-griditem:nth-child(3n + 1),
+        .site-griditem:nth-child(3n + 3) {
+            border-left: 0px;
+            border-right: 0px;
+        }
+
+        .site-griditem:nth-child(2n + 1) {
+            border-right: 1px solid color.$tc-color--lightgray;
+        }
+    }
+}
+
+@media (max-width:767px) {
+    .site-grid {
+        .site-griditem {
+            width: 100%;
+        }
+
+        .site-griditem:nth-child(2n + 1) {
+            border-right: 0px;
+        }
+    }
+}

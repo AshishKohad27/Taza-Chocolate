@@ -9,6 +9,36 @@ export default async function AuthRoute(
 ) {
     await connectDB();
     if (req.method === "DELETE") {
+        // Token Details
+
+        // try {
+        //     const token = req.headers['authorization_token'];
+        //     console.log("token:", token);
+
+        //     if (token) {
+        //         const tokenDecode = jwt.decode(token, jwtSecretKey);
+        //         console.log("tokenDecode:", tokenDecode);
+        //     } else {
+        //         return {
+        //             data: [],
+        //             flag: false,
+        //             desc: '',
+        //             statusCode: 404,
+        //             message: "Token Not Present!",
+        //         };
+        //     }
+
+        // } catch (error: any) {
+        //     console.error("Auth MiddleWare:", error);
+        //     return {
+        //         data: [],
+        //         flag: false,
+        //         desc: error.message,
+        //         statusCode: 400,
+        //         message: "Error Occurs!",
+        //     };
+        // }
+
         console.log("Delete Auth!");
         const AuthID: any = req.query.id;
 

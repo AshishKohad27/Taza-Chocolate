@@ -6,7 +6,7 @@
 
 body,
 html {
-    overflow: auto;
+    // overflow: auto;
 }
 
 body {
@@ -46,6 +46,13 @@ img {
         url('../fonts/Museo_Slab_900.woff') format('woff');
 }
 
+// Font Family Museo Slab 500
+@font-face {
+    font-family: 'Museo Slab 500';
+    src: url('../fonts/Museo_Slab_500.woff2') format('woff2'),
+        url('../fonts/Museo_Slab_500.woff') format('woff');
+}
+
 // Font Family Proxima Nova Semi Bold
 @font-face {
     font-family: 'ProximaNovaSemiBold';
@@ -53,11 +60,32 @@ img {
         url('../fonts/Proxima-Nova-Sbold.woff') format('woff');
 }
 
+// Font Family Proxima Nova
+@font-face {
+    font-family: 'ProximaNova';
+    src: url('../fonts/Proxima-Nova.woff2') format('woff2'),
+        url('../fonts/Proxima-Nova.woff') format('woff');
+}
+
 // Font Family NexaBlack
 @font-face {
     font-family: 'NexaBlack';
     src: url('../fonts/Nexa-Black-Regular.woff2') format('woff2'),
         url('../fonts/Nexa-Black-Regular.woff') format('woff');
+}
+
+// Font Family NexaBold
+@font-face {
+    font-family: 'NexaBold';
+    src: url('../fonts/Nexa_Bold.woff2') format('woff2'),
+        url('../fonts/Nexa_Bold.woff') format('woff');
+}
+
+// Font Family NexaRustScriptR
+@font-face {
+    font-family: 'NexaRustScriptR';
+    src: url('../fonts/NexaRustScriptR.woff2') format('woff2'),
+        url('../fonts/NexaRustScriptR.woff') format('woff');
 }
 
 // Site Container

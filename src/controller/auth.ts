@@ -11,8 +11,8 @@ const jwtSecretKey = process.env.JSON_SECRET_KEY;
 const jwtSecretRefreshKey = process.env.JSON_SECRET_REFRESH_KEY;
 
 let globalSearch: any = "";
-let globalPage: any = "";
-let globallimit: any = "";
+let globalPage: any = 1;
+let globallimit: any = 10;
 
 async function globalGetAuth(gs: any, gp: any, gl: any) {
     globalSearch = gs;
@@ -155,6 +155,7 @@ export const postLogin = async ({ email, password }: AuthLoginBET) => {
 };
 
 export const getAuth = async ({ search, page, limit }: AuthQueryBET) => {
+    console.log("in function getauth");
     try {
         let authUser: Array<AuthorizationBET> = await globalGetAuth(
             search,

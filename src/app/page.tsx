@@ -1,7 +1,8 @@
 "use client";
 import Header from "@/components/header";
-import Login from "@/pages/signup";
 import { useEffect, useState } from "react";
+import Login from "./signup/page";
+import Products from "./products/page";
 
 export default function Home() {
   const [btn, setBtn] = useState(0);
@@ -12,7 +13,8 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Login />
+      {/* <Login /> */}
+      <Products />
     </>
   );
 }
