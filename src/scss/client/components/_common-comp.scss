@@ -20,11 +20,11 @@
 
 .footer-title {
     padding: 0px 5px;
-    
+
     h2 {
         @include typography.tc_typography("NexaRustScriptR",
-        27px,
-        400,
+            27px,
+            400,
             normal,
             color.$tc-color--black );
     }
@@ -32,7 +32,7 @@
 
 @media (max-width: 767px) {
     .fs-outer {
-        .site-container{
+        .site-container {
             padding-left: 0px;
             padding-right: 0px;
         }
@@ -43,14 +43,14 @@
     padding: 20px 30px 10px;
     box-sizing: border-box;
     border: 1px solid color.$tc-bgColor--black;
-    
+
     p {
         text-align: center;
         @include typography.tc_typography("NexaBold",
-        18px,
-        700,
-        normal,
-        color.$tc-color--black );
+            18px,
+            700,
+            normal,
+            color.$tc-color--black );
         margin-bottom: 16px;
     }
 }
@@ -103,9 +103,31 @@
     .ffa-outer {
         height: auto;
 
-        .site-container{
+        .site-container {
             padding-left: 0px;
             padding-right: 0px;
+        }
+    }
+}
+
+// Page Header
+.ph-outer {
+    background-color: color.$tc-color--lightblue;
+    padding: 20px;
+    box-sizing: border-box;
+
+    .ph-title {
+        h1 {
+            padding: 20px;
+            box-sizing: border-box;
+            @include typography.tc_typography("Museo Slab 500",
+                60px,
+                800,
+                normal,
+                color.$tc-color--lightblack );
+            text-transform: uppercase;
+            letter-spacing: 4px;
+
         }
     }
 }

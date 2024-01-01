@@ -13,7 +13,7 @@
     .cat-griditem {
         list-style: none;
         padding: 0px;
-        width: calc(33.4% - 10px);
+        width: calc(33.49999% - 10px);
         position: relative;
         overflow: hidden;
     }
@@ -118,6 +118,14 @@
     .cat-grid {
         .cat-griditem {
             width: calc(50.5% - 10px);
+        }
+    }
+}
+
+@media (min-width:2000px) {
+    .cat-grid {
+        .cat-griditem {
+            width: calc(100%/3 - 10px);
         }
     }
 }

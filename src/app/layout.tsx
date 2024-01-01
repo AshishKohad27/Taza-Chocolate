@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/scss/admin-styles.scss";
 import "@/scss/client-styles.scss";
 import Header from "@/components/header";
+import Footer from "@/components/client/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body suppressHydrationWarning={true}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

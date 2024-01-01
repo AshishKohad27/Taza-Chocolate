@@ -1,49 +1,14 @@
 "use client";
 
 import FairForAll from "@/components/client/Fair-for-all";
+import CategoryGrid from "@/components/client/category-grid";
 import FreeShipping from "@/components/client/free-shipping";
 
 export default function Home() {
   return (
     <div className="home-outer">
       {/* Category Grid */}
-      <div className="cat-outer site-mb">
-        <ul className="cat-grid">
-          {new Array(
-            { title: "Chocolate Discs" },
-            { title: "Chocolate Covered Treats" },
-            { title: "Smooth & Crunchy Bars" },
-            { title: "Bulk & Baking Chocolate" }
-          ).map((item, index) => (
-            <li className="cat-griditem" key={index}>
-              {/* Fixed Container */}
-              <div
-                className="fixed-cont grid--center"
-                style={{
-                  backgroundImage: `url(${"/images/page_banner_6_image.webp"})`,
-                }}
-              >
-                <article className="cat-article-box">
-                  <h4>Shop</h4>
-                  <h2>{item.title}</h2>
-                </article>
-              </div>
-              {/* Dynamic Container */}
-              <div className="dyna-cont grid--center">
-                <article className="cat-article-box grid--center dyna-cat-article-box">
-                  <h2>{item.title}</h2>
-                  <a title="Shop Now" className="cat-article-box-a" href="#">
-                    Shop now
-                  </a>
-                </article>
-              </div>
-            </li>
-          ))}
-          <li className="cat-griditem"></li>
-          <li className="cat-griditem"></li>
-          <li className="cat-griditem"></li>
-        </ul>
-      </div>
+      <CategoryGrid />
 
       {/* Read Our Transparency Report */}
       <div className="rot-outer grid--center site-mb">

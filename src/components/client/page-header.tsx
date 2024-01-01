@@ -1,9 +1,9 @@
-export default function PageHeader() {
+export default function PageHeader({ title }: { title: string }) {
   return (
-    <div className="ph-outer">
+    <div className="ph-outer site-mb">
       <div className="site-container">
-        <div className="grid--center">
-          <h1>BUY & SUBSCRIBE</h1>
+        <div className="ph-title grid--center">
+          <h1>{title}</h1>
         </div>
       </div>
     </div>
