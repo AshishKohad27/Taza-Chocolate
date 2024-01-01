@@ -15,6 +15,72 @@
 
     .site-footer-inner {
         background-color: teal;
+        padding: 60px 0px;
     }
 
+    // Site Footer Grid
+    .sf-grid {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sf-griditem {
+        width: 50%;
+    }
+
+    .left-footer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .lf-list:not(:first-child) {
+        margin-left: 30px;
+    }
+
+    .lf-list {
+        width: calc(100% / 4);
+        padding: 0px;
+        list-style: none;
+
+        h3 {
+            text-transform: uppercase;
+            @include typography.tc_typography-with-fsfc(16px, color.$tc-color--white);
+        }
+    }
+
+    .lf-list-a {
+        text-decoration: none;
+        @include typography.tc_typography(inherit, inherit, inherit, inherit, inherit);
+        transition: color 0.5s;
+
+        &:hover {
+            color: color.$tc-color--lightblue;
+        }
+    }
+
+    .lf-listitem-a {
+
+        text-decoration: none;
+        transition: color 0.5s;
+        @include typography.tc_typography-with-fsfc(12px, color.$tc-color--lightgray);
+
+        &:hover {
+            color: color.$tc-color--white;
+        }
+    }
+
+    // Separator
+    .sf-separator {
+        margin: 30px 0px;
+        border-bottom: 1px solid color.$tc-color--white;
+    }
+
+    .badges {
+        max-width: 387px;
+        float: right;
+        margin-right: 8px;
+    }
 }
