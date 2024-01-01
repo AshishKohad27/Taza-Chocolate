@@ -18,35 +18,27 @@ export default function Breadcrumbs({
                 <a href="#" className="bc-listitem-a">
                   {First}
                 </a>
-                {Second ? (
-                  <div className="bc-seperator">
-                    <LiaGreaterThanSolid />
-                  </div>
-                ) : (
-                  ""
-                )}
               </li>
             ) : (
               ""
             )}
             {Second ? (
               <li className="bc-listitem">
+                <div className="bc-seperator">
+                  <LiaGreaterThanSolid />
+                </div>
                 <a href="#" className="bc-listitem-a">
                   {Second}
                 </a>
-                {Third ? (
-                  <div className="bc-seperator">
-                    <LiaGreaterThanSolid />
-                  </div>
-                ) : (
-                  ""
-                )}
               </li>
             ) : (
               ""
             )}
             {Third ? (
               <li className="bc-listitem">
+                <div className="bc-seperator">
+                  <LiaGreaterThanSolid />
+                </div>
                 <a href="#" className="bc-listitem-a">
                   {Third}
                 </a>
