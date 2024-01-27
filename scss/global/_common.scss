@@ -1,0 +1,59 @@
+@use "../global/base";
+@use "../global/color";
+@use "../global/typography";
+
+.site-paragraph {
+    p {
+        @include typography.tc_typography("ProximaNova",
+            16px,
+            400,
+            normal,
+            color.$tc-color--black );
+    }
+}
+
+.site-pagination-article {
+    button {
+        @include typography.tc_typography("ProximaNova",
+            16px,
+            400,
+            normal,
+            color.$tc-color--black );
+    }
+}
+
+.grid--center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-mb {
+    margin-bottom: 10px;
+}
+
+.site-w50 {
+    width: 50%;
+}
+
+.separator {
+    width: 100%;
+    border-bottom: 1px solid color.$tc-brColor--gray;
+}
+
+.site-title {
+    h1 {
+        text-transform: uppercase;
+        text-align: center;
+        @include typography.tc_typography-with-fsfc(60px, color.$tc-color--lightblue);
+    }
+}
+
+@media (max-width:767px) {
+    .site-title {
+        h1 {
+            font-size: 30px;
+        }
+    }
+}

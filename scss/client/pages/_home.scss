@@ -1,0 +1,93 @@
+@use "../../global/base";
+@use "../../global/color";
+@use "../../global/typography";
+
+// .home-outer {}
+
+// Read Our Transparency Report
+.rot-outer {
+    width: 100%;
+    flex-wrap: wrap;
+
+    .rot-left {
+        height: 310px;
+        background-color: color.$tc-color--lightishblue;
+        width: calc(50% - 5px);
+        margin: auto;
+        margin-right: 5px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .rot-left-article {
+        padding-left: 40px;
+        padding-right: 40px;
+        width: 100%;
+        max-width: 516px;
+        box-sizing: border-box;
+        margin: auto;
+
+        h3 {
+            @include typography.tc_typography-with-fsfc(28px, color.$tc-color--black );
+            margin-bottom: 14px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .rot-left-a {
+            display: inline-block;
+
+            @include typography.tc_typography("NexaBlack",
+                14px,
+                800,
+                normal,
+                color.$tc-color--lightblack );
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid color.$tc-color--lightblack;
+            transition: background-color 0.5s, color 0.5s;
+
+            &:hover {
+                background-color: color.$tc-color--lightblack;
+                color: color.$tc-color--white;
+            }
+        }
+
+    }
+
+    .rot-right {
+        width: calc(50% - 5px);
+        margin-left: 5px;
+        box-sizing: border-box;
+        height: 310px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+@media (max-width: 767px) {
+
+    // Read Our Transparency Report
+    .rot-outer {
+        .rot-left {
+            width: 100%;
+            margin: 0px;
+            margin-bottom: 10px;
+        }
+
+        .rot-left-article {
+            max-width: 100%;
+        }
+
+        .rot-right {
+            width: 100%;
+            margin: 0px;
+        }
+    }
+}

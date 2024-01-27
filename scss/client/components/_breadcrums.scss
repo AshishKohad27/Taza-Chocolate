@@ -1,0 +1,56 @@
+@use "../../global/base";
+@use "../../global/color";
+@use "../../global/typography";
+
+.breadcrumbs-outer {
+    border-bottom: 1px solid color.$tc-color--lightishgray;
+
+    .breadcrumbs-inner {
+        padding: 12px 0px;
+        width: 100%;
+    }
+
+    .bc-list {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .bc-listitem {
+        padding: 0px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    .bc-listitem-a {
+        text-decoration: none;
+        @include typography.tc_typography("ProximaNova",
+            13px,
+            400,
+            normal,
+            color.$tc-color--lightishgray );
+        margin-right: 7px;
+        text-transform: uppercase;
+    }
+
+    .bc-seperator {
+        margin-right: 7px;
+
+        svg {
+            stroke-width: 2px;
+            width: 7px;
+            height: 10px;
+            fill: color.$tc-color--lightishgray;
+            stroke: color.$tc-color--lightishgray;
+        }
+    }
+
+    .bc-listitem:last-child {
+        .bc-listitem-a {
+            font-weight: 800;
+        }
+    }
+}

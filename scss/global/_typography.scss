@@ -1,0 +1,29 @@
+// Site Paragraph Style
+// .site--paragraph {}
+
+// Site Title Style
+// .site--title {}
+
+// Typography Mixin
+@mixin tc_typography($ff, $fs, $fw, $lh, $fc) {
+    font-style: normal;
+    font-family: $ff;
+    font-size: $fs;
+    font-weight: $fw;
+    line-height: $lh;
+    color: $fc;
+}
+
+// Typography Mixin : without font-family
+@mixin tc_typography-without-ff($ff, $fw, $lh) {
+    font-style: normal;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+// Typography Mixin : without font-family
+@mixin tc_typography-with-fsfc($fs, $fc) {
+    font-size: $fs;
+    color: $fc;
+}

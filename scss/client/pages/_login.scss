@@ -1,0 +1,144 @@
+@use "../../global/base";
+@use "../../global/color";
+@use "../../global/typography";
+@use "../../global/input";
+
+// .auth-outer {}
+
+// .auth-inner {}
+
+.auth-article {
+    width: 100%;
+    padding: 22px;
+    box-sizing: border-box;
+    background-color: color.$tc-color--lightblue;
+    margin-bottom: 10px;
+
+    h1 {
+        text-align: center;
+        @include typography.tc_typography("Museo Slab 900",
+            60px,
+            300,
+            normal,
+            color.$tc-color--lightblack );
+        padding: 20px;
+        text-transform: uppercase;
+        box-sizing: border-box;
+        letter-spacing: 4px;
+    }
+}
+
+.auth-form {
+    width: 100%;
+
+    .auth-form-box {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .auth-label {
+        @include typography.tc_typography("NexaBlack",
+            14px,
+            800,
+            normal,
+            color.$tc-color--orange );
+
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        margin-bottom: 2px;
+    }
+
+    .auth-input {
+        @include input.input-placeholder-css("ProximaNovaSemiBold",
+            14px,
+            400,
+            normal,
+            color.$tc-color--lightgray );
+        @include typography.tc_typography("ProximaNovaSemiBold",
+            14px,
+            400,
+            normal,
+            color.$tc-color--lightishblack );
+        background-color: color.$tc-color--white;
+        padding: 8px 10px;
+        margin-bottom: 10px;
+        border: 1px solid;
+        border-bottom: 3px solid;
+        border-color: color.$tc-color--lightblue;
+        outline: none;
+        transition: border-color 0.5s;
+
+        &:hover,
+        &:active {
+            border-color: color.$tc-color--orange;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: color.$tc-color--green;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background-color: color.$tc-color--lightred;
+        }
+    }
+
+    .auth-error {
+        border-color: color.$tc-color--red !important;
+    }
+
+    .auth-submit {
+        @include typography.tc_typography("NexaBlack",
+            14px,
+            800,
+            normal,
+            color.$tc-color--black );
+        border: 0px;
+        cursor: pointer;
+        background-color: color.$tc-color--lightblue;
+        transition: background-color 0.5s;
+
+        &:hover {
+            background-color: color.$tc-color--orange;
+        }
+    }
+
+    .auth-form-pass {
+        width: 100%;
+        position: relative;
+
+        .auth-show-pass {
+            position: absolute;
+            right: 10px;
+            top: 28px;
+            cursor: pointer;
+        }
+    }
+
+    .auth-pass-ul {
+        margin-bottom: 15px;
+        // list-style: none;
+        padding: 0px;
+        margin-left: 20px;
+        @include typography.tc_typography("ProximaNovaSemiBold",
+            14px,
+            600,
+            normal,
+            color.$tc-color--black );
+    }
+
+    .auth-pass-li {
+        margin-bottom: 2px;
+    }
+
+    .isPasswordHave {
+        color: color.$tc-color--green;
+    }
+
+    .isPasswordHaveNot {
+        color: color.$tc-color--red;
+    }
+}

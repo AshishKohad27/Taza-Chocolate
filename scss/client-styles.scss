@@ -1,0 +1,19 @@
+// Global
+@use "./global/base";
+
+// Pages
+@use "./client/pages/login";
+@use "./client/pages/products";
+@use "./client/pages/home";
+@use "./client/pages/cart-page";
+
+// Components
+@use "./client/components/header";
+@use "./client/components/breadcrums";
+@use "./client/components/product-grid";
+@use "./client/components/common-comp";
+@use "./client/components/category-grid";
+@use "./client/components/footer";
+
+// Common
+@use "./global/common";

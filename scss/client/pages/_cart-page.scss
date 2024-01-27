@@ -1,0 +1,201 @@
+@use "../../global/base";
+@use "../../global/color";
+@use "../../global/typography";
+@use "../../global/input";
+
+.cart-title {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+// Cart Table
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    th {
+        box-sizing: border-box;
+        background-color: color.$tc-color--lightishblack;
+        padding: 4px 15px;
+        @include typography.tc_typography("NexaBlack",
+            16px,
+            800,
+            normal,
+            color.$tc-color--white );
+        text-transform: uppercase;
+        border: none;
+    }
+
+    td {
+        box-sizing: border-box;
+        padding: 30px 15px;
+
+        span {
+            text-decoration: none;
+            @include typography.tc_typography("ProximaNova",
+                16px,
+                400,
+                normal,
+                color.$tc-color--lightishblack );
+        }
+    }
+
+    [data-label=Product] {
+        width: 22%;
+
+        .cart-product-image {
+            display: block;
+            width: 100%;
+
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+
+    [data-label=Details] {
+
+        .cart-product-title,
+        .cart-product-category,
+        .cart-product-remove {
+            cursor: pointer;
+            text-decoration: none;
+            @include typography.tc_typography("ProximaNova",
+                16px,
+                400,
+                normal,
+                color.$tc-color--lightishblack );
+        }
+
+        .cart-product-title {
+            transition: color 0.5s;
+
+            &:hover {
+                color: color.$tc-color--lightblue;
+            }
+        }
+
+        .cart-product-category {
+            transition: color 0.5s;
+
+            &:hover {
+                color: color.$tc-color--orange;
+            }
+        }
+
+        .cart-product-remove {
+            background-color: transparent;
+            transition: color 0.5s;
+            border: 0px;
+
+            &:hover {
+                color: color.$tc-color--red;
+            }
+        }
+    }
+
+    [data-label=Product],
+    [data-label=Price],
+    [data-label=Quantity] {
+        text-align: center;
+    }
+
+    [data-label=Quantity] {
+        .cart-product-input {
+            border-top: 1px solid color.$tc-color--lightblue;
+            border-right: 1px solid color.$tc-color--lightblue;
+            border-left: 1px solid color.$tc-color--lightblue;
+            border-bottom: 2px solid color.$tc-color--lightblue;
+            border-radius: 0;
+            width: 40%;
+            max-width: 150px;
+            display: block;
+            margin: 0 auto;
+            padding: 8px 10px;
+
+            &:focus,
+            &:active {
+                border-color: color.$tc-color--lightblue;
+                outline: none;
+            }
+
+        }
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+
+}
+
+@media (max-width:767px) {
+
+    // Cart Table
+    .cart-table {
+
+        th {
+            display: none;
+        }
+
+        td {
+            display: block;
+            text-align: right !important;
+            padding: 10px 0px;
+        }
+
+        td::before {
+            content: attr(data-label);
+            position: relative;
+            float: left;
+            @include typography.tc_typography("NexaBlack",
+                16px,
+                800,
+                normal,
+                color.$tc-color--lightblack );
+        }
+
+        [data-label=Product] {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+
+            .cart-product-image {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 100%;
+                    max-width: 300px;
+                }
+            }
+        }
+
+        [data-label=Quantity] {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .cart-product-input {
+                display: initial;
+                margin: 0px;
+            }
+        }
+
+        [data-label=Product]::before,
+        [data-label=Details]::before {
+            content: '';
+        }
+    }
+
+}

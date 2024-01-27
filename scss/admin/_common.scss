@@ -1,0 +1,25 @@
+@use "../global/base";
+@use "../global/color";
+@use "../global/typography";
+
+.admin-module-title {
+    padding: 20px 0px;
+    border-bottom: 1px solid color.$tc-color--black;
+
+    h1 {
+        @include typography.tc_typography("Museo Slab 900",
+            35px,
+            400,
+            normal,
+            color.$tc-color--black );
+    }
+
+    p {
+        @include typography.tc_typography("ProximaNovaSemiBold",
+            18px,
+            300,
+            normal,
+            color.$tc-color--black);
+        margin-top: 10px;
+    }
+}

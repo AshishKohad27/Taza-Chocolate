@@ -1,0 +1,120 @@
+@use "./typography";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: initial;
+}
+
+// body,
+// html {
+// overflow: auto;
+// }
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+dl,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+
+
+// Font Family Museo Slab 900
+@font-face {
+    font-family: 'Museo Slab 900';
+    src: url('../fonts/Museo_Slab_900.woff2') format('woff2'),
+        url('../fonts/Museo_Slab_900.woff') format('woff');
+}
+
+// Font Family Museo Slab 500
+@font-face {
+    font-family: 'Museo Slab 500';
+    src: url('../fonts/Museo_Slab_500.woff2') format('woff2'),
+        url('../fonts/Museo_Slab_500.woff') format('woff');
+}
+
+// Font Family Proxima Nova Semi Bold
+@font-face {
+    font-family: 'ProximaNovaSemiBold';
+    src: url('../fonts/Proxima-Nova-Sbold.woff2') format('woff2'),
+        url('../fonts/Proxima-Nova-Sbold.woff') format('woff');
+}
+
+// Font Family Proxima Nova
+@font-face {
+    font-family: 'ProximaNova';
+    src: url('../fonts/Proxima-Nova.woff2') format('woff2'),
+        url('../fonts/Proxima-Nova.woff') format('woff');
+}
+
+// Font Family NexaBlack
+@font-face {
+    font-family: 'NexaBlack';
+    src: url('../fonts/Nexa-Black-Regular.woff2') format('woff2'),
+        url('../fonts/Nexa-Black-Regular.woff') format('woff');
+}
+
+// Font Family NexaBold
+@font-face {
+    font-family: 'NexaBold';
+    src: url('../fonts/Nexa_Bold.woff2') format('woff2'),
+        url('../fonts/Nexa_Bold.woff') format('woff');
+}
+
+// Font Family NexaRustScriptR
+@font-face {
+    font-family: 'NexaRustScriptR';
+    src: url('../fonts/NexaRustScriptR.woff2') format('woff2'),
+        url('../fonts/NexaRustScriptR.woff') format('woff');
+}
+
+body,
+input,
+textarea,
+select {
+    @include typography.tc_typography-without-ff("ProximaNova", 400, 1.4);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    display: block;
+    @include typography.tc_typography-without-ff("Museo Slab 500", 800, 1.1);
+    margin-bottom: 10px;
+}
+
+// Site Container
+.site-container {
+    max-width: calc(1160px);
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
