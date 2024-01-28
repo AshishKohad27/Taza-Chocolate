@@ -1,4 +1,3 @@
-import { NextRequest } from "next/server";
 import connectDB from "@/config/db";
 import { getAuth } from "@/controller/auth";
 
