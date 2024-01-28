@@ -6,9 +6,9 @@ import {
 import productModel from "@/model/product";
 
 // Global Variables;
-let globalSearch: string | "";
-let globalPage: number | 1;
-let globalLimit: number | 1;
+let globalSearch: string | "" = "";
+let globalPage: number | 1 = 1;
+let globalLimit: number | 10 = 10;
 
 const GlobalParams = ({ search, page, limit }: PramsProps) => {
     let localSearch: string | "" = String(search) || "";
@@ -65,8 +65,8 @@ export const getProduct = async ({
 
         const data: Array<ProductApiProps> = await productModel
             .find({ title: { $regex: globalSearch } })
-            .skip(globalPage)
-            .limit(globalPage * globalLimit);
+            .limit(globalPage)
+            .skip(globalLimit * (globalPage - 1));
 
         // console.log("data:", data);
         return {
@@ -124,8 +124,8 @@ export const deleteProduct = async ({
 
         const data: Array<ProductApiProps> = await productModel
             .find({ title: { $regex: globalSearch } })
-            .skip(globalPage)
-            .limit(globalPage * globalLimit);
+            .limit(globalPage)
+            .skip(globalLimit * (globalPage - 1));
 
         return {
             statusCode: 201,
@@ -162,8 +162,8 @@ export const updateProduct = async ({
 
         const data: Array<ProductApiProps> = await productModel
             .find({ title: { $regex: globalSearch } })
-            .skip(globalPage)
-            .limit(globalPage * globalLimit);
+            .limit(globalPage)
+            .skip(globalLimit * (globalPage - 1));
 
         return {
             statusCode: 200,

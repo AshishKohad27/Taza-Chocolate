@@ -50,6 +50,7 @@ const ProductSchema = new Schema(
     },
     {
         timestamps: true, // Add createdAt and updatedAt timestamps
+        versionKey: false,
     }
 );
 

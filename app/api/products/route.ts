@@ -1,8 +1,9 @@
 import connectDB from "@/config/db";
 import { PramsProps } from "@/constant/server/products";
 import { addProduct, getProduct } from "@/controller/products";
+import type { NextRequest } from 'next/server'
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
     connectDB();
     console.log("Get Products");
     // const { searchParams } = new URL(request.url);
@@ -14,7 +15,6 @@ export async function GET(request: Request) {
     const limit = searchParams.get('limit');
 
     const params: PramsProps = { search, limit, page };
-
 
     const { statusCode, data, flag, desc, message } = await getProduct({ ...params });
 
@@ -29,11 +29,11 @@ export async function GET(request: Request) {
             desc, message, data
         }, {
             status: statusCode,
-        })
+        });
     }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     connectDB();
     console.log("Post Product");
     const productBody = await request.json();
