@@ -1,6 +1,6 @@
 import connectDB from "@/config/db";
 import { deleteAuth, updateAuth } from "@/controller/auth";
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 
 // export default async function AuthRoute(
 //     req: NextApiRequest,
@@ -78,6 +78,29 @@ export async function DELETE(request: NextRequest, context: CustomContext) {
     const AuthId: string = context.params.authId;
 
     const { data, flag, desc, statusCode, message } = await deleteAuth({ AuthId });
+
+    if (flag) {
+        return Response.json({
+            desc, message, data
+        }, {
+            status: statusCode,
+        });
+    } else {
+        return Response.json({
+            desc, message, data
+        }, {
+            status: statusCode,
+        })
+    }
+}
+
+export async function PATCH(request: NextRequest, context: CustomContext) {
+    console.log("Update Auth!");
+    await connectDB();
+    const AuthId: string = context.params.authId;
+    const authBody = await request.json();
+
+    const { data, flag, desc, statusCode, message } = await updateAuth({ AuthId, ...authBody });
 
     if (flag) {
         return Response.json({

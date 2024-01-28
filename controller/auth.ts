@@ -185,8 +185,8 @@ export const deleteAuth = async ({ AuthId }: AuthIdProps) => {
             .find({
                 $or: [{ first_name: new RegExp(globalSearch, 'i') }, { last_name: new RegExp(globalSearch, 'i') }],
             })
-            .skip(globalPage)
-            .limit(globalLimit * (globalPage - 1));
+            .limit(globalPage)
+            .skip(globalLimit * (globalPage - 1));
 
         return {
             data,
@@ -207,16 +207,22 @@ export const deleteAuth = async ({ AuthId }: AuthIdProps) => {
     }
 };
 
-export const updateAuth = async ({ AuthID, ...payload }: any) => {
-    console.log("payload:", payload);
+export const updateAuth = async ({ AuthId, ...props }: {
+    AuthId: string;
+}): Promise<any> => {
+
+    console.log("props:", props);
+    console.log({ globalSearch, globalLimit, globalPage });
     try {
-        await authModel.findByIdAndUpdate({ _id: AuthID }, payload);
+        await authModel.findByIdAndUpdate({ _id: AuthId }, { ...props });
+
         const data: Array<AuthorizationBET> = await authModel
             .find({
                 $or: [{ first_name: new RegExp(globalSearch, 'i') }, { last_name: new RegExp(globalSearch, 'i') }],
             })
-            .skip(globalPage)
-            .limit(globalLimit * (globalPage - 1));
+            .limit(globalPage)
+            .skip(globalLimit * (globalPage - 1));
+
 
         return {
             data,

@@ -1,6 +1,6 @@
 import connectDB from "@/config/db";
 import { postLogin } from "@/controller/auth";
-import { NextResponse } from "next/server";
+import type { NextResponse } from "next/server";
 
 export async function POST(request: NextResponse) {
     await connectDB();
