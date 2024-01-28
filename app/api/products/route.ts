@@ -3,7 +3,7 @@ import { PramsProps } from "@/constant/server/products";
 import { addProduct, getProduct } from "@/controller/products";
 import type { NextRequest } from 'next/server'
 
-export async function GET(request: NextRequest) {
+export async function GET(request: Request) {
     connectDB();
     console.log("Get Products");
     // const { searchParams } = new URL(request.url);
@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
     connectDB();
     console.log("Post Product");
     const productBody = await request.json();

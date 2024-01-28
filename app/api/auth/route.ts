@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import connectDB from "@/config/db";
 import { getAuth } from "@/controller/auth";
 
-export async function GET(request: NextRequest) {
+export async function GET(request: Request) {
     await connectDB();
     const { searchParams } = new URL(request.url);
     const search = searchParams.get('search');
