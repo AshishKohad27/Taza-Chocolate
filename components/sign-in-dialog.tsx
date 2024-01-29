@@ -11,10 +11,18 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
-export function SignIn() {
+export function SignInDialog() {
+  const handleClick = (event: any) => {
+    console.log("Enter!!!");
+    event.preventDefault(); 
+  };
   return (
     <AlertDialog>
-      <AlertDialogTrigger>Open</AlertDialogTrigger>
+      <AlertDialogTrigger asChild>
+        <Button variant="outline" onClick={() => handleClick}>
+          Show Dialog
+        </Button>
+      </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>

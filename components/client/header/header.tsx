@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import { IoCartSharp } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
-import { SignIn } from "./sign-in";
-// import SignIn from "@/components/client/header/sign-in";
+import { SignInDialog } from "@/components/sign-in-dialog";
 
 let headerList = [
   {
@@ -248,8 +247,8 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href="" title="Sign In">
-                  <SignIn />
+                <a title="Sign In">
+                  <SignInDialog />
                 </a>
               </li>
               <li>
