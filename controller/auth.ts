@@ -16,7 +16,7 @@ let globalPage: number | 1 = 1;
 let globalLimit: number | 10 = 10;
 
 const GlobalParams = ({ search, page, limit }: AuthParams) => {
-    let localSearch: string | "" = String(search) || "";
+    let localSearch: string | "" = search || "";
     let localPage: number | 1 = Number(page) || 1;
     let localLimit: number | 10 = Number(limit) || 10;
 
@@ -62,7 +62,7 @@ export const postSignup = async ({
             flag: true,
             desc: "",
             statusCode: 200,
-            message: "Created Successfully!",
+            message: "User Created Successfully!",
         };
 
     } catch (error: any) {
@@ -148,6 +148,7 @@ export const postLogin = async ({ ...props }: AuthLoginBET) => {
 export const getAuth = async ({ search, page, limit }: AuthParams) => {
     try {
         // Setting Global Varibales
+        console.log({ search, limit, page });
         GlobalParams({ search, page, limit });
         console.log({ globalSearch, globalLimit, globalPage });
 
@@ -155,7 +156,7 @@ export const getAuth = async ({ search, page, limit }: AuthParams) => {
             .find({
                 $or: [{ first_name: new RegExp(globalSearch, 'i') }, { last_name: new RegExp(globalSearch, 'i') }],
             })
-            .limit(globalPage)
+            .limit(globalLimit)
             .skip(globalLimit * (globalPage - 1));
 
         return {
@@ -185,7 +186,7 @@ export const deleteAuth = async ({ AuthId }: AuthIdProps) => {
             .find({
                 $or: [{ first_name: new RegExp(globalSearch, 'i') }, { last_name: new RegExp(globalSearch, 'i') }],
             })
-            .limit(globalPage)
+            .limit(globalLimit)
             .skip(globalLimit * (globalPage - 1));
 
         return {
@@ -220,7 +221,7 @@ export const updateAuth = async ({ AuthId, ...props }: {
             .find({
                 $or: [{ first_name: new RegExp(globalSearch, 'i') }, { last_name: new RegExp(globalSearch, 'i') }],
             })
-            .limit(globalPage)
+            .limit(globalLimit)
             .skip(globalLimit * (globalPage - 1));
 
 

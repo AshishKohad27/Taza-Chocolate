@@ -1,7 +1,5 @@
 "use client";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
 import { increment, decrement } from "@/redux/auth/auth-slice";
 import { GetAuth } from "@/redux/auth/auth-action";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -12,7 +10,8 @@ export default function Counter() {
 
   useEffect(() => {
     console.log("data:", data);
-  }, [loading, error]);
+    console.log("loading:", loading);
+  }, [loading, error, data]);
 
   const handleIncrement = () => {
     console.log("Increment");

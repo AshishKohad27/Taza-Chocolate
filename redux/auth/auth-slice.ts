@@ -1,28 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { GetAuth } from "./auth-action";
+import { GetAuth, SignInAuth } from "./auth-action";
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { AuthCredentials, AuthPayloadAction } from "@/constant/client/auth";
 
-interface item {
-    type: string;
-    difficulty: string;
-    category: string;
-    question: string;
-    correct_answer: string;
-    incorrect_answers: string[];
-}
-
-type AuthState = {
+type AuthorizationState = {
     value: number;
     loading: boolean;
     error: boolean;
+    successMessage: string;
     errorMessage: string;
-    data: item[];
+    data: AuthCredentials[];
 }
 
-const initialState: AuthState = {
+const initialState: AuthorizationState = {
     value: 0,
     loading: false,
     error: false,
+    successMessage: '',
     errorMessage: '',
     data: [],
 }
@@ -36,24 +30,47 @@ export const authSlice = createSlice({
         },
         decrement: (state) => {
             state.value -= 1;
+        },
+        clearState: (state) => {
+            return state = initialState;
         }
     },
     extraReducers: (builder) => {
         builder.addCase(GetAuth.pending, (state) => {
             state.loading = true;
+            state.error = false;
         });
-        builder.addCase(GetAuth.fulfilled, (state, action: PayloadAction<item[]>) => {
+        builder.addCase(GetAuth.fulfilled, (state, action: PayloadAction<AuthPayloadAction>) => {
             state.loading = false;
             state.error = false;
-            state.data = action.payload;
+            // console.log(action);
+            state.data = action.payload.data;
+            state.successMessage = action.payload.message;
         });
-        builder.addCase(GetAuth.rejected, (state) => {
+        builder.addCase(GetAuth.rejected, (state, action) => {
             state.loading = false;
             state.error = true;
+            console.log(action);
+        });
+
+        // Sign In 
+        builder.addCase(SignInAuth.pending, (state) => {
+            state.loading = true;
+            state.error = false;
+        });
+        builder.addCase(SignInAuth.fulfilled, (state, action: PayloadAction<AuthPayloadAction>) => {
+            state.loading = false;
+            state.error = false;
+            state.successMessage = action.payload.message;
+        });
+        builder.addCase(SignInAuth.rejected, (state, action) => {
+            state.loading = false;
+            state.error = true;
+            console.log(action);
         });
     }
 });
 
-export const { increment, decrement } = authSlice.actions
+export const { increment, decrement, clearState } = authSlice.actions
 
 export default authSlice.reducer;

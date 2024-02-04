@@ -1,3 +1,4 @@
+import "@/scss/admin-styles.scss";
 export default function DashboardLayout({
   children,
 }: {
