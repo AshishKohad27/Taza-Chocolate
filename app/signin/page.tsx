@@ -75,7 +75,7 @@ export default function Login() {
     }
 
     console.log("successMessage:", successMessage);
-  }, [successMessage, loading]);
+  }, [successMessage, loading, dispatch]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

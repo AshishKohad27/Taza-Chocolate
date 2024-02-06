@@ -13,7 +13,7 @@ export default function Auth_Dashboard() {
 
   useEffect(() => {
     dispatch(GetAuth());
-  }, [isRefresh]);
+  }, [isRefresh, dispatch]);
 
   useEffect(() => {
     // console.log("data:", data);
