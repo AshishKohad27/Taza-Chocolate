@@ -1,3 +1,4 @@
+"use client";
 import FairForAll from "@/components/client/Fair-for-all";
 import Banner from "@/components/client/banner";
 import Breadcrumbs from "@/components/client/breadcrums";
@@ -5,8 +6,20 @@ import FreeShipping from "@/components/client/free-shipping";
 import { ProductGrid } from "@/components/client/products/product-grid";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import products from "../../../json/products.json";
+import ProductGridSkeleton from "@/components/client/skeleton/product-grid-skeleton";
+import { useEffect, useState } from "react";
 
 export default function Products() {
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    let timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, [loading]);
+
   return (
     <div className="product-outer">
       <div className="product-inner">
@@ -40,7 +53,11 @@ export default function Products() {
           <div className="site-container">
             <div className="pro-item-inner">
               {/* Product Grid */}
-              <ProductGrid products={products} />
+              {loading ? (
+                <ProductGridSkeleton products={products} />
+              ) : (
+                <ProductGrid products={products} />
+              )}
               {/* Pagination */}
               <div className="pro-pagination site-pagination-article">
                 <button className="pro-pagination-btns">
