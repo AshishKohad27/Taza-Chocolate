@@ -1,3 +1,4 @@
+
 export const CartTable = () => {
   return (
     <div className="site-container">
@@ -15,6 +16,7 @@ export const CartTable = () => {
             <td data-label="Product">
               <a href="" className="cart-product-image">
                 <img
+                  className="cp-img"
                   src="https://www.tazachocolate.com/cdn/shop/products/Taza_Vday_Raspberry_Shopify_medium.jpg?v=1674070600"
                   alt=""
                 />
