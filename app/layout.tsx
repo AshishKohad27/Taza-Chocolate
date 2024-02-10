@@ -4,6 +4,7 @@ import "./globals.css";
 import "@/scss/client-styles.scss";
 import Header from "@/components/client/header/header";
 import { StoreProvider } from "@/redux/StoreProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <StoreProvider>
           <Header />
           {children}
+          <Toaster />
         </StoreProvider>
       </body>
     </html>

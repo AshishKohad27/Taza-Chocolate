@@ -1,3 +1,5 @@
+"use client";
+
 import { createSlice } from "@reduxjs/toolkit";
 import { GetAuth, SignUpAuth, LoginAuth } from "./auth-action";
 import type { PayloadAction } from '@reduxjs/toolkit'
@@ -14,8 +16,10 @@ type AuthorizationState = {
     token: AuthToken;
     // AuthorizedUserDetails: [];
 }
-
-let cookiesToken: string = sessionStorage.getItem("token_taza") || '';
+let cookiesToken: string = "";
+if (typeof window !== 'undefined') {
+    cookiesToken = window.sessionStorage.getItem("token_taza") || '';
+}
 
 if (cookiesToken) {
 
