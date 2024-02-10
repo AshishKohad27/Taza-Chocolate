@@ -39,7 +39,7 @@ const initialState: AuthorizationState = {
     },
 }
 
-console.log("cookiesToken:", cookiesToken)
+// console.log("cookiesToken:", cookiesToken)
 
 export const authSlice = createSlice({
     name: 'auth',

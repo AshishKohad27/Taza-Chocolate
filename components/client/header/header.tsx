@@ -102,7 +102,7 @@ export default function Header() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log({ successMessage, loading, error, isAuth });
+    // console.log({ successMessage, loading, error, isAuth });
   }, [isAuth]);
 
   useEffect(() => {
