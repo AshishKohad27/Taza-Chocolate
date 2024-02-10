@@ -7,13 +7,6 @@ export type AuthCredentials = {
     role?: 'admin' | 'manager' | 'guest';
 };
 
-export type AuthPayloadAction = {
-    desc: string;
-    message: string;
-    data: AuthCredentials[];
-}
-
-
 // Sign In Page
 export type authorizationRegT = {
     first_name: string;
@@ -34,4 +27,22 @@ export type passwordStatusT = {
     number: boolean,
     symbol: boolean,
     length: boolean
+}
+
+export type AuthPayloadAction = {
+    desc: string;
+    message: string;
+    data: AuthCredentials[];
+}
+
+
+export type AuthToken = {
+    taza_token: string,
+    taza_refresh_token: string
+}
+
+export type LoginPayloadAction = {
+    desc: string;
+    message: string;
+    token: AuthToken;
 }

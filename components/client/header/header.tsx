@@ -5,6 +5,8 @@ import { IoCartSharp } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { SignInDialog } from "@/components/sign-in-dialog";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { logout } from "@/redux/auth/auth-slice";
 
 let headerList = [
   {
@@ -93,6 +95,16 @@ let headerList = [
 export default function Header() {
   const [tabPosition, setTabPosition] = useState("tab-1");
   const [openHam, setOpenHam] = useState(false);
+
+  const { successMessage, loading, error, isAuth } = useAppSelector(
+    (state) => state.auth
+  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    console.log({ successMessage, loading, error, isAuth });
+  }, [isAuth]);
+
   useEffect(() => {
     // console.log("tabPosition:", tabPosition);
     // console.log("openHam:", openHam);
@@ -240,6 +252,14 @@ export default function Header() {
           </div>
           {/* Right Section */}
           <div className="tch-right">
+            {isAuth ? "Ashish Kohad" : ""}
+            <button
+              onClick={() => {
+                dispatch(logout());
+              }}
+            >
+              Logout
+            </button>
             <ul className="tchr-list">
               <li>
                 <a href="" title="Join Our Mailing List">

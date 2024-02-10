@@ -79,12 +79,13 @@ export const postSignup = async ({
 
 export const postLogin = async ({ ...props }: AuthLoginBET) => {
     try {
+        console.log("props:", props);
         let authUser: Array<AuthorizationBET> = await authModel.find({ email: props.email });
-
+        console.log("authUser:", authUser.length);
         // 1. If User Not Found
         if (authUser.length == 0) {
             return {
-                data: authUser,
+                data: authUser || [],
                 flag: false,
                 desc: "",
                 statusCode: 203,

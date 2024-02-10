@@ -5,6 +5,7 @@ export async function POST(request: Request) {
     await connectDB();
     console.log("Login Running!");
     const authBody = await request.json();
+    console.log("authBody:", authBody);
 
     const { token, flag, desc, statusCode, message } = await postLogin({ ...authBody });
 
@@ -16,7 +17,10 @@ export async function POST(request: Request) {
         });
     } else {
         return Response.json({
-            message, desc, token
+            message, desc, token: token || {
+                taza_token: "",
+                taza_refresh_token: ""
+            },
         }, {
             status: statusCode,
         });

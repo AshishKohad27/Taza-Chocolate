@@ -56,11 +56,11 @@
             400,
             normal,
             color.$tc-color--lightgray );
-        @include typography.tc_typography("ProximaNovaSemiBold",
-            14px,
-            400,
-            normal,
-            color.$tc-color--lightishblack );
+        // @include typography.tc_typography("ProximaNovaSemiBold",
+        //     14px,
+        //     400,
+        //     normal,
+        //     color.$tc-color--lightishblack );
         background-color: color.$tc-color--white;
         padding: 8px 10px;
         margin-bottom: 10px;
@@ -91,11 +91,13 @@
     }
 
     .auth-submit {
-        @include typography.tc_typography("NexaBlack",
-            14px,
-            800,
-            normal,
-            color.$tc-color--black );
+        // @include typography.tc_typography("NexaBlack",
+        //     14px,
+        //     800,
+        //     normal,
+        //     color.$tc-color--black );
+        font-weight: 800;
+        color: color.$tc-color--black;
         border: 0px;
         cursor: pointer;
         background-color: color.$tc-color--lightblue;
@@ -104,6 +106,11 @@
         &:hover {
             background-color: color.$tc-color--orange;
         }
+    }
+
+    .auth-loader {
+        border: 0px;
+        background-color: color.$tc-color--orange;
     }
 
     .auth-form-pass {

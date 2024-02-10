@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { GetAuth, SignInAuth } from "./auth-action";
+import { GetAuth, SignUpAuth, LoginAuth } from "./auth-action";
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { AuthCredentials, AuthPayloadAction } from "@/constant/client/auth";
+import { AuthCredentials, AuthPayloadAction, LoginPayloadAction, AuthToken } from "@/constant/client/auth";
 
 type AuthorizationState = {
     value: number;
@@ -10,6 +10,15 @@ type AuthorizationState = {
     successMessage: string;
     errorMessage: string;
     data: AuthCredentials[];
+    isAuth: boolean;
+    token: AuthToken;
+    // AuthorizedUserDetails: [];
+}
+
+let cookiesToken: string = sessionStorage.getItem("token_taza") || '';
+
+if (cookiesToken) {
+
 }
 
 const initialState: AuthorizationState = {
@@ -19,7 +28,14 @@ const initialState: AuthorizationState = {
     successMessage: '',
     errorMessage: '',
     data: [],
+    isAuth: !!cookiesToken,
+    token: {
+        taza_token: "",
+        taza_refresh_token: ""
+    },
 }
+
+console.log("cookiesToken:", cookiesToken)
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -32,7 +48,25 @@ export const authSlice = createSlice({
             state.value -= 1;
         },
         clearState: (state) => {
-            return state = initialState;
+            return state = {
+                ...state,
+                value: 0,
+                loading: false,
+                error: false,
+                successMessage: '',
+                errorMessage: '',
+                data: [],
+                token: {
+                    taza_token: "",
+                    taza_refresh_token: ""
+                },
+            };
+        },
+        logout: (state) => {
+            return state = {
+                ...state,
+                isAuth: false
+            };
         }
     },
     extraReducers: (builder) => {
@@ -53,24 +87,46 @@ export const authSlice = createSlice({
             console.log(action);
         });
 
-        // Sign In 
-        builder.addCase(SignInAuth.pending, (state) => {
+        // Sign Up 
+        builder.addCase(SignUpAuth.pending, (state) => {
             state.loading = true;
             state.error = false;
         });
-        builder.addCase(SignInAuth.fulfilled, (state, action: PayloadAction<AuthPayloadAction>) => {
+        builder.addCase(SignUpAuth.fulfilled, (state, action: PayloadAction<AuthPayloadAction>) => {
             state.loading = false;
             state.error = false;
             state.successMessage = action.payload.message;
         });
-        builder.addCase(SignInAuth.rejected, (state, action) => {
+        builder.addCase(SignUpAuth.rejected, (state, action) => {
             state.loading = false;
             state.error = true;
             console.log(action);
         });
+
+        // Login
+        builder.addCase(LoginAuth.pending, (state) => {
+            state.loading = true;
+            state.error = false;
+            sessionStorage.removeItem('token');
+            console.log("pending...!!!!!!!!!!");
+        });
+        builder.addCase(LoginAuth.fulfilled, (state, action: PayloadAction<LoginPayloadAction>) => {
+            sessionStorage.setItem('token_taza', action.payload.token.taza_token);
+            console.log("fulfilled...!!!!!!!!!!");
+            state.successMessage = action.payload.message;
+            state.token = action.payload.token;
+            state.loading = false;
+            state.error = false;
+            state.isAuth = true;
+        });
+        builder.addCase(LoginAuth.rejected, (state, action) => {
+            state.loading = false;
+            state.error = true;
+            sessionStorage.removeItem('token');
+        });
     }
 });
 
-export const { increment, decrement, clearState } = authSlice.actions
+export const { increment, decrement, clearState, logout } = authSlice.actions
 
 export default authSlice.reducer;

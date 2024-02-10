@@ -1,10 +1,9 @@
 "use client";
 import { authorizationRegT, passwordStatusT } from "@/constant/client/auth";
 import { useEffect, useState, useRef } from "react";
-import { FaRegEye } from "react-icons/fa";
-import { FaRegEyeSlash } from "react-icons/fa";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { SignInAuth } from "@/redux/auth/auth-action";
+import { SignUpAuth } from "@/redux/auth/auth-action";
 import { clearState } from "@/redux/auth/auth-slice";
 import { redirect } from "next/navigation";
 
@@ -43,7 +42,7 @@ function verifyPasswordRequirements(value: string) {
   };
 }
 
-export default function Login() {
+export default function SignUp() {
   const [formData, setFormData] = useState<authorizationRegT>(initialState);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
   const [showPassword, setShowPassword] = useState<Boolean>(false);
@@ -98,7 +97,7 @@ export default function Login() {
       console.log("formData:", formData);
       console.log("Form submitted successfully!");
       const payload = formData;
-      dispatch(SignInAuth({ payload }));
+      dispatch(SignUpAuth({ payload }));
     }
   };
 
