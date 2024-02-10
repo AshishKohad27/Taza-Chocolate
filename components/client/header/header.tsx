@@ -244,7 +244,7 @@ export default function Header() {
               <a href="" className="tch-mid-logo-a">
                 <img
                   className="tch-mid-logo"
-                  src="../images/logo.avif"
+                  src="https://raw.githubusercontent.com/AshishKohad27/Taza-Chocolate/main/public/Images/logo.avif"
                   alt=""
                 />
               </a>

@@ -31,7 +31,8 @@ export default function Home() {
         <div
           className="rot-right"
           style={{
-            backgroundImage: `url(${"/images/home_page_feature_module_2.webp"})`,
+            // backgroundImage: `url(${"/images/home_page_feature_module_2.webp"})`,
+            backgroundImage: `url(${"https://raw.githubusercontent.com/AshishKohad27/Taza-Chocolate/main/public/Images/home_page_feature_module_2.webp"})`,
           }}
         ></div>
       </div>

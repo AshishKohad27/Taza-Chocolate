@@ -17,7 +17,7 @@ export default function CategoryGrid() {
             <div
               className="fixed-cont grid--center"
               style={{
-                backgroundImage: `url(${"/images/page_banner_6_image.webp"})`,
+                backgroundImage: `url(${"https://raw.githubusercontent.com/AshishKohad27/Taza-Chocolate/main/public/Images/page_banner_6_image.webp"})`,
               }}
             >
               <article className="cat-article-box">
