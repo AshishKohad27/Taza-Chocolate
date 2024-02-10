@@ -32,7 +32,7 @@ export function SignInDialog() {
     (state) => state.auth
   );
 
-  console.log({ successMessage, loading, error, isAuth });
+  // console.log({ successMessage, loading, error, isAuth });
 
   useEffect(() => {}, [showPassword]);
 

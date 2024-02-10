@@ -73,7 +73,7 @@ export default function SignUp() {
       redirect("/login");
     }
 
-    console.log("successMessage:", successMessage);
+    // console.log("successMessage:", successMessage);
   }, [successMessage, loading, dispatch]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,7 +94,7 @@ export default function SignUp() {
     if (!meetsStrengthCriteria) {
       passwordInputRef.current?.focus();
     } else {
-      console.log("formData:", formData);
+      // console.log("formData:", formData);
       console.log("Form submitted successfully!");
       const payload = formData;
       dispatch(SignUpAuth({ payload }));

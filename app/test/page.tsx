@@ -9,8 +9,8 @@ export default function Counter() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log("data:", data);
-    console.log("loading:", loading);
+    // console.log("data:", data);
+    // console.log("loading:", loading);
   }, [loading, error, data]);
 
   const handleIncrement = () => {
