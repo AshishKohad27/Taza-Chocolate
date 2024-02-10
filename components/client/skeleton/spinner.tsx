@@ -3,6 +3,7 @@ interface SpinnerProps {
   height: number;
 }
 export default function Spinner({ width, height }: SpinnerProps) {
+  // console.log(typeof width.toString(), height);
   return (
     <div role="status" className="auth-input auth-loader flex justify-center">
       <svg

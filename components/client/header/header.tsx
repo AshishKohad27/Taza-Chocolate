@@ -241,7 +241,7 @@ export default function Header() {
           {/* Middle Section */}
           <div className="tch-mid">
             <div className="tch-mid-logo-box">
-              <a href="" className="tch-mid-logo-a">
+              <a href="/" className="tch-mid-logo-a">
                 <img
                   className="tch-mid-logo"
                   src="https://raw.githubusercontent.com/AshishKohad27/Taza-Chocolate/main/public/Images/logo.avif"
