@@ -28,7 +28,7 @@ export default function SingleProductPage({
     const filterProduct = products.filter(({ _id }) => _id === params.id);
     // console.log("filterProduct:", filterProduct);
     setProductItem(filterProduct[0]);
-  }, []);
+  }, [params.id]);
 
   useEffect(() => {
     let timeoutId = setTimeout(() => {

@@ -4,7 +4,7 @@ const SubproductSchema = new Schema({
     type: {
         type: String,
         required: true,
-        enum: ["bar", "case"], // Assuming 'bar' and 'case' are the valid types
+        enum: ["bar", "case"],
     },
     price: {
         type: Number,

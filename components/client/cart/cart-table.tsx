@@ -22,7 +22,7 @@ export const CartTable = () => {
             </td>
             <td data-label="Details">
               <a href="" className="cart-product-title">
-                Valentine's Day Raspberry Crunch Bar
+                Valentines Day Raspberry Crunch Bar
               </a>
               <br />
               <a href="" className="cart-product-category">
