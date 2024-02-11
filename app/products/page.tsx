@@ -14,7 +14,7 @@ export default function Products() {
         {/* <Breadcrumbs First="Home" Second="Buy" Third="Bars" /> */}
 
         {/* Product Banner */}
-        <Banner bannerImage={"https://raw.githubusercontent.com/AshishKohad27/Taza-Chocolate/main/public/Images/page_banner_6_image.webp"} />
+        {/* <Banner bannerImage={"https://raw.githubusercontent.com/AshishKohad27/Taza-Chocolate/main/public/Images/page_banner_6_image.webp"} /> */}
 
         {/* Product Description */}
         <div className="pro-desc-outer">
