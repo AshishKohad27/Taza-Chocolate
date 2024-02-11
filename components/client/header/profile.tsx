@@ -17,7 +17,11 @@ import { logout } from "@/redux/auth/auth-slice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useState } from "react";
 
-export function Profile() {
+interface ProfilePops {
+  userName: string;
+}
+
+export function Profile({ userName }: ProfilePops) {
   const dispatch = useAppDispatch();
 
   const [flag, setFlag] = useState<boolean>(true);
@@ -40,6 +44,9 @@ export function Profile() {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
+          <DropdownMenuItem className="text-2xl font-bold text-orange-500 hover:text-red-400">
+            {userName}
+          </DropdownMenuItem>
           <DropdownMenuItem>
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>

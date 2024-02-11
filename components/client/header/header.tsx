@@ -135,9 +135,15 @@ export default function Header() {
 
   useEffect(() => {
     let name =
-      AuthorizedUserDetails[0]?.first_name !== undefined
-        ? AuthorizedUserDetails[0].first_name
-        : "";
+      AuthorizedUserDetails &&
+      `${AuthorizedUserDetails[0]?.first_name} ${AuthorizedUserDetails[0]?.last_name}`;
+
+    // AuthorizedUserDetails[0]?.first_name !== undefined
+    //   ? AuthorizedUserDetails[0].first_name
+    //   : "" + " " + AuthorizedUserDetails[0]?.last_name !== undefined
+    //   ? AuthorizedUserDetails[0].last_name
+    //   : "";
+
     if (!isAuth) {
       name = "";
     }
@@ -330,10 +336,6 @@ export default function Header() {
                 </button>
               </li>
               <li className="tchr-listitem">
-                {/* <button className="tchr-listitem-a">
-                  <RiAdminFill className="tchr-listitem-svg" />
-                  <span className="tchr-listitem-span">Sign in</span>
-                </button> */}
                 <SignInDialog handelFlag={handelFlag} />
               </li>
               <li className="tchr-listitem">
@@ -347,7 +349,7 @@ export default function Header() {
                 </a>
               </li>
               <li className="tchr-listitem">
-                <Profile />
+                <Profile userName={userName} />
               </li>
             </ul>
           </div>
