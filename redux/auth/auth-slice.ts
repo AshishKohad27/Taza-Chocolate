@@ -1,9 +1,10 @@
 "use client";
 
 import { createSlice } from "@reduxjs/toolkit";
-import { GetAuth, SignUpAuth, LoginAuth } from "./auth-action";
+import { GetAuth, SignUpAuth, LoginAuth, verifyAuth } from "./auth-action";
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { AuthCredentials, AuthPayloadAction, LoginPayloadAction, AuthToken } from "@/constant/client/auth";
+import axios from "axios";
 
 type AuthorizationState = {
     value: number;
@@ -14,15 +15,14 @@ type AuthorizationState = {
     data: AuthCredentials[];
     isAuth: boolean;
     token: AuthToken;
-    // AuthorizedUserDetails: [];
+    AuthorizedUserDetails: AuthCredentials[];
 }
 let cookiesToken: string = "";
+let cookiesTokenRefesh: string = "";
 if (typeof window !== 'undefined') {
     cookiesToken = window.sessionStorage.getItem("token_taza") || '';
-}
-
-if (cookiesToken) {
-
+    cookiesTokenRefesh = window.sessionStorage.getItem("token_taza_refresh") || '';
+    axios.defaults.headers.common["Token_taza"] = cookiesToken;
 }
 
 const initialState: AuthorizationState = {
@@ -34,12 +34,12 @@ const initialState: AuthorizationState = {
     data: [],
     isAuth: !!cookiesToken,
     token: {
-        taza_token: "",
-        taza_refresh_token: ""
+        taza_token: cookiesToken,
+        taza_refresh_token: cookiesTokenRefesh
     },
+    AuthorizedUserDetails: []
 }
 
-// console.log("cookiesToken:", cookiesToken)
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -61,12 +61,17 @@ export const authSlice = createSlice({
                 errorMessage: '',
                 data: [],
                 token: {
-                    taza_token: "",
-                    taza_refresh_token: ""
+                    taza_token: cookiesToken,
+                    taza_refresh_token: cookiesTokenRefesh
                 },
+                AuthorizedUserDetails: []
             };
         },
         logout: (state) => {
+            console.log("Logout!!");
+            sessionStorage.removeItem('token_taza');
+            sessionStorage.removeItem('token_taza_refresh');
+            delete axios.defaults.headers.common["Token_taza"];
             return state = {
                 ...state,
                 isAuth: false
@@ -111,12 +116,15 @@ export const authSlice = createSlice({
         builder.addCase(LoginAuth.pending, (state) => {
             state.loading = true;
             state.error = false;
-            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('token_taza');
             console.log("pending...!!!!!!!!!!");
         });
         builder.addCase(LoginAuth.fulfilled, (state, action: PayloadAction<LoginPayloadAction>) => {
             sessionStorage.setItem('token_taza', action.payload.token.taza_token);
-            console.log("fulfilled...!!!!!!!!!!");
+            sessionStorage.setItem('token_taza_refresh', action.payload.token.taza_token);
+            delete axios.defaults.headers.common["Token_taza"];
+            axios.defaults.headers.common["Token_taza"] = action.payload.token.taza_token;
+
             state.successMessage = action.payload.message;
             state.token = action.payload.token;
             state.loading = false;
@@ -126,8 +134,25 @@ export const authSlice = createSlice({
         builder.addCase(LoginAuth.rejected, (state, action) => {
             state.loading = false;
             state.error = true;
-            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('token_taza');
         });
+
+        // Verify
+        builder.addCase(verifyAuth.pending, (state) => {
+            state.loading = true;
+            state.error = false;
+        });
+        builder.addCase(verifyAuth.fulfilled, (state, action) => {
+            state.loading = false;
+            state.error = false;
+            state.AuthorizedUserDetails = action.payload.data;
+            state.successMessage = action.payload.message;
+        });
+        builder.addCase(verifyAuth.rejected, (state, action) => {
+            state.loading = false;
+            state.error = true;
+        });
+
     }
 });
 

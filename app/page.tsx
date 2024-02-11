@@ -3,12 +3,10 @@
 import FairForAll from "@/components/client/Fair-for-all";
 import CategoryGrid from "@/components/client/category-grid";
 import FreeShipping from "@/components/client/free-shipping";
-import DemoToast from "@/components/demo-toast";
 
 export default function Home() {
   return (
     <div className="home-outer">
-      <DemoToast />
       {/* Category Grid */}
       <CategoryGrid />
 

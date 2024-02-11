@@ -23,6 +23,7 @@
         background-color: color.$tc-color--white;
 
         h1 {
+            text-transform: uppercase;
             @include typography.tc_typography-with-fsfc(60px, color.$tc-color--black);
             margin-bottom: 0px;
         }

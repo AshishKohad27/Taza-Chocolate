@@ -244,3 +244,25 @@ export const updateAuth = async ({ AuthId, ...props }: {
         };
     }
 };
+
+export const verifyAuth = async ({ token }: { token: string }) => {
+    try {
+        let data = await jwt.decode(token);
+        return {
+            data: [data],
+            flag: true,
+            desc: "",
+            statusCode: 200,
+            message: "User Get Verified!",
+        };
+    } catch (error: any) {
+        console.error("Error in verify auth Controller:", error);
+        return {
+            data: [],
+            flag: false,
+            desc: error.message,
+            statusCode: 400,
+            message: "Error Occurs!",
+        };
+    }
+}

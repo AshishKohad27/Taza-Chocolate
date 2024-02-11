@@ -3,8 +3,10 @@ export type AuthCredentials = {
     first_name: string;
     last_name: string;
     email: string;
-    password: string;
+    password?: string;
     role?: 'admin' | 'manager' | 'guest';
+    iat?: string;
+    exp?: string;
 };
 
 // Sign In Page
@@ -35,11 +37,12 @@ export type AuthPayloadAction = {
     data: AuthCredentials[];
 }
 
-
 export type AuthToken = {
     taza_token: string,
     taza_refresh_token: string
 }
+
+
 
 export type LoginPayloadAction = {
     desc: string;

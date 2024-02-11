@@ -9,6 +9,15 @@
     box-shadow: 0 10px 25px #00000080;
 }
 
+.modal-content {
+    margin-top: -28px !important;
+}
+
+.modal-cross {
+    position: relative;
+    z-index: 600;
+}
+
 .modal-title {
     h3 {
         text-transform: uppercase;

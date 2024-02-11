@@ -14,11 +14,12 @@
     display: flex;
     justify-content: space-between;
     gap: 30px;
+    align-items: flex-end;
 }
 
 // Left Section
 .tch-left {
-    width: 41.3%;
+    width: calc(41.3% - 30px);
     max-width: 452px;
     display: flex;
     justify-content: center;
@@ -324,23 +325,6 @@
     }
 }
 
-@media (max-width: 767px) {
-
-    // Left Section
-    .tch-left {
-
-        // Desktop View
-        .tch--desk-view {
-            display: none;
-        }
-
-        // Mobile View
-        .tch--mob-view {
-            display: flex;
-        }
-    }
-}
-
 // Middle Section
 .tch-mid {
     // width: calc(100% - (2 * 41.3%));
@@ -354,6 +338,7 @@
         // margin-top: 10px;
         width: 100%;
         height: 100%;
+        z-index: 40;
     }
 
     .tch-mid-logo-a {
@@ -368,17 +353,115 @@
 
 // Right Section
 .tch-right {
-    width: 41.3%;
+    width: calc(41.3% - 30px);
     max-width: 452px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100%;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.tchr-list{
-    background-color: red;
-    height: 100%;
+.tchr-list {
+    // position: absolute;
+    // bottom: 15px;
+    width: 100%;
+    // height: 100%;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
     padding: 0px;
     list-style: none;
+    margin-bottom: 15px;
+
+    // .tchr-listitem {}
+
+    .tchr-listitem-a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+
+        &:active,
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .tchr-listitem-span {
+        @include typography.tc_typography("ProximaNovaSemiBold",
+            14px,
+            600,
+            normal,
+            color.$tc-color--browngray );
+        transition: color 0.5s;
+    }
+
+    .tchr-listitem-svg {
+        fill: color.$tc-color--lightishblue;
+        transition: fill 0.5s;
+
+        // &:hover {
+        //     fill: color.$tc-color--orange
+        // }
+    }
+
+    .tchr-listitem:hover {
+        .tchr-listitem-span {
+            color: color.$tc-color--orange
+        }
+
+        .tchr-listitem-svg {
+            fill: color.$tc-color--orange
+        }
+    }
+
+}
+
+@media (max-width:991px) {
+    .tchr-list {
+
+
+        .tchr-listitem-span {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    // Left Section
+    .tch-left {
+        width: auto;
+
+        // Desktop View
+        .tch--desk-view {
+            display: none;
+        }
+
+        // Mobile View
+        .tch--mob-view {
+            display: flex;
+        }
+    }
+
+    // Mid Side
+    .tch-mid {
+        width: 102px;
+        height: 72px;
+    }
+
+    // Right Side
+    .tch-right {
+        width: auto;
+    }
+
+    .tchr-list {
+        width: 50px;
+        flex-wrap: wrap;
+    }
 }

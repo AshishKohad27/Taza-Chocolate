@@ -16,19 +16,23 @@ import { LoginAuth } from "@/redux/auth/auth-action";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { clearState } from "@/redux/auth/auth-slice";
 import Spinner from "@/components/client/skeleton/spinner";
+import { useToast } from "@/components/ui/use-toast";
+import { RiAdminFill } from "react-icons/ri";
 
 const initialState: authorizationLoginT = {
   email: "ashishkohad@gmail.com",
   password: "Ashish@123",
 };
 
-export function SignInDialog() {
+export function SignInDialog({ handelFlag }: { handelFlag: any }) {
   const [formData, setFormData] = useState<authorizationLoginT>(initialState);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
   const [showPassword, setShowPassword] = useState<Boolean>(false);
+  const [flag, setFlag] = useState<boolean>(true);
+  const { toast } = useToast();
 
   const dispatch = useAppDispatch();
-  const { successMessage, loading, error,isAuth } = useAppSelector(
+  const { successMessage, loading, error, isAuth } = useAppSelector(
     (state) => state.auth
   );
 
@@ -39,9 +43,16 @@ export function SignInDialog() {
   useEffect(() => {
     dispatch(clearState());
     if (successMessage === "Login Successfully!") {
-      alert(successMessage);
+      // alert(successMessage);
+
+      toast({
+        className:
+          "fixed top-10 left-1/2 transform -translate-x-1/2 flex md:max-w-[420px]",
+        variant: "default",
+        title: `${successMessage}`,
+      });
     }
-  }, [successMessage, dispatch]);
+  }, [successMessage, dispatch, flag]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -51,6 +62,7 @@ export function SignInDialog() {
   const handleClick = (event: any) => {
     console.log("Enter!!!");
     event.preventDefault();
+    handelFlag();
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -58,6 +70,8 @@ export function SignInDialog() {
     console.log("SignIn!!!", formData);
     const payload = formData;
     dispatch(LoginAuth({ payload }));
+    handelFlag();
+    setFlag(!flag);
   };
 
   const { email, password } = formData;
@@ -66,14 +80,18 @@ export function SignInDialog() {
     <>
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant="outline" onClick={() => handleClick}>
+          {/* <Button variant="outline" onClick={() => handleClick}>
             Show Dialog
-          </Button>
+          </Button> */}
+          <button className="tchr-listitem-a" onClick={() => handleClick}>
+            <RiAdminFill className="tchr-listitem-svg" />
+            <span className="tchr-listitem-span">Sign in</span>
+          </button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>
-              <AlertDialogCancel>
+              <AlertDialogCancel className="modal-cross">
                 <RxCross2 />
               </AlertDialogCancel>
             </AlertDialogTitle>
@@ -124,7 +142,7 @@ export function SignInDialog() {
                 {/* Submit */}
                 <div className="auth-form-box">
                   {loading ? (
-                    <Spinner width={6} height={6} />
+                    <Spinner />
                   ) : (
                     <input
                       className="auth-input auth-submit"

@@ -1,14 +1,11 @@
-interface SpinnerProps {
-  width: number;
-  height: number;
-}
-export default function Spinner({ width, height }: SpinnerProps) {
+
+export default function Spinner() {
   // console.log(typeof width.toString(), height);
   return (
     <div role="status" className="auth-input auth-loader flex justify-center">
       <svg
         aria-hidden="true"
-        className={`w-${width} h-${height} text-gray-200 animate-spin dark:text-gray-600 fill-red-700`}
+        className={`w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-red-700`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

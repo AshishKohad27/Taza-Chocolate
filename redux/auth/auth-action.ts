@@ -23,6 +23,10 @@ interface PayloadOfLogin {
     payload: authorizationLoginT
 }
 
+interface PayloadOfVerification {
+    token: string
+}
+
 export const GetAuth = createAsyncThunk(
     'get/auth',
     async () => {
@@ -60,6 +64,20 @@ export const LoginAuth = createAsyncThunk(
         try {
             const response = await axios.post<LoginApiResponse>('/api/auth/login', payload);
             console.log("response of Login:", response.data);
+            return response.data;
+        } catch (error: any) {
+            console.log("error in Signin:", error);
+            throw error;
+        }
+    }
+)
+
+export const verifyAuth = createAsyncThunk(
+    'verify/auth',
+    async ({ payload }: { payload: any }) => {
+
+        try {
+            const response = await axios.post('/api/auth/verify', payload);
             return response.data;
         } catch (error: any) {
             console.log("error in Signin:", error);

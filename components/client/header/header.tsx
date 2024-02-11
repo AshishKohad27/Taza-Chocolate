@@ -6,34 +6,48 @@ import { FaSearch } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { SignInDialog } from "@/components/sign-in-dialog";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { logout } from "@/redux/auth/auth-slice";
+import { verifyAuth } from "@/redux/auth/auth-action";
+import axios from "axios";
+import { Profile } from "./profile";
 
-let headerList = [
+interface SubListItem {
+  CollectionId?: number;
+  title: string;
+  link: string;
+}
+
+let headerList: { title: string; link: string; subList: SubListItem[] }[] = [
   {
     title: "Buy",
     link: "#",
     subList: [
       {
+        CollectionId: 7,
         title: "Gifts",
         link: "#",
       },
       {
+        CollectionId: 6,
         title: "Chocolate Bars",
         link: "#",
       },
       {
+        CollectionId: 1,
         title: "Chocolate Discs",
         link: "#",
       },
       {
+        CollectionId: 8,
         title: "Chocolate Snacks",
         link: "#",
       },
       {
+        CollectionId: 3,
         title: "NEW Smooth & Crunchy Bars",
         link: "#",
       },
       {
+        CollectionId: 10,
         title: "Everything",
         link: "#",
       },
@@ -94,22 +108,49 @@ let headerList = [
 ];
 export default function Header() {
   const [tabPosition, setTabPosition] = useState("tab-1");
-  const [openHam, setOpenHam] = useState(false);
+  const [openHam, setOpenHam] = useState<boolean>(false);
+  const [userName, SetUserName] = useState<string>("");
+  const [flag, setFlag] = useState<boolean>(false);
 
-  const { successMessage, loading, error, isAuth } = useAppSelector(
-    (state) => state.auth
-  );
+  const {
+    successMessage,
+    loading,
+    error,
+    isAuth,
+    token,
+    AuthorizedUserDetails,
+  } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // console.log({ successMessage, loading, error, isAuth });
-  }, [isAuth]);
+    // if (!isAuth) {
+    const payload = {
+      token: axios.defaults.headers.common["Token_taza"],
+    };
+
+    dispatch(verifyAuth({ payload }));
+    // }
+    // console.log("flag:", flag);
+  }, [isAuth, dispatch, flag]);
 
   useEffect(() => {
-    // console.log("tabPosition:", tabPosition);
-    // console.log("openHam:", openHam);
-  }, [tabPosition, openHam]);
+    let name =
+      AuthorizedUserDetails[0]?.first_name !== undefined
+        ? AuthorizedUserDetails[0].first_name
+        : "";
+    if (!isAuth) {
+      name = "";
+    }
+    // console.log("name:", name);
+    SetUserName(name);
+  }, [tabPosition, openHam, loading, isAuth]);
 
+  const handelFlag = () => {
+    setTimeout(() => {
+      setFlag(!flag);
+    }, 1000);
+    // console.log("flag value actived", flag);
+  };
   return (
     <header className="tc-header-outer">
       <div className="site-container">
@@ -138,13 +179,32 @@ export default function Header() {
                         <ul className="tchlgi-grid">
                           {item.subList.map((subItem, subIndex) => (
                             <li className="tchlgi-griditem" key={subIndex}>
-                              <Link
-                                className="tchlgi-griditem-a"
-                                href={`/collections/${subItem.title}`}
-                                title={subItem.title}
-                              >
-                                {subItem.title}
-                              </Link>
+                              {item.title === "Buy" ? (
+                                <Link
+                                  className="tchlgi-griditem-a"
+                                  // href={`/collections/${subItem.title}`}
+                                  href={{
+                                    pathname: `/collections/${subItem.title}`,
+                                    query: {
+                                      col: subItem.CollectionId,
+                                    },
+                                  }}
+                                  title={subItem.title}
+                                >
+                                  {subItem.title}
+                                </Link>
+                              ) : (
+                                <Link
+                                  className="tchlgi-griditem-a"
+                                  // href={`/collections/${subItem.title}`}
+                                  href={{
+                                    pathname: `/${subItem.title}`,
+                                  }}
+                                  title={subItem.title}
+                                >
+                                  {subItem.title}
+                                </Link>
+                              )}
                             </li>
                           ))}
                         </ul>
@@ -252,34 +312,42 @@ export default function Header() {
           </div>
           {/* Right Section */}
           <div className="tch-right">
-            {isAuth ? "Ashish Kohad" : ""}
+            {/* <h2>{userName && userName}</h2>
             <button
               onClick={() => {
                 dispatch(logout());
               }}
             >
               Logout
-            </button>
+            </button> */}
             <ul className="tchr-list">
-              <li>
-                <a href="" title="Join Our Mailing List">
-                  <MdOutlineEmail /> Join Our Mailing List
+              <li className="tchr-listitem">
+                <button type="button" className="tchr-listitem-a">
+                  <MdOutlineEmail className="tchr-listitem-svg" />{" "}
+                  <span className="tchr-listitem-span">
+                    Join Our Mailing List
+                  </span>
+                </button>
+              </li>
+              <li className="tchr-listitem">
+                {/* <button className="tchr-listitem-a">
+                  <RiAdminFill className="tchr-listitem-svg" />
+                  <span className="tchr-listitem-span">Sign in</span>
+                </button> */}
+                <SignInDialog handelFlag={handelFlag} />
+              </li>
+              <li className="tchr-listitem">
+                <a href="/search" title="Search" className="tchr-listitem-a">
+                  <FaSearch className="tchr-listitem-svg" />
                 </a>
               </li>
-              <li>
-                <a title="Sign In">
-                  <SignInDialog />
+              <li className="tchr-listitem">
+                <a href="/cart" title="cart-page" className="tchr-listitem-a">
+                  <IoCartSharp className="tchr-listitem-svg" />
                 </a>
               </li>
-              <li>
-                <a href="" title="Search">
-                  <FaSearch />
-                </a>
-              </li>
-              <li>
-                <a href="" title="cart-page">
-                  <IoCartSharp />
-                </a>
+              <li className="tchr-listitem">
+                <Profile />
               </li>
             </ul>
           </div>

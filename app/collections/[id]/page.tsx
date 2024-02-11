@@ -8,11 +8,23 @@ import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import products from "../../../json/products.json";
 import ProductGridSkeleton from "@/components/client/skeleton/product-grid-skeleton";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import collection from "@/json/collections.json";
+import useCollectionHook from "@/hooks/collection-hook";
 
 export default function Products() {
   const [loading, setLoading] = useState<boolean>(true);
+  const searchParams = useSearchParams();
+  const search: string | null = searchParams.get("col");
+  const searchNumber: number = search !== null ? parseInt(search, 10) : 0;
+  // const [title, setTitle] = useState<string>("Taza Chocolate");
+  const [bannerImage, setBannerImage] = useState<string>("");
+
+  // const [title] = await CollectionHook({ CollectionId: searchNumber });
+  const { title } = useCollectionHook({ CollectionId: searchNumber });
 
   useEffect(() => {
+    console.log("search:", search);
     let timeoutId = setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -20,14 +32,31 @@ export default function Products() {
     return () => clearTimeout(timeoutId);
   }, [loading]);
 
+  useEffect(() => {
+
+  }, [title]);
+
   return (
     <div className="product-outer">
       <div className="product-inner">
-        {/* BreadCrums */}
-        {/* <Breadcrumbs First="Home" Second="Buy" Third="Bars" /> */}
+        {/* Bread Crumbs */}
+        <Breadcrumbs
+          First={{
+            label: "Home",
+            href: "/",
+          }}
+          Second={{
+            label: "Buy",
+            href: "/",
+          }}
+          Third={{
+            label: title && title,
+            href: `/collections/${title && title}?col=${searchNumber}`,
+          }}
+        />
 
         {/* Product Banner */}
-        <Banner bannerImage={"https://raw.githubusercontent.com/AshishKohad27/Taza-Chocolate/main/public/Images/page_banner_6_image.webp"} />
+        <Banner title={title} />
 
         {/* Product Description */}
         <div className="pro-desc-outer">
