@@ -70,24 +70,3 @@
 }
 
 // Table
-
-.table-container {
-    .admin-table {
-        margin-top: 20px;
-        width: 100%;
-        border-collapse: separate;
-        border: 1px solid color.$tc-color--black;
-    }
-
-    thead,
-    tbody {
-        text-align: center;
-    }
-
-    th,
-    td {
-        padding: 10px;
-        border: 1px solid color.$tc-color--black;
-    }
-
-}

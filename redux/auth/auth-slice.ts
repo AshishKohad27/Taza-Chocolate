@@ -59,7 +59,7 @@ export const authSlice = createSlice({
                 error: false,
                 successMessage: '',
                 errorMessage: '',
-                data: [],
+                // data: [],
                 token: {
                     taza_token: cookiesToken,
                     taza_refresh_token: cookiesTokenRefesh
@@ -86,7 +86,7 @@ export const authSlice = createSlice({
         builder.addCase(GetAuth.fulfilled, (state, action: PayloadAction<AuthPayloadAction>) => {
             state.loading = false;
             state.error = false;
-            // console.log(action);
+            console.log("actionData:",action.payload.data);
             state.data = action.payload.data;
             state.successMessage = action.payload.message;
         });

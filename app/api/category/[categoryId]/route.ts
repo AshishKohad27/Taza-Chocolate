@@ -1,11 +1,18 @@
 import connectDB from "@/config/db";
-import { getCategory, addCategory } from "@/controller/category";
+import { updateCategory, deleteCategory } from "@/controller/category";
 
+interface CustomContext {
+    params: {
+        categoryId: string;
+    };
+}
 
-export async function GET(request: Request) {
+export async function DELETE(request: Request, context: CustomContext) {
     connectDB();
-    console.log("Get Category!");
-    const { statusCode, data, flag, desc, message } = await getCategory();
+
+    const categoryId = context.params.categoryId;
+
+    const { statusCode, data, flag, desc, message } = await deleteCategory({ categoryId });
 
     if (flag) {
         return Response.json({
@@ -22,12 +29,13 @@ export async function GET(request: Request) {
     }
 }
 
-export async function POST(request: Request) {
+export async function PATCH(request: Request, context: CustomContext) {
     connectDB();
-    console.log("Add Category!");
+
+    const categoryId = context.params.categoryId;
     const categoryBody = await request.json();
 
-    const { statusCode, data, flag, desc, message } = await addCategory({ ...categoryBody });
+    const { statusCode, data, flag, desc, message } = await updateCategory({ categoryId, ...categoryBody });
 
     if (flag) {
         return Response.json({

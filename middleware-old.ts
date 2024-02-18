@@ -6,10 +6,10 @@
 // // This function can be marked `async` if using `await` inside
 // export function middleware(request: NextRequest) {
 
-//     if (request.nextUrl.pathname.startsWith('/api/products/[productId]')) {
-//         // This logic is only applied to /about
-//         console.log("for product get route");
-//     }
+//     // if (request.nextUrl.pathname.startsWith('/api/products/[productId]')) {
+//     //     // This logic is only applied to /about
+//     //     console.log("for product get route");
+//     // }
 
 //     console.log("Middleware!--------------------------!");
 //     const authToken: string | null = request.headers.get('auth-token');
@@ -47,6 +47,6 @@
 // }
 
 // export const config = {
-//     matcher: ['/api/products/:function*', '/api/cart/:function*'],
+//     matcher: ['/api/category/:function*'],
 // }
 

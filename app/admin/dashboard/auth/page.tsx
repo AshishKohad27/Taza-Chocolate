@@ -13,17 +13,18 @@ export default function Auth_Dashboard() {
 
   useEffect(() => {
     dispatch(GetAuth());
-  }, [isRefresh, dispatch]);
+  }, [dispatch]);
 
-  useEffect(() => {
-    // console.log("data:", data);
-    console.log("loading:", loading);
-  }, [loading, error, isRefresh]);
+  // useEffect(() => {
+  //   // console.log("data:", data);
+  //   console.log("loading:", loading);
+  // }, [loading, error, isRefresh]);
 
   const handleRefresh = () => {
     setIsRefresh(!isRefresh);
   };
 
+  console.log("data:", data);
   if (loading) {
     return <h1>Loading...</h1>;
   } else
@@ -85,6 +86,12 @@ export default function Auth_Dashboard() {
                         </td>
                       </tr>
                     ))}
+
+                  {/* {
+                      data && data.map((item,index)=>(
+
+                      ))
+                    } */}
                 </tbody>
               </table>
             </div>

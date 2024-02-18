@@ -1,7 +1,6 @@
 import connectDB from "@/config/db";
 import { PramsProps } from "@/constant/server/products";
 import { addProduct, getProduct } from "@/controller/products";
-import type { NextRequest } from 'next/server'
 
 export async function GET(request: Request) {
     connectDB();

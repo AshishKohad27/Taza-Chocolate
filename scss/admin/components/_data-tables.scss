@@ -1,0 +1,350 @@
+@use "../../global/base";
+@use "../../global/color";
+@use "../../global/typography";
+
+.table-container {
+    // background-color: teal;
+}
+
+.toolbar {
+    margin: auto;
+    margin-top: 10px;
+    width: 98%;
+
+    .toolbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .tc-btn-box {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 15px;
+        width: 50%;
+    }
+
+    .tc-btn {
+        height: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        box-sizing: border-box;
+        background-color: color.$tc-color--white;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transition: all 0.5s;
+        @include typography.tc_typography("Arial",
+            14px,
+            600,
+            normal,
+            color.$tc-color--lightishblack );
+
+        span {
+            margin-left: 5px;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .tc-btn-input {
+        &:hover {
+            background-color: color.$tc-color--blue-500;
+            color: color.$tc-color--white;
+
+        }
+    }
+
+    .tc-search-bar {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .tc-search-svg {
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: color.$tc-color--white;
+        border: 1px solid color.$tc-color--lightishgray;
+        border-right: 0px;
+        border-radius: 8px 0px 0px 8px;
+    }
+
+    .search-input {
+        width: calc(50% - 30px);
+        border-radius: 0px 8px 8px 0px;
+        padding: 10px;
+        padding-left: 0px;
+        border: 1px solid color.$tc-color--lightishgray;
+        border-left: 0px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+}
+
+.admin-table-container {
+    overflow-x: auto;
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+    // box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 8px;
+    border: 1px solid color.$tc-color--gray-200;
+}
+
+.admin-table {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 98%;
+    border-radius: 8px;
+    background-color: color.$tc-color--white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-collapse: collapse;
+    position: relative;
+
+    thead,
+    tbody {
+        text-align: center;
+    }
+
+    thead {
+        tr {
+            th:last-child {
+                border-top-right-radius: 8px;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid color.$tc-color--lightishgray;
+            transition: all 0.5s;
+        }
+
+        tr:last-child {
+            td:first-child {
+                border-bottom-left-radius: 8px;
+            }
+
+            td:last-child {
+                border-bottom-right-radius: 8px;
+            }
+        }
+
+        tr:hover {
+            td {
+                background-color: color.$tc-color--teal-50;
+            }
+        }
+    }
+
+    th:first-child,
+    th:nth-child(2),
+    td:first-child,
+    td:nth-child(2) {
+        width: 10px;
+    }
+
+
+    th {
+        border-bottom: 1px solid color.$tc-color--lightishgray;
+        padding: 10px;
+        // border: 1px solid color.$tc-color--black;
+        @include typography.tc_typography("Arial",
+            14px,
+            600,
+            normal,
+            color.$tc-color--black );
+        text-transform: uppercase;
+    }
+
+    .th-box {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .th-updown {
+        cursor: pointer;
+        // background-color: red;
+    }
+
+    .th-svg {
+        width: 10px;
+        height: 10px;
+
+        &.th-svg-gray {
+            path {
+                fill: color.$tc-color--lightishgray;
+            }
+        }
+
+        &.th-svg-black {
+            path {
+                fill: color.$tc-bgColor--black;
+            }
+        }
+    }
+
+
+    td {
+        padding: 10px;
+        // border: 1px solid color.$tc-color--black;
+        @include typography.tc_typography("Arial",
+            14px,
+            500,
+            normal,
+            color.$tc-color--browngray );
+    }
+
+
+    .td-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .td-action-btn {
+        padding: 5px;
+        border: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transition: all 0.5s;
+
+        svg {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    .td-action-view {
+        background-color: color.$tc-color--green-200;
+
+        &:hover {
+            background-color: color.$tc-color--green-500;
+
+            svg {
+                path {
+                    stroke: color.$tc-color--white;
+                    stroke-width: 2px;
+                }
+            }
+        }
+    }
+
+    .td-action-edit {
+        background-color: color.$tc-color--blue-200;
+
+        &:hover {
+            background-color: color.$tc-color--blue-500;
+
+            svg {
+                path {
+                    stroke: color.$tc-color--white;
+                    stroke-width: 2px;
+                }
+            }
+        }
+    }
+
+    .td-action-del {
+        background-color: color.$tc-color--red-200;
+
+        &:hover {
+            background-color: color.$tc-color--red-500;
+
+            svg {
+                path:last-child {
+                    stroke: color.$tc-color--white;
+                    stroke-width: 2px;
+                    fill: color.$tc-color--white;
+                    ;
+                }
+            }
+        }
+    }
+
+    .tr-lastchild {
+        position: sticky;
+        right: 0px;
+        background-color: color.$tc-color--white;
+    }
+}
+
+.table-pagination {
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    // background-color: color.$tc-color--white;
+    // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    .table-pagination-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-pagi-btn {
+        @include typography.tc_typography("Arial",
+            14px,
+            500,
+            normal,
+            color.$tc-color--browngray );
+        border: 2px solid color.$tc-color--blue-500;
+        background-color: transparent;
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        border-radius: 8px;
+        transition: border 0.5s, color 0.5s, background-color 0.5s;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+        &:hover {
+            color: color.$tc-color--white;
+            background-color: color.$tc-bgColor--green;
+            border-color: color.$tc-bgColor--green;
+        }
+    }
+}
+
+@media (max-width:767px) {
+    .toolbar {
+        .toolbar-container {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .tc-btn-box {
+            width: 100%;
+        }
+
+        .tc-search-bar {
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .search-input {
+            width: 100%;
+        }
+    }
+}

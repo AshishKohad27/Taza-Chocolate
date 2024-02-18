@@ -1,4 +1,4 @@
-import { model, modelNames, models, Schema } from "mongoose";
+import { model, models, Schema } from "mongoose";
 
 const SubproductSchema = new Schema({
     type: {
