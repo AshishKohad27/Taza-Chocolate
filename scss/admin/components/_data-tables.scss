@@ -1,9 +1,11 @@
 @use "../../global/base";
 @use "../../global/color";
 @use "../../global/typography";
+@use "../../global/input";
 
 .table-container {
     // background-color: teal;
+    width: 100%;
 }
 
 .toolbar {
@@ -16,43 +18,40 @@
         justify-content: space-between;
         align-items: stretch;
         flex-direction: column;
+        width: 100%;
     }
 
-    .tc-btn-box {
+    .top-toolbar {
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 15px;
-        width: 50%;
+        align-items: stretch;
+        justify-content: space-between;
     }
 
-    .tc-btn {
+    .create-form {
+
         height: 100%;
-        padding: 10px;
-        border-radius: 8px;
-        box-sizing: border-box;
-        background-color: color.$tc-color--white;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        transition: all 0.5s;
-        @include typography.tc_typography("Arial",
-            14px,
-            600,
-            normal,
-            color.$tc-color--lightishblack );
 
-        span {
-            margin-left: 5px;
-        }
-
-        &:focus {
-            outline: none;
-        }
-    }
-
-    .tc-btn-input {
-        &:hover {
+        .form-add-btn {
+            @include typography.tc_typography("Arial",
+                16px,
+                600,
+                normal,
+                color.$tc-color--white );
+            height: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
             background-color: color.$tc-color--blue-500;
-            color: color.$tc-color--white;
+
+            svg {
+                path {
+                    stroke: color.$tc-color--white;
+                }
+            }
 
         }
     }
@@ -82,10 +81,97 @@
         border: 1px solid color.$tc-color--lightishgray;
         border-left: 0px;
 
+        @include typography.tc_typography("Arial",
+            16px,
+            500,
+            normal,
+            color.$tc-color--browngray );
+        @include input.input-placeholder-css("Arial",
+            16px,
+            500,
+            normal,
+            color.$tc-color--browngray );
+
         &:focus {
             outline: none;
         }
     }
+
+
+    .bottom-toolbar {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .tc-btn-box {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 15px;
+        width: 50%;
+    }
+
+    .tc-btn-refresh {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        svg {
+            transform-origin: center;
+            transform: rotate(0deg);
+            animation: spin 1s infinite linear;
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .tc-btn {
+        height: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        box-sizing: border-box;
+        background-color: color.$tc-color--white;
+        border: 1px solid color.$tc-color--gray-200;
+        transition: all 0.5s;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 4px;
+        @include typography.tc_typography("Arial",
+            14px,
+            600,
+            normal,
+            color.$tc-color--lightishblack );
+
+        span {
+            margin-left: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .tc-btn-input {
+        &:hover {
+            background-color: color.$tc-color--blue-500;
+            color: color.$tc-color--white;
+
+        }
+    }
+
+
 
 }
 
@@ -95,7 +181,7 @@
     margin: auto;
     margin-top: 10px;
     // box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-    border-radius: 8px;
+    border-radius: 16px;
     border: 1px solid color.$tc-color--gray-200;
 }
 
@@ -168,7 +254,7 @@
 
     .th-box {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         gap: 5px;
     }
@@ -206,12 +292,12 @@
             color.$tc-color--browngray );
     }
 
-
     .td-actions {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
+        height: 100px;
     }
 
     .td-action-btn {
@@ -281,6 +367,26 @@
         position: sticky;
         right: 0px;
         background-color: color.$tc-color--white;
+    }
+
+    .at-img-box {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .at-img {
+            border-radius: 5px;
+            border: 2px solid color.$tc-bgColor--black;
+            width: 100px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .at-img-cat{
+            width: 300px;
+        }
     }
 }
 

@@ -1,11 +1,19 @@
 import connectDB from "@/config/db";
 import { getCategory, addCategory } from "@/controller/category";
-
+import { PramsProps } from "@/constant/server/products";
 
 export async function GET(request: Request) {
     connectDB();
     console.log("Get Category!");
-    const { statusCode, data, flag, desc, message } = await getCategory();
+    const { searchParams } = new URL(request.url);
+    const search = searchParams.get('search');
+    const page = searchParams.get('page');
+    const limit = searchParams.get('limit');
+    const orderBy = searchParams.get('orderBy');
+    const order = searchParams.get('order');
+    const params: PramsProps = { search, limit, page, orderBy, order };
+
+    const { statusCode, data, flag, desc, message } = await getCategory({ ...params });
 
     if (flag) {
         return Response.json({

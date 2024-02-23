@@ -17,6 +17,7 @@ type AuthorizationState = {
     token: AuthToken;
     AuthorizedUserDetails: AuthCredentials[];
 }
+
 let cookiesToken: string = "";
 let cookiesTokenRefesh: string = "";
 if (typeof window !== 'undefined') {
@@ -39,7 +40,6 @@ const initialState: AuthorizationState = {
     },
     AuthorizedUserDetails: []
 }
-
 
 export const authSlice = createSlice({
     name: 'auth',

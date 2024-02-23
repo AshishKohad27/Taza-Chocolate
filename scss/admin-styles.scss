@@ -8,4 +8,5 @@
 @use "./admin/common";
 
 // components
-@use "./admin/components/data-tables"
+@use "./admin/components/data-tables";
+@use "./admin/components/table-modal";

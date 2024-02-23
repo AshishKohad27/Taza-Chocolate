@@ -1,8 +1,10 @@
-import { GrView } from "react-icons/gr";
-import { CiEdit } from "react-icons/ci";
-import { MdDelete } from "react-icons/md";
+
 import { IoSearchSharp } from "react-icons/io5";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
+import ItemLimit from "@/components/admin/data-table/item-limit";
+import Category_Form_Edit from "@/components/admin/data-table/category-forms/edit-form";
+import Category_Form_Delect from "@/components/admin/data-table/category-forms/delect-form";
+import Category_Form_Create from "@/components/admin/data-table/category-forms/create-form";
 
 export default function AdminTable() {
   return (
@@ -14,6 +16,9 @@ export default function AdminTable() {
             <div className="toolbar-container">
               {/* top */}
               <div className="top-toolbar">
+                <div className="create-form">
+                  <Category_Form_Create />
+                </div>
                 <div className="tc-search-bar">
                   <div className="tc-search-svg">
                     <IoSearchSharp />
@@ -31,10 +36,11 @@ export default function AdminTable() {
                   <button className="tc-btn tc-btn-input">
                     All <span>99</span>
                   </button>
-                  <select name="" id="" className="tc-btn">
+                  {/* <select name="" id="" className="tc-btn">
                     <option>-</option>
                     <option>Delete Seleted Items</option>
-                  </select>
+                  </select> */}
+                  <ItemLimit />
                 </div>
               </div>
             </div>
@@ -70,21 +76,23 @@ export default function AdminTable() {
                 <td>Category Title</td>
                 <td>Lorem ipsum dolor</td>
                 <td className="td-actions tr-lastchild">
-                  <button
+                  <Category_Form_Edit CategoryId={"1"} />
+                  <Category_Form_Delect CategoryId={"1"} />
+                  {/* <button
                     className="td-action-btn td-action-view"
                     type="button"
                   >
                     <GrView />
-                  </button>
-                  <button
+                  </button> */}
+                  {/* <button
                     className="td-action-btn td-action-edit"
                     type="button"
                   >
                     <CiEdit />
-                  </button>
-                  <button className="td-action-btn td-action-del" type="button">
+                  </button> */}
+                  {/* <button className="td-action-btn td-action-del" type="button">
                     <MdDelete />
-                  </button>
+                  </button> */}
                 </td>
               </tr>
             </tbody>

@@ -22,8 +22,16 @@ export type ProductApiProps = {
 
 export type PramsProps = {
     search: string | null;
-    page: string | 1 | null;
-    limit: string | 10 | null;
+    page: string | 1 | number | null;
+    limit: string | 10 | number | null;
+    orderBy: string | null;
+    order: string | null;
+};
+
+export type GlobalPramsProps = {
+    search: string | null;
+    page: string | 1 | number | null;
+    limit: string | 10 | number | null;
 };
 
 export type ProductIdProps = {
