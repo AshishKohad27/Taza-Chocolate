@@ -46,7 +46,7 @@ export default function Category_Form_Create() {
 
   const { title, image_url } = formData;
   return (
-    <AlertDialog >
+    <AlertDialog>
       <AlertDialogTrigger asChild>
         <button
           onClick={(event) => handleClick(event)}
@@ -100,11 +100,13 @@ export default function Category_Form_Create() {
                 />
               </div>
               <div className="tm-formcontrol">
-                <input
-                  className="tm-fc-input tm-fc-submit"
-                  type="submit"
-                  value="SUBMIT"
-                />
+                <AlertDialogCancel>
+                  <input
+                    className="tm-fc-input tm-fc-submit"
+                    type="submit"
+                    value="CREATE"
+                  />
+                </AlertDialogCancel>
               </div>
             </form>
           </AlertDialogDescription>

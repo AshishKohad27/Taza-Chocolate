@@ -16,14 +16,16 @@ import { useEffect, useState } from "react";
 
 interface ItemLimitProps {
   handleLimits: Function;
+  limit: string | any;
 }
 
-export default function ItemLimit({ handleLimits }: ItemLimitProps) {
+export default function ItemLimit({ handleLimits, limit }: ItemLimitProps) {
   const [position, setPosition] = React.useState(0);
-  const [limits, setLimits] = React.useState<string>("0");
+  const [limits, setLimits] = React.useState<string>(limit);
   useEffect(() => {
     handleLimits(limits);
-  }, [limits]);
+    console.log("limit set to " + limit);
+  }, [limits, limit]);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

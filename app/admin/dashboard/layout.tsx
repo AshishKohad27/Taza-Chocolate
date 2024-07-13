@@ -4,5 +4,12 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div>{children}</div>;
+  return (
+    <div>
+      <a href="/admin/dashboard" title="back">
+        Back
+      </a>
+      {children}
+    </div>
+  );
 }

@@ -37,6 +37,17 @@
         gap: 4px;
     }
 
+    .tm-fc-img-box {
+        height: 200px;
+        width: 100%;
+
+        .tm-fc-img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
     .tm-fc-label {
         cursor: pointer;
         text-transform: uppercase;

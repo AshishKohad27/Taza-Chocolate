@@ -5,6 +5,7 @@ import { CategoryApiProps } from "@/constant/server/category";
 
 export type CategoryApiReponse = {
     statusCode: number;
+    total: number;
     data: CategoryApiProps[] | [];
     flag: boolean;
     desc: string;
@@ -13,6 +14,7 @@ export type CategoryApiReponse = {
 
 export type ProductApiResponse = {
     statusCode: number;
+    total: number;
     data: ProductApiProps[] | [];
     flag: boolean;
     desc: string;

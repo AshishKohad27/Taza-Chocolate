@@ -16,7 +16,9 @@ const intialState: pageProps = {
 };
 
 export default function Category_Dashboard() {
-  const { data, loading, error } = useAppSelector((state) => state.category);
+  const { data, total, loading, error } = useAppSelector(
+    (state) => state.category
+  );
   const dispatch = useAppDispatch();
 
   const [isRefresh, setIsRefresh] = useState<boolean>(false);
@@ -59,6 +61,7 @@ export default function Category_Dashboard() {
           data={data}
           handleRefresh={handleRefresh}
           loading={loading}
+          total={total}
         />
       </div>
     </section>

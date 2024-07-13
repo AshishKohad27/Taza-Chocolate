@@ -384,7 +384,7 @@
             object-fit: cover;
         }
 
-        .at-img-cat{
+        .at-img-cat {
             width: 300px;
         }
     }
@@ -430,6 +430,12 @@
             background-color: color.$tc-bgColor--green;
             border-color: color.$tc-bgColor--green;
         }
+    }
+
+    .tab-pagi-btn--active {
+        color: color.$tc-color--white;
+        background-color: color.$tc-bgColor--green;
+        border-color: color.$tc-bgColor--green;
     }
 }
 

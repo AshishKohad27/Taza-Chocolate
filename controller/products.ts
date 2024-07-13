@@ -3,52 +3,56 @@ import {
     ProductIdProps,
     ProductApiProps,
 } from "@/constant/server/products";
+import { ProductApiResponse } from "@/constant/server/api-response";
 import productModel from "@/model/product";
 
 // Global Variables;
 let globalSearch: string | "" = "";
 let globalPage: number | 1 = 1;
 let globalLimit: number | 10 = 10;
+let globalOrderBy: string | "" = "";
+let globalOrder: string | "" = "";
+const sortCriteria: { [key: string]: number } = {};
 
-const GlobalParams = ({ search, page, limit }: PramsProps) => {
+const GlobalParams = async ({
+    search,
+    page,
+    limit,
+    orderBy,
+    order,
+}: PramsProps): Promise<ProductApiProps[]> => {
     let localSearch: string | "" = String(search) || "";
     let localPage: number | 1 = Number(page) || 1;
     let localLimit: number | 10 = Number(limit) || 10;
+    let localOrderBy: string | "" = String(orderBy) || "";
+    let localOrder: string | "" = String(order) || "";
 
     globalSearch = localSearch;
     globalPage = localPage;
     globalLimit = localLimit;
+    globalOrderBy = localOrderBy;
+    globalOrder = localOrder;
 
-    return { localSearch, localPage, localLimit };
+    if (orderBy) {
+        sortCriteria[localOrderBy] = localOrder === "asc" ? 1 : -1;
+    }
+
+    const data: Array<ProductApiProps> = await productModel
+        .find({ title: { $regex: globalSearch } })
+        .limit(globalLimit)
+        .skip(globalLimit * (globalPage - 1))
+        .sort(sortCriteria as any);
+
+    return data;
+    // return { localSearch, localPage, localLimit };
 };
 
-export const addProduct = async ({
-    ...props
-}: ProductApiProps): Promise<any> => {
-    console.log("Post Controller");
+const TotalData = async (): Promise<number> => {
     try {
-        let addProduct = new productModel({
-            ...props,
-        });
-        await addProduct.save();
-
-        let data: Array<ProductApiProps> = await productModel.find();
-
-        return {
-            statusCode: 201,
-            data,
-            flag: true,
-            desc: "",
-            message: "Product Add Successfully!",
-        };
-    } catch (error: any) {
-        return {
-            statusCode: 400,
-            data: [],
-            flag: false,
-            desc: error.message,
-            message: "Error Occurs!",
-        };
+        const data: Array<ProductApiProps> = await productModel.find({});
+        return data.length;
+    } catch (e) {
+        return 0;
     }
 };
 
@@ -56,21 +60,23 @@ export const getProduct = async ({
     search,
     page,
     limit,
-}: PramsProps): Promise<any> => {
+    orderBy,
+    order,
+}: PramsProps): Promise<ProductApiResponse> => {
     //async function return promise that what typescript needed
     console.log("Get Controller");
     try {
-        // Setting Global Varibales
-        GlobalParams({ search, page, limit });
+        const data: Array<ProductApiProps> = await GlobalParams({
+            search,
+            page,
+            limit,
+            orderBy,
+            order,
+        });
 
-        const data: Array<ProductApiProps> = await productModel
-            .find({ title: { $regex: globalSearch } })
-            .limit(globalPage)
-            .skip(globalLimit * (globalPage - 1));
-
-        // console.log("data:", data);
         return {
             statusCode: 200,
+            total: await TotalData(),
             data,
             flag: true,
             desc: "",
@@ -79,6 +85,7 @@ export const getProduct = async ({
     } catch (error: any) {
         return {
             statusCode: 400,
+            total: 0,
             data: [],
             flag: false,
             desc: error.message,
@@ -89,14 +96,16 @@ export const getProduct = async ({
 
 export const getProductById = async ({
     productId,
-}: ProductIdProps): Promise<any> => {
+}: ProductIdProps): Promise<ProductApiResponse> => {
     console.log("Get By Id Controller");
     try {
         let data: ProductApiProps[] | null = await productModel.find({
             _id: productId,
         });
+
         return {
             statusCode: 200,
+            total: await TotalData(),
             data,
             message: "Get Single Item Successfully",
             flag: true,
@@ -105,6 +114,7 @@ export const getProductById = async ({
     } catch (error: any) {
         return {
             statusCode: 400,
+            total: 0,
             data: [],
             flag: false,
             desc: error.message,
@@ -113,22 +123,65 @@ export const getProductById = async ({
     }
 };
 
+export const addProduct = async ({
+    ...props
+}: ProductApiProps): Promise<ProductApiResponse> => {
+    console.log("Post Controller");
+    try {
+        let addProduct = new productModel({
+            ...props,
+        });
+        await addProduct.save();
+
+        const data: Array<ProductApiProps> = await GlobalParams({
+            search: globalSearch,
+            page: globalPage,
+            limit: globalLimit,
+            orderBy: globalOrderBy,
+            order: globalOrder,
+        });
+
+        return {
+            statusCode: 201,
+            total: await TotalData(),
+            data,
+            flag: true,
+            desc: "",
+            message: "Product Add Successfully!",
+        };
+    } catch (error: any) {
+        return {
+            statusCode: 400,
+            total: 0,
+            data: [],
+            flag: false,
+            desc: error.message,
+            message: "Error Occurs!",
+        };
+    }
+};
+
 export const deleteProduct = async ({
     productId,
-}: ProductIdProps): Promise<any> => {
+}: ProductIdProps): Promise<ProductApiResponse> => {
     console.log("Delete Controller");
     try {
         await productModel.findByIdAndDelete({
             _id: productId,
         });
 
-        const data: Array<ProductApiProps> = await productModel
-            .find({ title: { $regex: globalSearch } })
-            .limit(globalPage)
-            .skip(globalLimit * (globalPage - 1));
+        const data: Array<ProductApiProps> = await GlobalParams({
+            search: globalSearch,
+            page: globalPage,
+            limit: globalLimit,
+            orderBy: globalOrderBy,
+            order: globalOrder,
+        });
+
 
         return {
             statusCode: 201,
+            total: await TotalData(),
             data,
             message: "Product Delete Successfully",
             flag: true,
@@ -137,6 +190,7 @@ export const deleteProduct = async ({
     } catch (error: any) {
         return {
             statusCode: 400,
+            total: 0,
             data: [],
             flag: false,
             desc: error.message,
@@ -150,7 +204,7 @@ export const updateProduct = async ({
     ...props
 }: {
     productId: string;
-}): Promise<any> => {
+}): Promise<ProductApiResponse> => {
     console.log("Update Controller");
     try {
         await productModel.findByIdAndUpdate(
@@ -160,13 +214,17 @@ export const updateProduct = async ({
             }
         );
 
-        const data: Array<ProductApiProps> = await productModel
-            .find({ title: { $regex: globalSearch } })
-            .limit(globalPage)
-            .skip(globalLimit * (globalPage - 1));
+        const data: Array<ProductApiProps> = await GlobalParams({
+            search: globalSearch,
+            page: globalPage,
+            limit: globalLimit,
+            orderBy: globalOrderBy,
+            order: globalOrder,
+        });
 
         return {
             statusCode: 200,
+            total: await TotalData(),
             data,
             flag: true,
             desc: "",
@@ -175,6 +233,7 @@ export const updateProduct = async ({
     } catch (error: any) {
         return {
             statusCode: 400,
+            total: 0,
             data: [],
             flag: true,
             desc: error.message,

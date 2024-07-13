@@ -23,6 +23,11 @@ export default function Dashboard() {
                   Category
                 </a>
               </div>
+              <div className="dash-griditem">
+                <a href="dashboard/product" className="dash-griditem-a">
+                  Product
+                </a>
+              </div>
             </div>
           </div>
         </div>

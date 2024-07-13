@@ -17,6 +17,7 @@ interface CategoryTableProps {
   data: CategoryData[];
   handleRefresh: Function;
   loading: boolean;
+  total: number;
 }
 
 let intialState: pageProps = {
@@ -31,10 +32,24 @@ export default function CategoryTable({
   data,
   handleRefresh,
   loading,
+  total,
 }: CategoryTableProps) {
-  console.log({ data });
   const [flag, setFlag] = useState<boolean>(false);
+  const [refresh, setRefresh] = useState<boolean>(false);
+  const [noOfPages, setNoOfPages] = useState<number>(0);
+
   const [formData, setFormData] = useState<pageProps>(intialState);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(GetCategoryAction(formData));
+    // console.log(formData);
+  }, [dispatch, formData]);
+
+  useEffect(() => {
+    handlePageButtons(total);
+    // console.log({ limit });
+  }, [total, formData, refresh]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -45,27 +60,13 @@ export default function CategoryTable({
     });
   };
 
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(GetCategoryAction(formData));
-  }, [dispatch, formData]);
-
   const tableRefresh = () => {
-    console.log("Table Refresh!!!");
     handleRefresh();
+    setFormData(intialState);
   };
 
   const orderByCategoryTitle = (value: any) => {
-    console.log({ value });
-
     if (flag) {
-      // intialState = {
-      //   ...intialState,
-      //   orderBy: value,
-      //   order: "asc",
-      // };
-
       setFormData({
         ...formData,
         orderBy: value,
@@ -73,11 +74,6 @@ export default function CategoryTable({
       });
       dispatch(GetCategoryAction(formData));
     } else {
-      // intialState = {
-      //   ...intialState,
-      //   orderBy: value,
-      //   order: "desc",
-      // };
       setFormData({
         ...formData,
         orderBy: value,
@@ -86,17 +82,30 @@ export default function CategoryTable({
       dispatch(GetCategoryAction(formData));
     }
 
-    console.log({ intialState });
-
     setFlag(!flag);
   };
 
   const handleLimits = (value: any) => {
-    console.log({ value });
     setFormData({
       ...formData,
       limit: value,
     });
+  };
+
+  const handlePage = (value: number) => {
+    // console.log({ value });
+    setFormData({
+      ...formData,
+      page: value,
+    });
+    setRefresh(!refresh);
+  };
+
+  const handlePageButtons = (total: number) => {
+    // console.log({ limit, length: total });
+    let pageBtn = Math.ceil(total / Number(limit));
+    console.log({ pageBtn });
+    setNoOfPages(pageBtn);
   };
 
   const { search, page, limit } = formData;
@@ -104,7 +113,6 @@ export default function CategoryTable({
   return (
     <div className="table-container">
       <div className="site-container">
-        {/* <div className="table-inner"> */}
         <div className="toolbar">
           <div className="top-toolbar">
             <div className="toolbar-container">
@@ -120,7 +128,7 @@ export default function CategoryTable({
                   <input
                     className="search-input"
                     name="search"
-                    value={search}
+                    value={search || ""}
                     onChange={handleChange}
                     type="text"
                     placeholder="Search..."
@@ -131,13 +139,13 @@ export default function CategoryTable({
               <div className="bottom-toolbar">
                 <div className="tc-btn-box">
                   <button className="tc-btn tc-btn-input">
-                    All <span>{data && data.length}</span>
+                    All <span>{data && total}</span>
                   </button>
                   {/* <select name="" id="" className="tc-btn">
                     <option>-</option>
                     <option>Delete Seleted Items</option>
                   </select> */}
-                  <ItemLimit handleLimits={handleLimits} />
+                  <ItemLimit handleLimits={handleLimits} limit={limit} />
                 </div>
                 <div>
                   <button
@@ -201,7 +209,7 @@ export default function CategoryTable({
               </thead>
             )}
 
-            {loading && loading ? (
+            {false ? (
               <TableRowBody />
             ) : (
               <tbody>
@@ -223,8 +231,8 @@ export default function CategoryTable({
                         </div>
                       </td>
                       <td className="td-actions tr-lastchild">
-                        <Category_Form_Edit CategoryId={item._id} />
-                        <Category_Form_Delect CategoryId={item._id} />
+                        <Category_Form_Edit categoryId={item._id} />
+                        <Category_Form_Delect categoryId={item._id} />
                       </td>
                     </tr>
                   ))}
@@ -234,16 +242,30 @@ export default function CategoryTable({
         </div>
         <div className="table-pagination">
           <div className="table-pagination-container">
-            <button className="tab-pagi-btn">1</button>
+            {noOfPages > 0
+              ? Array.from({ length: noOfPages }).map((_, index) => (
+                  <button
+                    key={index}
+                    className={`tab-pagi-btn ${
+                      page === index + 1 ? "tab-pagi-btn--active" : ""
+                    }`}
+                    onClick={() => handlePage(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                ))
+              : ""}
+            {/* <button className="tab-pagi-btn" onClick={() => handlePage(1)}>
+              1
+            </button>
             <button className="tab-pagi-btn">2</button>
             <button className="tab-pagi-btn">3</button>
             <button className="tab-pagi-btn">...</button>
             <button className="tab-pagi-btn">1</button>
             <button className="tab-pagi-btn">2</button>
-            <button className="tab-pagi-btn">3</button>
+            <button className="tab-pagi-btn">3</button> */}
           </div>
         </div>
-        {/* </div> */}
       </div>
     </div>
   );

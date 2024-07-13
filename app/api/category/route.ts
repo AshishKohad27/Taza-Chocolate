@@ -1,6 +1,7 @@
 import connectDB from "@/config/db";
 import { getCategory, addCategory } from "@/controller/category";
 import { PramsProps } from "@/constant/server/products";
+import { CategoryApiReponse } from "@/constant/server/api-response";
 
 export async function GET(request: Request) {
     connectDB();
@@ -13,11 +14,11 @@ export async function GET(request: Request) {
     const order = searchParams.get('order');
     const params: PramsProps = { search, limit, page, orderBy, order };
 
-    const { statusCode, data, flag, desc, message } = await getCategory({ ...params });
+    const { statusCode, total, data, flag, desc, message } = await getCategory({ ...params });
 
     if (flag) {
         return Response.json({
-            desc, message, data
+            desc, message, total, data
         }, {
             status: statusCode,
         });
@@ -35,11 +36,11 @@ export async function POST(request: Request) {
     console.log("Add Category!");
     const categoryBody = await request.json();
 
-    const { statusCode, data, flag, desc, message } = await addCategory({ ...categoryBody });
+    const { statusCode, total, data, flag, desc, message } = await addCategory({ ...categoryBody });
 
     if (flag) {
         return Response.json({
-            desc, message, data
+            desc, message, total, data
         }, {
             status: statusCode,
         });

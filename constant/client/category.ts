@@ -19,5 +19,6 @@ export type CategoryId = {
 export type CategoryPayloadAction = {
     desc: string;
     message: string;
+    total: number;
     data: CategoryData[];
 }
