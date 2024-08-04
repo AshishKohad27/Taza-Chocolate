@@ -43,7 +43,7 @@ export default function CategoryTable({
 
   useEffect(() => {
     dispatch(GetCategoryAction(formData));
-    // console.log(formData);
+    console.log(formData);
   }, [dispatch, formData]);
 
   useEffect(() => {
@@ -231,8 +231,8 @@ export default function CategoryTable({
                         </div>
                       </td>
                       <td className="td-actions tr-lastchild">
-                        <Category_Form_Edit categoryId={item._id} />
-                        <Category_Form_Delect categoryId={item._id} />
+                        {/* <Category_Form_Edit categoryId={item._id} />
+                        <Category_Form_Delect categoryId={item._id} /> */}
                       </td>
                     </tr>
                   ))}

@@ -5,16 +5,16 @@ import ItemLimit from "@/components/admin/data-table/item-limit";
 import Category_Form_Edit from "@/components/admin/data-table/category-forms/edit-form";
 import Category_Form_Delect from "@/components/admin/data-table/category-forms/delect-form";
 import Category_Form_Create from "@/components/admin/data-table/category-forms/create-form";
-import { CategoryData } from "@/constant/client/category";
+import { ProductData } from "@/constant/client/product";
 import { pageProps } from "@/constant/client/client-global";
 import { TbRefresh } from "react-icons/tb";
 import { useAppDispatch } from "@/redux/hooks";
-import { GetCategoryAction } from "@/redux/category/category-action";
+import { GetProductAction } from "@/redux/product/product-action";
 import TableRowBody from "@/components/client/skeleton/table-row-body";
 import TableRowHead from "@/components/client/skeleton/table-row-head";
 
-interface CategoryTableProps {
-  data: CategoryData[];
+interface ProductTableProps {
+  data: ProductData[];
   handleRefresh: Function;
   loading: boolean;
   total: number;
@@ -33,7 +33,7 @@ export default function CategoryTable({
   handleRefresh,
   loading,
   total,
-}: CategoryTableProps) {
+}: ProductTableProps) {
   const [flag, setFlag] = useState<boolean>(false);
   const [refresh, setRefresh] = useState<boolean>(false);
   const [noOfPages, setNoOfPages] = useState<number>(0);
@@ -42,13 +42,20 @@ export default function CategoryTable({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(GetCategoryAction(formData));
+    dispatch(GetProductAction(formData));
     // console.log(formData);
   }, [dispatch, formData]);
 
   useEffect(() => {
-    handlePageButtons(total);
+    // handlePageButtons(total);
     // console.log({ limit });
+    // }, [total, formData, refresh]);
+
+    console.log({ limit, length: total });
+    let pageBtn = Math.ceil(total / Number(limit));
+    console.log({ pageBtn });
+    setNoOfPages(pageBtn);
+
   }, [total, formData, refresh]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,16 +79,15 @@ export default function CategoryTable({
         orderBy: value,
         order: "asc",
       });
-      dispatch(GetCategoryAction(formData));
+      dispatch(GetProductAction(formData));
     } else {
       setFormData({
         ...formData,
         orderBy: value,
         order: "desc",
       });
-      dispatch(GetCategoryAction(formData));
+      dispatch(GetProductAction(formData));
     }
-
     setFlag(!flag);
   };
 
@@ -101,12 +107,12 @@ export default function CategoryTable({
     setRefresh(!refresh);
   };
 
-  const handlePageButtons = (total: number) => {
-    // console.log({ limit, length: total });
-    let pageBtn = Math.ceil(total / Number(limit));
-    console.log({ pageBtn });
-    setNoOfPages(pageBtn);
-  };
+  // const handlePageButtons = (total: number) => {
+  //   console.log({ limit, length: total });
+  //   let pageBtn = Math.ceil(total / Number(limit));
+  //   console.log({ pageBtn });
+  //   setNoOfPages(pageBtn);
+  // };
 
   const { search, page, limit } = formData;
 
@@ -225,14 +231,14 @@ export default function CategoryTable({
                         <div className="at-img-box">
                           <img
                             className="at-img at-img-cat"
-                            src={item.image_url}
+                            src={item.image}
                             alt={item.title}
                           />
                         </div>
                       </td>
                       <td className="td-actions tr-lastchild">
-                        <Category_Form_Edit categoryId={item._id} />
-                        <Category_Form_Delect categoryId={item._id} />
+                        {/* <Category_Form_Edit categoryId={item._id} />
+                        <Category_Form_Delect categoryId={item._id} /> */}
                       </td>
                     </tr>
                   ))}

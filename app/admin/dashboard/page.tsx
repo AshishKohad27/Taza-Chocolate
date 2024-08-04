@@ -4,33 +4,7 @@ export default function Dashboard() {
   return (
     <>
       <main className="dashbord-outer">
-        <div className="site-container">
-          <div className="dashbord-inner">
-            {/* Dashbord Grid */}
-            <div className="dash-grid">
-              <div className="dash-griditem">
-                <a href="dashboard/auth" className="dash-griditem-a">
-                  Auth
-                </a>
-              </div>
-              <div className="dash-griditem">
-                <a href="dashboard/order" className="dash-griditem-a">
-                  Order
-                </a>
-              </div>
-              <div className="dash-griditem">
-                <a href="dashboard/category" className="dash-griditem-a">
-                  Category
-                </a>
-              </div>
-              <div className="dash-griditem">
-                <a href="dashboard/product" className="dash-griditem-a">
-                  Product
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        Dashboard
       </main>
     </>
   );

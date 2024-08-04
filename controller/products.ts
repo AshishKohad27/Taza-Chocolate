@@ -50,6 +50,7 @@ const GlobalParams = async ({
 const TotalData = async (): Promise<number> => {
     try {
         const data: Array<ProductApiProps> = await productModel.find({});
+        console.log("data:", data);
         return data.length;
     } catch (e) {
         return 0;
